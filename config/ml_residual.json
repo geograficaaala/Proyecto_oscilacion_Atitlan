@@ -1,0 +1,59 @@
+{
+  "script_version": "1.0.0",
+  "created_utc": "2026-09-14T06:48:58.354737+00:00",
+  "project_root": ".",
+  "method": "Modelo hibrido: balance fisico + ML sobre residual de delta de nivel.",
+  "future_compatibility": "Los predictores ML se restringen a variables climaticas reproducibles/derivables con escenarios futuros y componentes fisicos del balance. Se excluyen nivel_lag, presion, humedad del suelo y runoff del corrector residual.",
+  "selection_rule": {
+    "selection_partition": "calibration",
+    "minimum_composite_score_improvement_vs_physical": 0.05,
+    "fallback": "PHYSICAL_ONLY",
+    "test_not_used_for_selection": true
+  },
+  "cv": {
+    "type": "expanding temporal",
+    "n_splits_requested": 4,
+    "n_splits_used": 4,
+    "objective": "trajectory_weighted_MAE + 0.50*abs(weighted_bias) + 0.25*delta_weighted_MAE"
+  },
+  "optuna": {
+    "database": "studies/ml_residual.sqlite3",
+    "study_suffix": "91f79cff9fca",
+    "xgb_target_trials": 30,
+    "rf_target_trials": 20,
+    "persistence": "SQLite + load_if_exists=True"
+  },
+  "best_xgb_parameters": {
+    "n_estimators": 900,
+    "max_depth": 2,
+    "learning_rate": 0.024970207068988195,
+    "min_child_weight": 1.7327225633383545,
+    "subsample": 0.6939604300809332,
+    "colsample_bytree": 0.8536829216956818,
+    "reg_alpha": 6.234213813037882e-05,
+    "reg_lambda": 0.8899511348541058,
+    "gamma": 0.6707547577878111,
+    "huber_slope": 0.025254583450126253
+  },
+  "best_rf_parameters": {
+    "n_estimators": 700,
+    "max_depth": 8,
+    "min_samples_leaf": 12,
+    "min_samples_split": 4,
+    "max_features": 0.338050126330406,
+    "max_samples": 0.7333408004158052
+  },
+  "selected_model": "PHYSICAL_ONLY",
+  "calibration_candidate_improvement_vs_physical": -0.0510481012603774,
+  "outputs": {
+    "selection": "outputs/ml_residual/seleccion_corrector_residual.csv",
+    "test_metrics": "outputs/ml_residual/metricas_test_ml_residual.csv",
+    "test_predictions": "outputs/ml_residual/predicciones_test_ml_residual.csv",
+    "xgb_importance": "outputs/ml_residual/importancia_xgb_residual.csv",
+    "rf_importance": "outputs/ml_residual/importancia_rf_residual.csv",
+    "features_train": "outputs/ml_residual/features_residuales_train.csv",
+    "features_train_cal": "outputs/ml_residual/features_residuales_train_cal.csv",
+    "xgb_model": "models/nivel/xgboost_residual_final.json",
+    "rf_model": "models/nivel/random_forest_residual_final.joblib"
+  }
+}

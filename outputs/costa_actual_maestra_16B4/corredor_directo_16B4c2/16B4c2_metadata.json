@@ -1,0 +1,47 @@
+{
+  "step": "16B4c2",
+  "status": "DIRECT_OBSERVED_CORRIDOR_CANDIDATE",
+  "created_utc": "2026-09-18T04:44:55.192207+00:00",
+  "reason_for_replacement": "16B4c IDW-expanded corridor was rejected because it covered the entire interpolated littoral surface and had insufficient internal consistency (median accuracy 0.645, balanced accuracy 0.618, wet IoU 0.567).",
+  "method": "Direct exact Sentinel/NASA temporal transitions only. No spatial IDW expansion is used to define the corridor.",
+  "exact_levels": {
+    "n_dates": 33,
+    "min_m": 1552.45,
+    "max_m": 1554.05,
+    "anchor_m": 1552.77
+  },
+  "direct_corridor": {
+    "pixels": 6181,
+    "area_km2": 2.4724,
+    "threshold_min_m": 1552.595,
+    "threshold_median_m": 1552.6725000000001,
+    "threshold_max_m": 1554.0349999999999,
+    "pixel_accuracy_median": 0.8636363636363636,
+    "pixel_accuracy_p10": 0.8064516129032258
+  },
+  "current_water_without_amsclae": {
+    "total_pixels": 891,
+    "with_direct_transition_pixels": 318,
+    "without_direct_transition_pixels": 573
+  },
+  "internal_consistency": {
+    "important_note": "These are internal consistency metrics because the same exact Sentinel/NASA observations are used to estimate and test each pixel threshold. They are not independent predictive validation.",
+    "per_date_accuracy_median": 0.9496318607764391,
+    "per_date_balanced_accuracy_median": 0.9025787677162764,
+    "per_date_wet_iou_median": 0.9430812041487477,
+    "per_date_wet_f1_median": 0.9707069392006249
+  },
+  "limitations": [
+    "The direct corridor only includes pixels that actually switched between wet and dry in exact observations with adequate support.",
+    "Pixels without a direct transition are not assigned a shoreline threshold in this product.",
+    "No extrapolation below the exact observed minimum level is performed.",
+    "Future shoreline mapping below the observed range must use AMSCLAE where available and retain explicit extrapolation provenance."
+  ],
+  "sha256": {
+    "16B4c2_corredor_transicion_directa.tif": "eab8e180b07ea79e781e53a5973c7d6707096417a939769160aebba9642996eb",
+    "16B4c2_nivel_umbral_directo_m.tif": "6445728f37987797a7a26e7f31039ea5e863697eaa4a9442d41714b75202667e",
+    "16B4c2_clase_temporal_exacta.tif": "bbef7e4b1c549efb7ee32af793e267a289cf697d3265eaf5a5fa98bd555f3fd1",
+    "16B4c2_validacion_interna_por_fecha.csv": "b5f4f5a0ce52c3cb2317a3fead58a78fb172ae3703866c094c81741ecabd1b8b",
+    "16B4c2_curva_cambio_area_corredor.csv": "693504a481956360973703e2e6c36508ab0bbb206a3c568cb9f319dea8330d94"
+  }
+}

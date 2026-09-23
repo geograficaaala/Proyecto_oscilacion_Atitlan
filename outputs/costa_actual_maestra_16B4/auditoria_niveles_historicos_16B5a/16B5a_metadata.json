@@ -1,0 +1,39 @@
+{
+  "step": "16B5a",
+  "status": "NO_HISTORICAL_EXTENSION_BELOW_CURRENT_MIN",
+  "created_utc": "2026-09-18T04:50:52.909079+00:00",
+  "reason": "16B4d0 showed insufficient lake-wide spatial compatibility between shallow AMSCLAE bathymetry and directly observed Sentinel/NASA shoreline transitions. Historical direct shoreline observation is therefore audited before any future shoreline extrapolation.",
+  "current_direct_observed_range": {
+    "min_m": 1552.45,
+    "max_m": 1554.05
+  },
+  "canonical_level_record": {
+    "n": 554,
+    "date_min": "2008-12-16",
+    "date_max": "2026-08-29",
+    "level_min_m": 1552.45,
+    "level_max_m": 1558.47,
+    "historical_min_date": "2026-07-30"
+  },
+  "historical_extension": {
+    "observations_below_1552_450": 0,
+    "vertical_gain_m": 0.0,
+    "selected_search_windows": 47
+  },
+  "candidate_classes": {
+    "A_BELOW_CURRENT_OBSERVED_MIN": "level < 1552.450 m; can extend direct shoreline range downward",
+    "B_LOW_BAND": "1552.450 <= level <= 1552.750 m; densifies lowest observed band",
+    "C_SECONDARY_LOW": "1552.750 < level <= 1553.250 m; secondary continuity support"
+  },
+  "important_limitations": [
+    "This step only identifies level dates; it does not prove that usable satellite imagery exists.",
+    "If no canonical level observation is below 1552.450 m, historical imagery tied to this record cannot extend the shoreline vertically below the current exact minimum.",
+    "Unsupported AMSCLAE shoreline zones must not be silently used to create continuous future maps."
+  ],
+  "sha256": {
+    "16B5a_todos_los_niveles_ordenados.csv": "c3ae68bfd6f85512e07adf6093fc037f1ef92c705d0166bf317aedf43c6d79b1",
+    "16B5a_candidatos_imagenes_historicas.csv": "97122d38d5aeaa3485f98412bb3474db2f31074503a2de8c135592674032fa42",
+    "16B5a_ventanas_busqueda_satelital.csv": "d242b0c1474e132c6d1aaf2d5ec7bcfb7ac491fac61b6f8eddcd741b40df0b1f",
+    "16B5a_resumen.csv": "a0bbb7df63ecc5b19e2d6426951e42280b7c704ea73a53faf348b1fb94db5868"
+  }
+}

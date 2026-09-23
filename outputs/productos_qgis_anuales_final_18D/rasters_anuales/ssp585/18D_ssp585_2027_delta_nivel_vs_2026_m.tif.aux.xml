@@ -1,0 +1,13 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>delta_nivel_vs_2026_m_ssp585_2027</Description>
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">-0.231032371521</MDI>
+      <MDI key="STATISTICS_MAXIMUM">-0.231032371521</MDI>
+      <MDI key="STATISTICS_MEAN">-0.231032371521</MDI>
+      <MDI key="STATISTICS_STDDEV">0</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">24.08</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

@@ -1,0 +1,13 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>ancho_incertidumbre_m_ssp245_2032</Description>
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">3.9187066555023</MDI>
+      <MDI key="STATISTICS_MAXIMUM">3.9187066555023</MDI>
+      <MDI key="STATISTICS_MEAN">3.9187066555023</MDI>
+      <MDI key="STATISTICS_STDDEV">0</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">24.08</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

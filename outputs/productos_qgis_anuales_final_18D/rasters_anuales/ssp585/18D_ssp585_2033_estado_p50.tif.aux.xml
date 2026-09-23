@@ -1,0 +1,13 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>estado_p50_ssp585_2033</Description>
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">1</MDI>
+      <MDI key="STATISTICS_MAXIMUM">5</MDI>
+      <MDI key="STATISTICS_MEAN">3.1047735260682</MDI>
+      <MDI key="STATISTICS_STDDEV">0.48626027942286</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">24.08</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

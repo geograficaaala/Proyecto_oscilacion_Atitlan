@@ -1,0 +1,43 @@
+{
+  "step": "16B4a",
+  "status": "CURRENT_LAKE_MASK_AUDIT_AFTER_OBSOLETE_BRANCH_CLEANUP",
+  "created_utc": "2026-09-18T04:16:24.227770+00:00",
+  "principle": "Current lake geometry is defined by Sentinel 2024-2026, not by the AMSCLAE bathymetry footprint. AMSCLAE NoData must never be interpreted as land.",
+  "current_lake_definition": {
+    "source": "data/source\\atitlan_16A1_v5_costa_moderna_2024_2026_02_mascara_referencia_50pct.tif",
+    "meaning": "Sentinel modern reference mask at 50 percent water occurrence for 2024-2026.",
+    "pixels": 305058,
+    "area_km2": 122.0232
+  },
+  "shore_corridor": {
+    "source": "data/source\\atitlan_16A1_v5_costa_moderna_2024_2026_03_franja_litoral_20_80.tif",
+    "meaning": "Sentinel 20-80 percent modern littoral transition band.",
+    "pixels": 3381,
+    "area_km2": 1.3524
+  },
+  "amsclae_coverage": {
+    "source": "data/external/batimetria_amsclae.tif",
+    "native_valid_pixels": 2269141,
+    "coverage_reprojection": "nearest-neighbor reprojected validity mask only"
+  },
+  "current_water_without_bathymetry": {
+    "pixels": 891,
+    "area_km2": 0.3564,
+    "fraction_of_current_lake_pct": 0.2920756052947308,
+    "components": 89
+  },
+  "classes": {
+    "0": "outside",
+    "1": "current lake with AMSCLAE coverage",
+    "2": "current lake without AMSCLAE coverage",
+    "3": "Sentinel 20-80 littoral band with AMSCLAE coverage",
+    "4": "Sentinel 20-80 littoral band without AMSCLAE coverage"
+  },
+  "files_sha256": {
+    "16B4a_mascara_lago_actual_Sentinel_50pct.tif": "1f4c04855989cc1b19b2247202997c9a32a32800867181f0da91011091d070ce",
+    "16B4a_agua_actual_sin_batimetria_AMSCLAE.tif": "49271a60031e313a7925b275404d8254cfc4226381ff905036453723cbdf177a",
+    "16B4a_corredor_litoral_Sentinel_20_80.tif": "7650f5f6fb93eb61b791f917dea4cb4a80c04603a4bc8c90ce7f482b73012650",
+    "16B4a_clases_cobertura_lago_actual.tif": "e1c3c8f94f8e4cc99341f3441040bea153fa09a67e15b9f862b7c3bb48a72ad2"
+  },
+  "next_step": "16B4b: build the shoreline-oscillation surface only where current Sentinel water lacks AMSCLAE bathymetry, without requiring vertical continuity with the AMSCLAE edge."
+}

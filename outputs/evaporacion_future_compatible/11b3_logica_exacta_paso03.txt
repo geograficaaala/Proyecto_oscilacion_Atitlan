@@ -1,0 +1,251 @@
+====================================================================================================
+SCRIPT ORIGINAL
+====================================================================================================
+./src/03_balance_hidrico.py
+
+====================================================================================================
+FUNCION DE CALIBRACION DETECTADA
+====================================================================================================
+Nombre: fit_balance
+Líneas: 306-353
+
+0306: def fit_balance(table, q_col):
+0307:     y = table["delta_h_obs_m"].to_numpy(dtype=float)
+0308:     w = table["interval_weight"].to_numpy(dtype=float)
+0309:     p = table["p_consensus_m"].to_numpy(dtype=float)
+0310:     e = table["evap_m"].to_numpy(dtype=float)
+0311:     q = table[q_col].to_numpy(dtype=float)
+0312:     dt = table["duration_days"].to_numpy(dtype=float)
+0313: 
+0314:     valid = np.isfinite(y) & np.isfinite(w) & np.isfinite(p) & np.isfinite(e) & np.isfinite(q) & np.isfinite(dt)
+0315:     y = y[valid]
+0316:     w = w[valid]
+0317:     p = p[valid]
+0318:     e = e[valid]
+0319:     q = q[valid]
+0320:     dt = dt[valid]
+0321: 
+0322:     if len(y) < 50:
+0323:         raise ValueError("Muy pocos intervalos para calibrar el balance hidrico")
+0324: 
+0325:     def residual(theta):
+0326:         ap, ae, aq, cday = theta
+0327:         pred = ap * p - ae * e + aq * q + cday * dt
+0328:         return np.sqrt(w) * (pred - y)
+0329: 
+0330:     result = least_squares(
+0331:         residual,
+0332:         x0=np.array([1.0, 1.0, 1.0, 0.0], dtype=float),
+0333:         bounds=(
+0334:             np.array([0.0, 0.0, 0.0, -0.01], dtype=float),
+0335:             np.array([3.0, 3.0, 10.0, 0.01], dtype=float),
+0336:         ),
+0337:         loss="soft_l1",
+0338:         f_scale=F_SCALE_M,
+0339:         max_nfev=20000,
+0340:     )
+0341: 
+0342:     return {
+0343:         "precip_scale": float(result.x[0]),
+0344:         "evap_scale": float(result.x[1]),
+0345:         "qin_scale": float(result.x[2]),
+0346:         "net_unresolved_m_per_day": float(result.x[3]),
+0347:         "success": bool(result.success),
+0348:         "cost": float(result.cost),
+0349:         "optimality": float(result.optimality),
+0350:         "nfev": int(result.nfev),
+0351:         "message": str(result.message),
+0352:         "n_fit": int(len(y)),
+0353:     }
+
+====================================================================================================
+FUNCIONES AUXILIARES LLAMADAS DESDE LA CALIBRACION
+====================================================================================================
+No se detectaron auxiliares definidos en el mismo archivo.
+
+====================================================================================================
+CONTEXTO DE SPLIT, FINAL_PARAMS Y APLICACION AL TEST
+====================================================================================================
+
+--- contexto líneas 74-117 ---
+0074:         return pd.read_pickle(path)
+0075:     return pd.read_csv(path, low_memory=False)
+0076: 
+0077: 
+0078: def sha256_file(path, block_size=1024 * 1024):
+0079:     h = hashlib.sha256()
+0080:     with open(path, "rb") as f:
+0081:         while True:
+0082:             b = f.read(block_size)
+0083:             if not b:
+0084:                 break
+0085:             h.update(b)
+0086:     return h.hexdigest()
+0087: 
+0088: 
+0089: def temporal_partition(dates):
+0090:     dates = pd.to_datetime(dates)
+0091:     start = dates.min()
+0092:     end = dates.max()
+0093:     span = end - start
+0094:     train_end = start + span * TRAIN_TIME_FRACTION
+0095:     calibration_end = start + span * (TRAIN_TIME_FRACTION + CAL_TIME_FRACTION)
+0096:     train_idx = np.where(dates <= train_end)[0]
+0097:     cal_idx = np.where((dates > train_end) & (dates <= calibration_end))[0]
+0098:     test_idx = np.where(dates > calibration_end)[0]
+0099:     if len(train_idx) < 200 or len(cal_idx) < 40 or len(test_idx) < 40:
+0100:         n = len(dates)
+0101:         n_train = int(np.floor(n * TRAIN_TIME_FRACTION))
+0102:         n_cal = int(np.floor(n * CAL_TIME_FRACTION))
+0103:         train_idx = np.arange(0, n_train)
+0104:         cal_idx = np.arange(n_train, n_train + n_cal)
+0105:         test_idx = np.arange(n_train + n_cal, n)
+0106:     return train_idx, cal_idx, test_idx
+0107: 
+0108: 
+0109: def safe_pearson(y_true, y_pred):
+0110:     y_true = np.asarray(y_true, dtype=float)
+0111:     y_pred = np.asarray(y_pred, dtype=float)
+0112:     valid = np.isfinite(y_true) & np.isfinite(y_pred)
+0113:     y_true = y_true[valid]
+0114:     y_pred = y_pred[valid]
+0115:     if len(y_true) < 2 or np.std(y_true) <= 0 or np.std(y_pred) <= 0:
+0116:         return np.nan
+0117:     return float(np.corrcoef(y_true, y_pred)[0, 1])
+
+--- contexto líneas 402-437 ---
+0402:         print("Los datos y productos no cambiaron.")
+0403:         print("No se recalibro el balance.")
+0404:         print(RESULT_DIR)
+0405:         sys.exit(0)
+0406: 
+0407: matrix = read_table(MATRIX_PATH).copy()
+0408: matrix.columns = matrix.columns.astype(str).str.strip()
+0409: matrix["date_obs"] = pd.to_datetime(matrix["date_obs"], errors="coerce")
+0410: matrix["nivel_final_m"] = pd.to_numeric(matrix["nivel_final_m"], errors="coerce")
+0411: matrix = matrix.dropna(subset=["date_obs", "nivel_final_m"]).sort_values("date_obs").reset_index(drop=True)
+0412: 
+0413: climate = read_table(CLIMATE_PATH)
+0414: q_dev = read_table(Q_DEV_PATH)
+0415: q_final = read_table(Q_FINAL_PATH)
+0416: 
+0417: idx_train, idx_cal, idx_test = temporal_partition(matrix["date_obs"])
+0418: 
+0419: intervals = build_interval_components(
+0420:     matrix=matrix,
+0421:     climate=climate,
+0422:     q_dev=q_dev,
+0423:     q_final=q_final,
+0424:     idx_train=idx_train,
+0425:     idx_cal=idx_cal,
+0426:     idx_test=idx_test,
+0427: )
+0428: 
+0429: if (intervals["coverage_climate_fraction"] < 0.999).any():
+0430:     bad = intervals.loc[intervals["coverage_climate_fraction"] < 0.999, ["date_prev", "date_obs", "coverage_climate_fraction"]]
+0431:     raise ValueError("Cobertura climatica incompleta en intervalos:\n" + bad.head(20).to_string(index=False))
+0432: 
+0433: if (intervals["coverage_q_dev_fraction"] < 0.999).any():
+0434:     bad = intervals.loc[intervals["coverage_q_dev_fraction"] < 0.999, ["date_prev", "date_obs", "coverage_q_dev_fraction"]]
+0435:     raise ValueError("Cobertura incompleta del caudal de desarrollo:\n" + bad.head(20).to_string(index=False))
+0436: 
+0437: if (intervals["coverage_q_final_fraction"] < 0.999).any():
+
+--- contexto líneas 429-465 ---
+0429: if (intervals["coverage_climate_fraction"] < 0.999).any():
+0430:     bad = intervals.loc[intervals["coverage_climate_fraction"] < 0.999, ["date_prev", "date_obs", "coverage_climate_fraction"]]
+0431:     raise ValueError("Cobertura climatica incompleta en intervalos:\n" + bad.head(20).to_string(index=False))
+0432: 
+0433: if (intervals["coverage_q_dev_fraction"] < 0.999).any():
+0434:     bad = intervals.loc[intervals["coverage_q_dev_fraction"] < 0.999, ["date_prev", "date_obs", "coverage_q_dev_fraction"]]
+0435:     raise ValueError("Cobertura incompleta del caudal de desarrollo:\n" + bad.head(20).to_string(index=False))
+0436: 
+0437: if (intervals["coverage_q_final_fraction"] < 0.999).any():
+0438:     bad = intervals.loc[intervals["coverage_q_final_fraction"] < 0.999, ["date_prev", "date_obs", "coverage_q_final_fraction"]]
+0439:     raise ValueError("Cobertura incompleta del caudal final:\n" + bad.head(20).to_string(index=False))
+0440: 
+0441: train_intervals = intervals.loc[intervals["partition"] == "train"].copy()
+0442: train_cal_intervals = intervals.loc[intervals["partition"].isin(["train", "calibration"])].copy()
+0443: 
+0444: dev_params = fit_balance(train_intervals, "q_in_dev_equiv_m")
+0445: final_params = fit_balance(train_cal_intervals, "q_in_final_equiv_m")
+0446: 
+0447: theta_dev = [
+0448:     dev_params["precip_scale"],
+0449:     dev_params["evap_scale"],
+0450:     dev_params["qin_scale"],
+0451:     dev_params["net_unresolved_m_per_day"],
+0452: ]
+0453: theta_final = [
+0454:     final_params["precip_scale"],
+0455:     final_params["evap_scale"],
+0456:     final_params["qin_scale"],
+0457:     final_params["net_unresolved_m_per_day"],
+0458: ]
+0459: 
+0460: intervals["delta_balance_raw_dev_m"] = (
+0461:     intervals["p_consensus_m"]
+0462:     - intervals["evap_m"]
+0463:     + intervals["q_in_dev_equiv_m"]
+0464: )
+0465: intervals["delta_balance_calibrated_dev_m"] = predict_balance(theta_dev, intervals, "q_in_dev_equiv_m")
+
+====================================================================================================
+LINEAS CLAVE SOBRE FUNCION OBJETIVO / PESOS / RESTRICCIONES
+====================================================================================================
+0014:     from scipy.optimize import least_squares
+0017:     from scipy.optimize import least_squares
+0029: F_SCALE_M = 0.15
+0120: def metrics(name, y_true, y_pred, weights=None):
+0126:     if weights is None:
+0129:         w = np.asarray(weights, dtype=float)[valid]
+0133:     wmae = float(np.average(np.abs(y_true - y_pred), weights=w))
+0134:     wrmse = float(np.sqrt(np.average((y_true - y_pred) ** 2, weights=w)))
+0136:     wbias = float(np.average(y_pred - y_true, weights=w))
+0142:         "weighted_MAE_m": wmae,
+0144:         "weighted_RMSE_m": wrmse,
+0146:         "weighted_bias_m": wbias,
+0153: def interval_weight_from_errors(err_prev, err_curr, fallback_weight=1.0):
+0157:     return float(fallback_weight) if np.isfinite(fallback_weight) and fallback_weight > 0 else 1.0
+0162:     day_end = day_start + pd.Timedelta(days=1)
+0257:         delta_h = level_curr - level_prev
+0261:         fallback = float(matrix.loc[i, "sample_weight"]) if "sample_weight" in matrix.columns and np.isfinite(matrix.loc[i, "sample_weight"]) else 1.0
+0262:         raw_weight = interval_weight_from_errors(err_prev, err_curr, fallback)
+0272:             "delta_h_obs_m": delta_h,
+0285:             "interval_weight_raw": raw_weight,
+0289:     med = out["interval_weight_raw"].median()
+0292:     out["interval_weight"] = (out["interval_weight_raw"] / med).clip(0.10, 10.0)
+0307:     y = table["delta_h_obs_m"].to_numpy(dtype=float)
+0308:     w = table["interval_weight"].to_numpy(dtype=float)
+0330:     result = least_squares(
+0333:         bounds=(
+0337:         loss="soft_l1",
+0338:         f_scale=F_SCALE_M,
+0356: def trajectory_from_deltas(table, delta_col, start_level):
+0359:     for value in table[delta_col].to_numpy(dtype=float):
+0460: intervals["delta_balance_raw_dev_m"] = (
+0465: intervals["delta_balance_calibrated_dev_m"] = predict_balance(theta_dev, intervals, "q_in_dev_equiv_m")
+0466: intervals["delta_balance_raw_final_m"] = (
+0471: intervals["delta_balance_calibrated_final_m"] = predict_balance(theta_final, intervals, "q_in_final_equiv_m")
+0473: intervals["residual_balance_dev_m"] = intervals["delta_h_obs_m"] - intervals["delta_balance_calibrated_dev_m"]
+0474: intervals["residual_balance_final_m"] = intervals["delta_h_obs_m"] - intervals["delta_balance_calibrated_final_m"]
+0476: intervals["delta_balance_for_stage04_m"] = np.where(
+0478:     intervals["delta_balance_calibrated_final_m"],
+0479:     intervals["delta_balance_calibrated_dev_m"],
+0481: intervals["residual_for_stage04_m"] = intervals["delta_h_obs_m"] - intervals["delta_balance_for_stage04_m"]
+0505:     ("calibration", "delta_balance_calibrated_dev_m", "delta_balance_raw_dev_m"),
+0506:     ("test", "delta_balance_calibrated_final_m", "delta_balance_raw_final_m"),
+0511:             "evaluation": f"delta_{partition}",
+0512:             **metrics("PhysicalBalance_Calibrated", sub["delta_h_obs_m"], sub[pred_col], sub["interval_weight"]),
+0515:             "evaluation": f"delta_{partition}",
+0516:             **metrics("PhysicalBalance_Raw", sub["delta_h_obs_m"], sub[raw_col], sub["interval_weight"]),
+0519:             "evaluation": f"delta_{partition}",
+0520:             **metrics("ZeroChange_Persistence", sub["delta_h_obs_m"], np.zeros(len(sub)), sub["interval_weight"]),
+0529:     cal_rows["level_balance_m"] = trajectory_from_deltas(cal_rows, "delta_balance_calibrated_dev_m", cal_start_level)
+0534:         "evaluation": "level_recursive_calibration",
+0538:         "evaluation": "level_recursive_calibration",
+0546:     test_rows["level_balance_m"] = trajectory_from_deltas(test_rows, "delta_balance_calibrated_final_m", test_start_level)
+0551:         "evaluation": "level_recursive_test",
+0555:         "evaluation": "level_recursive_test",
+0589:     "formula": "deltaH = aP*P_consensus - aE*Evap + aQ*Qin_equiv + c_day*delta_t",
+0594:     "calibration_method": "scipy.optimize.least_squares con loss soft_l1, restricciones de signo para P, E y Qin y pesos derivados de la incertidumbre de dos observaciones consecutivas.",

@@ -1,0 +1,13 @@
+﻿metric,value,unit
+domain_pixels,23490.0,pixels
+domain_area_km2,9.396,km2
+observed_direct_pixels,6181.0,pixels
+observed_direct_area_km2,2.4724,km2
+amsclae_supported_pixels,311.0,pixels
+amsclae_supported_area_km2,0.1244,km2
+unknown_pixels,16998.0,pixels
+unknown_area_km2,6.7992,km2
+known_capability_pct,27.637292464878673,percent
+current_water_without_amsclae_pixels,891.0,pixels
+current_gap_known_pixels,318.0,pixels
+current_gap_unknown_pixels,573.0,pixels

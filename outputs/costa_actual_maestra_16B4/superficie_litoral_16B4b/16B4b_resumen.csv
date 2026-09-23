@@ -1,0 +1,12 @@
+﻿metric,value,unit
+stable_constraints,5103.0,pixels
+observed_z_min,1552.479,m
+observed_z_max,1554.0349999999999,m
+surface_supported_pixels,34319.0,pixels
+current_water_without_amsclae_pixels,891.0,pixels
+current_gap_supported_pixels,751.0,pixels
+current_gap_unsupported_pixels,140.0,pixels
+current_gap_support_pct,84.28731762065095,percent
+cv_mae,0.21476253023977843,m
+cv_rmse,0.41842658046710596,m
+cv_p90_abs,0.7339857223423698,m

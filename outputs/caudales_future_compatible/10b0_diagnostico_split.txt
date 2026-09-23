@@ -1,0 +1,290 @@
+CANDIDATOS TARGETS
+================================================================================
+
+score=49 | datos/processed/rivers_clean.csv
+fecha: date
+rio: river
+caudal: flow_lps | flow_m3s | flow_m3s_reported | flow_m3s_difference_reported_minus_lps
+columnas: date | river | municipality | flow_lps | flow_m3s | flow_m3s_reported | flow_m3s_difference_reported_minus_lps | x | y | elevation_m | year | month | month_date
+
+score=49 | datos/processed/rivers_clean.pkl
+fecha: date
+rio: river
+caudal: flow_lps | flow_m3s | flow_m3s_reported | flow_m3s_difference_reported_minus_lps
+columnas: date | river | municipality | flow_lps | flow_m3s | flow_m3s_reported | flow_m3s_difference_reported_minus_lps | x | y | elevation_m | year | month | month_date
+
+score=47 | datos/processed/lake_legacy.csv
+fecha: Fecha
+rio: Río MSNM | Río Temperatura       °C | Río T. Ambiente        °C | Río Cambio Temp. °C | Río PH | Río Secchi            (cm) | Río TDS                (mg/L) | Río Sedimentos (mg/L)
+caudal: Río Caudal             (l/s) | Río Caudal                m3/s
+columnas: Fecha | Temp. (°C) | Chl a (µg/l) | Ph (Unidad) | Turbidity (NTU) | DO (mg/L) | TDS (mg/l) | DBO (mg/l) | Sechi  (m) | NO3 (µg/L) | PO4 (µg/L) | NH4 (µg/L) | PT (µg/l) | NT (µg/l) | Río MSNM | Río Temperatura       °C | Río T. Ambiente        °C | Río Cambio Temp. °C | Río PH | Río Secchi            (cm) | Río TDS                (mg/L) | Río Sedimentos (mg/L) | Río O2 (mg/L) | Río O2% | Río Salinidad       % | Río Conductividad (µS/cm) | Río Caudal             (l/s) | Río Caudal                m3/s | Río Fosfato              (mg/L) | Río Nitratos              (mg/L) | Río Turbides     (FAU) | Río Coliformes Fecales (NMP) | Río DBO                   (mg/L) | Río Nitrogeno Total (kg/día) | Río Fosforo Total (Kg/día) | Río ICA | Clima Year | Clima Month | Clima Temp. Max. (°C) | Clima Temp. Min. (°C) | Clima Humedad (%) | Clima Precipitación (mm) | Clima Vel. Max. Viento (Km/h) | Clima Rad. Solar Max. (W/m2) | Clima Rad. UV Max. | Clima Norm. Fecha
+
+score=47 | datos/processed/lake_legacy.pkl
+fecha: Fecha
+rio: Río MSNM | Río Temperatura       °C | Río T. Ambiente        °C | Río Cambio Temp. °C | Río PH | Río Secchi            (cm) | Río TDS                (mg/L) | Río Sedimentos (mg/L)
+caudal: Río Caudal             (l/s) | Río Caudal                m3/s
+columnas: Fecha | Temp. (°C) | Chl a (µg/l) | Ph (Unidad) | Turbidity (NTU) | DO (mg/L) | TDS (mg/l) | DBO (mg/l) | Sechi  (m) | NO3 (µg/L) | PO4 (µg/L) | NH4 (µg/L) | PT (µg/l) | NT (µg/l) | Río MSNM | Río Temperatura       °C | Río T. Ambiente        °C | Río Cambio Temp. °C | Río PH | Río Secchi            (cm) | Río TDS                (mg/L) | Río Sedimentos (mg/L) | Río O2 (mg/L) | Río O2% | Río Salinidad       % | Río Conductividad (µS/cm) | Río Caudal             (l/s) | Río Caudal                m3/s | Río Fosfato              (mg/L) | Río Nitratos              (mg/L) | Río Turbides     (FAU) | Río Coliformes Fecales (NMP) | Río DBO                   (mg/L) | Río Nitrogeno Total (kg/día) | Río Fosforo Total (Kg/día) | Río ICA | Clima Year | Clima Month | Clima Temp. Max. (°C) | Clima Temp. Min. (°C) | Clima Humedad (%) | Clima Precipitación (mm) | Clima Vel. Max. Viento (Km/h) | Clima Rad. Solar Max. (W/m2) | Clima Rad. UV Max. | Clima Norm. Fecha
+
+score=46 | resultados\caudales\predicciones_caudal_por_rio_validacion_temporal.csv
+fecha: date
+rio: river
+caudal: flow_m3s
+columnas: date | date_month | river | flow_m3s | pred_m3s | climatology_m3s | model_family
+
+score=40 | datos/processed/rivers_monthly.csv
+fecha: 
+rio: n_rivers_observed | q_total_5rivers_m3s | complete_5rivers
+caudal: La_Catarata | Quiscab | San_Buenaventura | San_Francisco | Tzununa
+columnas: month_date | La_Catarata | Quiscab | San_Buenaventura | San_Francisco | Tzununa | n_rivers_observed | q_sum_available_m3s | q_total_5rivers_m3s | complete_5rivers
+
+score=40 | datos/processed/rivers_monthly.pkl
+fecha: 
+rio: n_rivers_observed | q_total_5rivers_m3s | complete_5rivers
+caudal: La_Catarata | Quiscab | San_Buenaventura | San_Francisco | Tzununa
+columnas: month_date | La_Catarata | Quiscab | San_Buenaventura | San_Francisco | Tzununa | n_rivers_observed | q_sum_available_m3s | q_total_5rivers_m3s | complete_5rivers
+
+score=40 | resultados\caudales\caudal_estimado_mensual.csv
+fecha: 
+rio: n_rivers
+caudal: Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura
+columnas: date_month | Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura | q_pred_dev_m3s | q_pred_final_m3s | q_total_obs_m3s | n_rivers
+
+score=40 | resultados\caudales\caudal_estimado_mensual.pkl
+fecha: 
+rio: n_rivers
+caudal: Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura
+columnas: date_month | Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura | q_pred_dev_m3s | q_pred_final_m3s | q_total_obs_m3s | n_rivers
+
+score=36 | resultados\caudales\metricas_caudal_por_rio_validacion_temporal.csv
+fecha: 
+rio: river
+caudal: highflow_MAE_m3s
+columnas: model | n | MAE_m3s | RMSE_m3s | bias_m3s | highflow_MAE_m3s | R2 | NSE | Pearson_r | river | MAE_skill_vs_monthly_climatology
+
+score=35 | resultados\caudales\caudal_diario_estimado_desarrollo.csv
+fecha: date
+rio: 
+caudal: Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura
+columnas: date | Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura | q_pred_dev_m3s
+
+score=35 | resultados\caudales\caudal_diario_estimado_desarrollo.pkl
+fecha: date
+rio: 
+caudal: Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura
+columnas: date | Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura | q_pred_dev_m3s
+
+score=35 | resultados\caudales\caudal_diario_estimado_final.csv
+fecha: date
+rio: 
+caudal: Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura
+columnas: date | Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura | q_pred_final_m3s
+
+score=35 | resultados\caudales\caudal_diario_estimado_final.pkl
+fecha: date
+rio: 
+caudal: Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura
+columnas: date | Quiscab | San_Francisco | Tzununa | La_Catarata | San_Buenaventura | q_pred_final_m3s
+
+score=25 | datos/processed/limnology.csv
+fecha: Fecha
+rio: Sitio
+caudal: 
+columnas: Sitio | Fecha | Hora | Profuidad (m) | Temp. (°C) | Chl a (µg/l) | Ph (Unidad) | Turbidity (NTU) | DO (mg/L) | TDS (mg/l) | DBO (mg/l) | Sechi  (m) | NO3 (µg/L) | PO4 (µg/L) | NH4 (µg/L) | PT (µg/l) | NT (µg/l)
+
+score=25 | datos/processed/limnology.pkl
+fecha: Fecha
+rio: Sitio
+caudal: 
+columnas: Sitio | Fecha | Hora | Profuidad (m) | Temp. (°C) | Chl a (µg/l) | Ph (Unidad) | Turbidity (NTU) | DO (mg/L) | TDS (mg/l) | DBO (mg/l) | Sechi  (m) | NO3 (µg/L) | PO4 (µg/L) | NH4 (µg/L) | PT (µg/l) | NT (µg/l)
+
+score=25 | datos/processed/nivel_canonico.csv
+fecha: date
+rio: mission_priority
+caudal: 
+columnas: mission | cycle | date_raw | hour | minute | relative_height_m | estimated_error_m | backscatter_db | wet_tropo | ionosphere | dry_tropo | mode_1 | mode_2 | ice_flag | elevation_egm2008_m | source_flag | date | nivel_nasa_original_m | correccion_s6_m | nivel_final_m | qc_transicion | nivel_sensibilidad_j2_j3_m | year | month | day | doy | sin_doy | cos_doy | lag_1 | lag_2 | lag_3 | delta_nivel_m | obs_date | mission_priority | j3_near_s6 | use_for_model | error_sort | sample_weight | mission_qc_j3
+
+score=25 | datos/processed/nivel_canonico.pkl
+fecha: date
+rio: mission_priority
+caudal: 
+columnas: mission | cycle | date_raw | hour | minute | relative_height_m | estimated_error_m | backscatter_db | wet_tropo | ionosphere | dry_tropo | mode_1 | mode_2 | ice_flag | elevation_egm2008_m | source_flag | date | nivel_nasa_original_m | correccion_s6_m | nivel_final_m | qc_transicion | nivel_sensibilidad_j2_j3_m | year | month | day | doy | sin_doy | cos_doy | lag_1 | lag_2 | lag_3 | delta_nivel_m | obs_date | mission_priority | j3_near_s6 | use_for_model | error_sort | sample_weight | mission_qc_j3
+
+score=25 | datos/processed/nivel_qc.csv
+fecha: date
+rio: mission_priority
+caudal: 
+columnas: mission | cycle | date_raw | hour | minute | relative_height_m | estimated_error_m | backscatter_db | wet_tropo | ionosphere | dry_tropo | mode_1 | mode_2 | ice_flag | elevation_egm2008_m | source_flag | date | nivel_nasa_original_m | correccion_s6_m | nivel_final_m | qc_transicion | nivel_sensibilidad_j2_j3_m | year | month | day | doy | sin_doy | cos_doy | lag_1 | lag_2 | lag_3 | delta_nivel_m | obs_date | mission_priority | j3_near_s6 | use_for_model
+
+score=25 | datos/processed/nivel_qc.pkl
+fecha: date
+rio: mission_priority
+caudal: 
+columnas: mission | cycle | date_raw | hour | minute | relative_height_m | estimated_error_m | backscatter_db | wet_tropo | ionosphere | dry_tropo | mode_1 | mode_2 | ice_flag | elevation_egm2008_m | source_flag | date | nivel_nasa_original_m | correccion_s6_m | nivel_final_m | qc_transicion | nivel_sensibilidad_j2_j3_m | year | month | day | doy | sin_doy | cos_doy | lag_1 | lag_2 | lag_3 | delta_nivel_m | obs_date | mission_priority | j3_near_s6 | use_for_model
+
+score=21 | resultados\caudales\metricas_caudal_total_validacion_temporal.csv
+fecha: 
+rio: 
+caudal: highflow_MAE_m3s
+columnas: model | n | MAE_m3s | RMSE_m3s | bias_m3s | highflow_MAE_m3s | R2 | NSE | Pearson_r | MAE_skill_vs_monthly_climatology
+
+score=15 | datos/processed/weather_clean.csv
+fecha: 
+rio: station
+caudal: 
+columnas: year | month | station | tmax_c | tmin_c | humidity_pct | precip_mm | wind_max_kmh | solar_max_wm2 | uv_max | month_date
+
+score=15 | datos/processed/weather_clean.pkl
+fecha: 
+rio: station
+caudal: 
+columnas: year | month | station | tmax_c | tmin_c | humidity_pct | precip_mm | wind_max_kmh | solar_max_wm2 | uv_max | month_date
+
+score=15 | datos/processed/weather_monthly_basin.csv
+fecha: 
+rio: n_stations
+caudal: 
+columnas: month_date | tmax_c | tmin_c | humidity_pct | precip_mm | wind_max_kmh | solar_max_wm2 | uv_max | n_stations | n_tmax_c | n_tmin_c | n_humidity_pct | n_precip_mm | n_wind_max_kmh | n_solar_max_wm2 | n_uv_max
+
+score=15 | datos/processed/weather_monthly_basin.pkl
+fecha: 
+rio: n_stations
+caudal: 
+columnas: month_date | tmax_c | tmin_c | humidity_pct | precip_mm | wind_max_kmh | solar_max_wm2 | uv_max | n_stations | n_tmax_c | n_tmin_c | n_humidity_pct | n_precip_mm | n_wind_max_kmh | n_solar_max_wm2 | n_uv_max
+
+score=15 | resultados\caudales\predicciones_caudal_total_validacion_temporal.csv
+fecha: 
+rio: n_rivers
+caudal: 
+columnas: date_month | n_rivers | q_total_obs_m3s | q_total_pred_m3s | q_total_climatology_m3s
+
+score=15 | resultados\caudales\seleccion_modelos_por_tributario.csv
+fecha: 
+rio: river
+caudal: 
+columnas: river | selected_family | best_cv_loss | study_name | n_dev | n_holdout | n_final | dev_last_date | final_last_date | n_features_dev | n_features_final
+
+score=15 | resultados\ml_residual\seleccion_corrector_residual.csv
+fecha: 
+rio: calibration_composite_score
+caudal: 
+columnas: model | calibration_composite_score | level_weighted_MAE_m | level_weighted_bias_m | level_R2 | level_Pearson_r | delta_weighted_MAE_m | delta_weighted_bias_m | selected_for_test | score_improvement_vs_physical
+
+score=15 | resultados\validacion\predicciones_rolling_horizontes.csv
+fecha: 
+rio: origin_position | target_position
+caudal: 
+columnas: horizon | requested_lead_days | origin_position | target_position | origin_date | target_date | actual_lead_days | origin_level_m | observed_level_m | physical_level_m | frozen_level_m | interval_weight
+
+score=15 | resultados\validacion\resumen_validacion.csv
+fecha: 
+rio: criterion
+caudal: 
+columnas: criterion | value | pass | interpretation | diagnostic_label
+
+
+CONFIG SPLIT
+================================================================================
+root.development_cutoff = 2021-05-23 00:00:00
+root.final_cutoff = 2024-01-09 00:00:00
+root.lake_train_end = 2021-05-24 00:00:00
+root.search_config.n_cv_splits = 3
+root.river_models.San_Francisco.best_params.min_samples_split = 4
+root.river_models.La_Catarata.best_params.min_samples_split = 10
+root.river_models.San_Buenaventura.best_params.min_samples_split = 12
+
+
+SCRIPT 02 - LINEAS RELEVANTES
+================================================================================
+0041: FAST_TEST = os.environ.get("ATITLAN_FAST_TEST", "0") == "1"
+0042: N_CV_SPLITS = 3 if not FAST_TEST else 2
+0044:     "XGB_TWEEDIE": 10 if not FAST_TEST else 1,
+0045:     "XGB_LOGHUBER": 10 if not FAST_TEST else 1,
+0046:     "RF_LOG": 6 if not FAST_TEST else 1,
+0050: TRAIN_TIME_FRACTION = 0.70
+0118:     "n_cv_splits": N_CV_SPLITS,
+0141:     RESULT_DIR / "metricas_caudal_por_rio_validacion_temporal.csv",
+0142:     RESULT_DIR / "metricas_caudal_total_validacion_temporal.csv",
+0143:     RESULT_DIR / "predicciones_caudal_por_rio_validacion_temporal.csv",
+0144:     RESULT_DIR / "predicciones_caudal_total_validacion_temporal.csv",
+0164: def temporal_partition(dates):
+0169:     train_end = start + span * TRAIN_TIME_FRACTION
+0170:     calibration_end = start + span * (TRAIN_TIME_FRACTION + CAL_TIME_FRACTION)
+0171:     train_idx = np.where(dates <= train_end)[0]
+0172:     cal_idx = np.where((dates > train_end) & (dates <= calibration_end))[0]
+0173:     test_idx = np.where(dates > calibration_end)[0]
+0174:     if len(train_idx) < 200 or len(cal_idx) < 40 or len(test_idx) < 40:
+0176:         n_train = int(np.floor(n * TRAIN_TIME_FRACTION))
+0178:         train_idx = np.arange(0, n_train)
+0179:         cal_idx = np.arange(n_train, n_train + n_cal)
+0180:         test_idx = np.arange(n_train + n_cal, n)
+0181:     return train_idx, cal_idx, test_idx
+0187:     valid = np.isfinite(y_true) & np.isfinite(y_pred)
+0188:     y_true = y_true[valid]
+0189:     y_pred = y_pred[valid]
+0259: def fit_preprocessor(table, feature_cols, train_rows):
+0260:     train_rows = np.asarray(train_rows, dtype=int)
+0261:     data = table.iloc[train_rows][feature_cols].copy()
+0286:     X = table.iloc[rows][prep.features].copy()
+0292: def calendar_expanding_splits(table, n_splits):
+0299:     fold_span = remaining / n_splits
+0300:     splits = []
+0301:     for fold in range(n_splits):
+0302:         valid_start = initial_end + fold_span * fold
+0303:         valid_end = end + pd.Timedelta(days=1) if fold == n_splits - 1 else initial_end + fold_span * (fold + 1)
+0304:         tr = np.where(dates < valid_start)[0]
+0305:         va = np.where((dates >= valid_start) & (dates < valid_end))[0]
+0307:             splits.append((tr, va))
+0308:     if len(splits) >= 2:
+0309:         return splits
+0313:     fold_size = max(5, remaining_n // n_splits)
+0314:     splits = []
+0315:     for fold in range(n_splits):
+0316:         train_end = initial + fold * fold_size
+0317:         valid_end = n if fold == n_splits - 1 else min(n, train_end + fold_size)
+0318:         tr = np.arange(0, train_end)
+0319:         va = np.arange(train_end, valid_end)
+0321:             splits.append((tr, va))
+0322:     return splits
+0332:     if FAST_TEST:
+0363:             "min_samples_split": trial.suggest_categorical("min_samples_split", [4]),
+0398:             "min_samples_split": trial.suggest_int("min_samples_split", 2, 14),
+0440:     y = table.iloc[np.asarray(fit_rows, dtype=int)]["flow_m3s"].to_numpy(dtype=float)
+0458: def score_flow(y_true, y_pred, training_y):
+0461:     training_y = np.asarray(training_y, dtype=float)
+0464:     threshold = float(np.quantile(training_y, 0.75)) if len(training_y) else np.inf
+0474:     q75 = float(np.quantile(y_true, 0.75)) if len(y_true) else np.nan
+0489: def monthly_climatology(train_table, pred_dates):
+0490:     medians = train_table.groupby(train_table["date"].dt.month)["flow_m3s"].median().to_dict()
+0491:     global_median = float(train_table["flow_m3s"].median())
+0495: def objective_factory(family, table, feature_cols, splits):
+0499:         for fold, (tr, va) in enumerate(splits):
+0502:             true = table.iloc[va]["flow_m3s"].to_numpy(dtype=float)
+0503:             train_y = table.iloc[tr]["flow_m3s"].to_numpy(dtype=float)
+0504:             losses.append(score_flow(true, pred, train_y))
+0540: idx_train, idx_cal, idx_test = temporal_partition(matrix["date_obs"])
+0541: train_end = pd.Timestamp(matrix.loc[idx_train, "date_obs"].max()).normalize()
+0543: q_dev_cutoff = train_end - pd.Timedelta(days=1)
+0544: q_final_cutoff = cal_end - pd.Timedelta(days=1)
+0589: print("Cutoff desarrollo:", q_dev_cutoff.date())
+0590: print("Cutoff final:", q_final_cutoff.date())
+0596:     dev_table = river_table.loc[river_table["date"] <= q_dev_cutoff].copy().reset_index(drop=True)
+0597:     final_table = river_table.loc[river_table["date"] <= q_final_cutoff].copy().reset_index(drop=True)
+0598:     holdout = river_table.loc[(river_table["date"] > q_dev_cutoff) & (river_table["date"] <= q_final_cutoff)].copy().reset_index(drop=True)
+0601:     splits = calendar_expanding_splits(dev_table, N_CV_SPLITS)
+0602:     if len(splits) < 2:
+0603:         raise ValueError(f"No fue posible construir CV temporal para {river}")
+0632:                 objective_factory(family, dev_table, feature_cols, splits),
+0711: holdout_all.to_csv(RESULT_DIR / "predicciones_caudal_por_rio_validacion_temporal.csv", index=False)
+0713: metrics_river_df.to_csv(RESULT_DIR / "metricas_caudal_por_rio_validacion_temporal.csv", index=False)
+0753: q_total_holdout.to_csv(RESULT_DIR / "predicciones_caudal_total_validacion_temporal.csv", index=False)
+0755: metrics_total_df.to_csv(RESULT_DIR / "metricas_caudal_total_validacion_temporal.csv", index=False)
+0764:     plt.title("Validacion temporal del submodelo de caudales")
+0768:     plt.savefig(FIG_DIR / "validacion_caudal_total.png", dpi=300, bbox_inches="tight")
+0777:     "development_cutoff": str(q_dev_cutoff),
+0778:     "final_cutoff": str(q_final_cutoff),
+0779:     "lake_train_end": str(train_end),
+0790:         "metrics_per_river": str(RESULT_DIR / "metricas_caudal_por_rio_validacion_temporal.csv"),
+0791:         "metrics_total": str(RESULT_DIR / "metricas_caudal_total_validacion_temporal.csv"),
+0805: print("Cutoff desarrollo:", q_dev_cutoff.date())
+0806: print("Cutoff final:", q_final_cutoff.date())
+0813:     print("Metricas de caudal total en validacion temporal:")

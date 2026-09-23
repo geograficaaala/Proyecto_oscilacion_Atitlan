@@ -1,0 +1,50 @@
+{
+  "script_version": "1.0.0",
+  "created_utc": "2026-09-14T06:42:29.854183+00:00",
+  "project_root": ".",
+  "lake_area_km2_reference": 125.77,
+  "lake_area_note": "Area fija de referencia temporal para la fase hidrologica. La relacion nivel-area dinamica se incorporara posteriormente con batimetria/DEM.",
+  "formula": "deltaH = aP*P_consensus - aE*Evap + aQ*Qin_equiv + c_day*delta_t",
+  "precipitation_note": "P_consensus es el promedio ERA5-Land/CHIRPS sobre la cuenca disponible; aP absorbe parcialmente diferencias de representatividad respecto a precipitacion directa sobre el lago.",
+  "evaporation_note": "Evap corresponde a ERA5-Land procesado. Para escenarios CMIP6 se requerira derivar evaporacion/PET compatible a partir de variables climaticas futuras.",
+  "qin_note": "Qin es la suma modelada de los cinco tributarios monitoreados; aQ permite compensar parcialmente tributarios no monitoreados y sesgo del submodelo, sin interpretarse como caudal fisico observado total.",
+  "unresolved_note": "c_day representa flujo neto no resuelto y sesgo medio del balance, incluyendo potencial intercambio subterraneo/percolacion y errores de componentes. No debe interpretarse aisladamente como medicion de agua subterranea.",
+  "calibration_method": "scipy.optimize.least_squares con loss soft_l1, restricciones de signo para P, E y Qin y pesos derivados de la incertidumbre de dos observaciones consecutivas.",
+  "development_parameters": {
+    "precip_scale": 1.3796029397905765,
+    "evap_scale": 2.5707656968524355,
+    "qin_scale": 0.713803694988823,
+    "net_unresolved_m_per_day": 0.0007305165462173727,
+    "success": true,
+    "cost": 4.7653048240973765,
+    "optimality": 1.1038010542540596e-07,
+    "nfev": 8,
+    "message": "`ftol` termination condition is satisfied.",
+    "n_fit": 357,
+    "lake_area_km2": 125.77,
+    "fit_partition": "train",
+    "q_source": "caudal_diario_estimado_desarrollo"
+  },
+  "final_parameters": {
+    "precip_scale": 1.278815536652382,
+    "evap_scale": 2.273196372849161,
+    "qin_scale": 0.7582216211994326,
+    "net_unresolved_m_per_day": -0.0002646651582524234,
+    "success": true,
+    "cost": 5.889062491108456,
+    "optimality": 8.374514588611537e-09,
+    "nfev": 6,
+    "message": "`gtol` termination condition is satisfied.",
+    "n_fit": 453,
+    "lake_area_km2": 125.77,
+    "fit_partition": "train+calibration",
+    "q_source": "caudal_diario_estimado_final"
+  },
+  "outputs": {
+    "intervals": "outputs/balance_hidrico/balance_componentes_intervalos.pkl",
+    "metrics": "outputs/balance_hidrico/metricas_balance_hidrico.csv",
+    "trajectories": "outputs/balance_hidrico/trayectorias_balance.csv",
+    "development_parameters": "outputs/balance_hidrico/parametros_balance_desarrollo.json",
+    "final_parameters": "outputs/balance_hidrico/parametros_balance_final.json"
+  }
+}

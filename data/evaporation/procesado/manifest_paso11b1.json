@@ -1,0 +1,23 @@
+{
+  "paso": "11B1",
+  "descripcion": "Integración de longwave ERA5-Land 1981-2014 existente con exportación 2015-2026.",
+  "inputs": {
+    "historical_1981_2014": ".//data//reference_1981_2014//procesado//atitlan_era5_land_1981_2014.csv",
+    "historical_sha256": "f5bf2fcf85a7742970deb8979c3af3969a9b1ddfaff6beec40b5e8e6eb66425a",
+    "new_2015_2026": "data/source//ATITLAN_ERA5_LONGWAVE_2015_2026.csv",
+    "new_sha256": "a586e66107b288db8b26434d0609d33fd973821e700e721092f976b4235a1c3f"
+  },
+  "output": ".//data//evaporation//procesado//atitlan_era5_longwave_1981_2026.csv",
+  "output_sha256": "506060e19dd1a4d08ae7bbbc167134c6c69ba95d841074d4b65d608c55c95bc8",
+  "qc": {
+    "start": "1981-01-01",
+    "end": "2026-08-29",
+    "n_rows": 16677,
+    "duplicates": 0,
+    "missing_dates": 0,
+    "missing_longwave": 0,
+    "min_longwave_mj_m2": 23.92676204729149,
+    "max_longwave_mj_m2": 34.84011228632846
+  },
+  "note": "No se sobrescribió ningún archivo del baseline histórico."
+}

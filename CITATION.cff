@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Si utiliza este repositorio, cite el informe técnico-científico y la versión del repositorio empleada."
+title: "Modelación de la oscilación del nivel del Lago de Atitlán"
+type: software
+authors:
+  - name: "Asociación Amigos del Lago de Atitlán"
+    affiliation: "Asociación Amigos del Lago de Atitlán"
+  - name: "Autoridad para el Manejo Sustentable de la Cuenca del Lago de Atitlán y su Entorno (AMSCLAE)"
+    affiliation: "AMSCLAE"
+version: 1.0.0
+date-released: 2026-09-18

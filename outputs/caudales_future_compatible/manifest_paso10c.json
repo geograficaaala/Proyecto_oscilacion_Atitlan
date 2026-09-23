@@ -1,0 +1,129 @@
+{
+  "paso": "10C",
+  "descripcion": "Validación del caudal total de los cinco tributarios para la versión future-compatible de 72 predictores, comparada con el baseline histórico.",
+  "inputs": {
+    "new_predictions": ".//outputs//caudales_future_compatible//10b_predicciones_holdout_72f.csv",
+    "new_predictions_sha256": "dde038074994eedff8246a9482f2b8356609d3de1a3b79f13a16d305235e7094",
+    "baseline_total_predictions": ".//outputs//caudales//predicciones_caudal_total_validacion_temporal.csv",
+    "baseline_total_metrics": ".//outputs//caudales//metricas_caudal_total_validacion_temporal.csv"
+  },
+  "baseline_detection": {
+    "date_col": "date_month",
+    "obs_col": "q_total_obs_m3s",
+    "pred_col": "q_total_pred_m3s",
+    "clim_col": "q_total_climatology_m3s",
+    "usable": true
+  },
+  "baseline_metrics_file_content": {
+    "columns": [
+      "model",
+      "n",
+      "MAE_m3s",
+      "RMSE_m3s",
+      "bias_m3s",
+      "highflow_MAE_m3s",
+      "R2",
+      "NSE",
+      "Pearson_r",
+      "MAE_skill_vs_monthly_climatology"
+    ],
+    "rows": [
+      {
+        "model": "SUM_PER_RIVER_MODELS",
+        "n": 29,
+        "MAE_m3s": 1.6497067481220584,
+        "RMSE_m3s": 2.9173696556877378,
+        "bias_m3s": -1.6269897813812022,
+        "highflow_MAE_m3s": 4.736170100779578,
+        "R2": 0.0959470051954684,
+        "NSE": 0.0959470051954684,
+        "Pearson_r": 0.8576365976587689,
+        "MAE_skill_vs_monthly_climatology": 0.1452232499236246
+      },
+      {
+        "model": "SUM_PER_RIVER_MONTHLY_CLIMATOLOGY",
+        "n": 29,
+        "MAE_m3s": 1.9299855172413796,
+        "RMSE_m3s": 3.309959971371412,
+        "bias_m3s": -1.8496648275862075,
+        "highflow_MAE_m3s": 5.49587375,
+        "R2": -0.1637413066681732,
+        "NSE": -0.1637413066681732,
+        "Pearson_r": 0.6070609306001113,
+        "MAE_skill_vs_monthly_climatology": 0.0
+      }
+    ]
+  },
+  "expected_baseline_from_project": {
+    "n": 29,
+    "mae": 1.649707,
+    "rmse": 2.91737,
+    "bias": -1.62699,
+    "r2_nse": 0.095947,
+    "pearson_r": 0.857637,
+    "highflow_mae": 4.73617,
+    "mae_skill_vs_monthly_climatology": 0.145223
+  },
+  "new_metrics_all_complete_months": {
+    "n": 29,
+    "mae": 1.738672803278351,
+    "rmse": 3.020041468477789,
+    "bias": -1.7286362987946076,
+    "r2_nse": 0.03119409105195292,
+    "pearson_r": 0.8417649255888695,
+    "highflow_threshold_q75_validation": 4.4058,
+    "highflow_mae": 4.894306834070439
+  },
+  "new_metrics_common_months": {
+    "n": 29,
+    "mae": 1.738672803278351,
+    "rmse": 3.020041468477789,
+    "bias": -1.7286362987946076,
+    "r2_nse": 0.03119409105195292,
+    "pearson_r": 0.8417649255888693,
+    "highflow_threshold_q75_validation": 4.4058,
+    "highflow_mae": 4.894306834070439
+  },
+  "baseline_metrics_recomputed_common_months": {
+    "n": 29,
+    "mae": 1.6497067481220586,
+    "rmse": 2.9173696556877378,
+    "bias": -1.6269897813812022,
+    "r2_nse": 0.0959470051954684,
+    "pearson_r": 0.8576365976587688,
+    "highflow_threshold_q75_validation": 4.4058,
+    "highflow_mae": 4.736170100779578
+  },
+  "climatology_metrics_recomputed_common_months": {
+    "n": 29,
+    "mae": 1.9299855172413793,
+    "rmse": 3.309959971371412,
+    "bias": -1.8496648275862073,
+    "r2_nse": -0.16374130666817321,
+    "pearson_r": 0.6070609306001113,
+    "highflow_threshold_q75_validation": 4.4058,
+    "highflow_mae": 5.49587375
+  },
+  "comparison": {
+    "baseline_mae_used": 1.6497067481220586,
+    "new_mae_used": 1.738672803278351,
+    "mae_change_vs_baseline_pct": 5.392840591672834,
+    "skill_vs_baseline_mae": -0.05392840591672843,
+    "climatology_mae_reference": 1.9299855172413793,
+    "skill_vs_monthly_climatology": 0.09912650237732401,
+    "acceptance_rule": "Aceptar si MAE <= 1.05 * baseline_MAE y skill_vs_monthly_climatology > 0.",
+    "accepted": false
+  },
+  "outputs": {
+    "comparison_csv": ".//outputs//caudales_future_compatible//10c_comparacion_caudal_total.csv",
+    "monthly_river_csv": ".//outputs//caudales_future_compatible//10c_validacion_mensual_por_rio.csv",
+    "summary_csv": ".//outputs//caudales_future_compatible//10c_resumen_validacion_total.csv"
+  },
+  "notes": [
+    "No se reentrena ningún modelo.",
+    "La agregación por tributario es mensual; si hay múltiples mediciones de un río en un mes se usa su media.",
+    "Sólo se suman meses con observaciones de los cinco tributarios.",
+    "Cuando es posible, la comparación se restringe a los meses comunes con el archivo de validación total del PASO 02.",
+    "Si la climatología no está explícita en el archivo baseline, se reconstruye su MAE a partir del skill histórico reportado."
+  ]
+}

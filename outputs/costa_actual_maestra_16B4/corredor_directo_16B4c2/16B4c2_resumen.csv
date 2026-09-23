@@ -1,0 +1,11 @@
+﻿metric,value,unit
+exact_dates,33.0,count
+H_min_exact,1552.45,m
+H_max_exact,1554.05,m
+direct_transition_pixels,6181.0,pixels
+direct_transition_area,2.4724,km2
+shore_20_80_area,1.3524,km2
+direct_gap_pixels,318.0,pixels
+gap_without_direct_transition_pixels,573.0,pixels
+transition_pixel_accuracy_median,0.8636363636363636,fraction
+per_date_accuracy_median,0.9496318607764391,fraction

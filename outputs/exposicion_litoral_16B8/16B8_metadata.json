@@ -1,0 +1,41 @@
+{
+  "step": "16B8",
+  "status": "LITTORAL_EXPOSURE_SCREENING_READY",
+  "created_utc": "2026-09-18T05:08:38.070100+00:00",
+  "purpose": "Screen newly exposed littoral zones for planning while retaining spatial provenance, ensemble dependence, and explicit unknown areas.",
+  "important_scope": "This is hydrological exposure screening only. It is not ecological suitability mapping for tul or any other planting.",
+  "exposure_classes": {
+    "0": "outside_evaluated_domain",
+    "1": "remains_water_at_p50",
+    "2": "newly_exposed_OBSERVADO_DIRECTO_robust_p05_p95",
+    "3": "newly_exposed_OBSERVADO_DIRECTO_ensemble_sensitive",
+    "4": "newly_exposed_AMSCLAE_SOPORTADO_robust_p05_p95",
+    "5": "newly_exposed_AMSCLAE_SOPORTADO_ensemble_sensitive",
+    "6": "already_exposed_at_2026_anchor",
+    "7": "DESCONOCIDO"
+  },
+  "consensus_classes": {
+    "0": "outside_domain",
+    "1": "not_newly_exposed_in_either_scenario",
+    "2": "newly_exposed_in_one_scenario",
+    "3": "newly_exposed_in_both_scenarios",
+    "4": "DESCONOCIDO"
+  },
+  "interpretation_of_robust": "Robust means exposed throughout the scenario/horizon p05-p95 ensemble level interval on spatially supported pixels. It is not a calibrated probability or certainty statement.",
+  "limitations": [
+    "Large parts of the evaluated coastal domain remain spatially unknown.",
+    "Future levels are conditional CMIP6 scenario trajectories, not deterministic forecasts.",
+    "Ecological planting suitability requires additional variables such as substrate, slope, wave exposure, water quality, land use/access and habitat constraints.",
+    "Do not interpret these rasters as a continuous future shoreline where class 7 occurs."
+  ],
+  "sha256": {
+    "16B8_ssp245_2030_clases_exposicion_litoral.tif": "a8807236f4e0be89c62608fe0ad045b9b0b65d4a4d3764e08556415e0ba8a570",
+    "16B8_ssp245_2050_clases_exposicion_litoral.tif": "0c8341bc6746735b1b4c0944edea7f6dcdbdc608db8455ac632ff35a345c76b9",
+    "16B8_ssp585_2030_clases_exposicion_litoral.tif": "ec34e38407bed7bc785f96175c6b34f333485cd7b731dcf1ba103de15f40aa8a",
+    "16B8_ssp585_2050_clases_exposicion_litoral.tif": "b666d1138c7e3e6962289a6543773a2c9d67aae7b8b996b1a6d2ccb20b5c7098",
+    "16B8_consenso_nueva_exposicion_2030.tif": "b1fe9ca1bb7365c69b6acb7ae4489d012992d6921a8d1061fa452b8e0dda444c",
+    "16B8_consenso_nueva_exposicion_2050.tif": "bc5f3941c1e06f4d450256601f26602eeae1ecb1cf500dc25247346bb3da487a",
+    "16B8_resumen_exposicion.csv": "0ee5cab498ede82365b522667177174d790361d212484f83e63f7bd9367eded5",
+    "16B8_resumen_sectores.csv": "1c600eb6a9408ece91afd2c563a97ac5c4a2b1128350c9412725d27f745b80b5"
+  }
+}

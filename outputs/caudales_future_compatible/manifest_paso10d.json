@@ -1,0 +1,107 @@
+{
+  "paso": "10D",
+  "descripcion": "Calibración conservadora del sesgo del caudal total future-compatible usando únicamente predicciones OOF temporales dentro del periodo DEVELOPMENT.",
+  "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "development_cutoff": "2021-05-23",
+  "final_cutoff": "2024-01-09",
+  "oof_settings": {
+    "initial_train_fraction": 0.5,
+    "n_folds": 3,
+    "folds": [
+      {
+        "fold": 1,
+        "train_end": "2018-03-30",
+        "valid_start": "2018-03-31",
+        "valid_end": "2019-04-17"
+      },
+      {
+        "fold": 2,
+        "train_end": "2019-04-17",
+        "valid_start": "2019-04-18",
+        "valid_end": "2020-05-04"
+      },
+      {
+        "fold": 3,
+        "train_end": "2020-05-04",
+        "valid_start": "2020-05-05",
+        "valid_end": "2021-05-23"
+      }
+    ]
+  },
+  "selection": {
+    "n_oof_months": 31,
+    "n_internal_fit_months": 20,
+    "n_internal_validation_months": 11,
+    "identity_validation_mae": 0.8398979491091393,
+    "best_raw_method": "LINEAR",
+    "best_raw_validation_mae": 0.760493429959524,
+    "best_raw_improvement_vs_identity": 0.09454067513063691,
+    "minimum_improvement_required": 0.02,
+    "selected_method": "LINEAR",
+    "final_params_refit_all_oof": {
+      "method": "LINEAR",
+      "slope": 1.1885852684704885,
+      "intercept": 0.05682983145593207
+    }
+  },
+  "holdout_metrics_raw": {
+    "n": 29,
+    "mae": 1.738672803278351,
+    "rmse": 3.020041468477789,
+    "bias": -1.7286362987946076,
+    "r2_nse": 0.03119409105195292,
+    "pearson_r": 0.8417649255888695
+  },
+  "holdout_metrics_corrected": {
+    "n": 29,
+    "mae": 1.4507982739990135,
+    "rmse": 2.738450530367439,
+    "bias": -1.3646178599168224,
+    "r2_nse": 0.20343583287364198,
+    "pearson_r": 0.8417649255888691
+  },
+  "baseline_metrics": {
+    "n": 29,
+    "mae": 1.6497067481220586,
+    "rmse": 2.9173696556877378,
+    "bias": -1.6269897813812022,
+    "r2_nse": 0.0959470051954684,
+    "pearson_r": 0.8576365976587688
+  },
+  "baseline_mae_used": 1.6497067481220586,
+  "climatology_mae_used": 1.9299855172413793,
+  "mae_change_vs_baseline_pct": -12.057201945101596,
+  "skill_vs_baseline_mae": 0.12057201945101592,
+  "skill_vs_monthly_climatology": 0.24828540886010952,
+  "acceptance_rule": "MAE corregido <= 1.05 * MAE baseline y skill vs climatología > 0.",
+  "accepted": true,
+  "inputs": {
+    "climate": ".//outputs//caudales//clima_diario_features_modelo_caudal.pkl",
+    "climate_sha256": "15b44070e716d3d227cc97d3a21a5eaa373247f19bebf58b86b58afefe1b7686",
+    "rivers": ".//data//processed//rivers_clean.pkl",
+    "rivers_sha256": "463bb0d0b85573d1c08df2c3e7807e7caeb52eb5031d11321a9dd1b202a7f945",
+    "config": ".//config//modelo_caudales.json",
+    "config_sha256": "3239467885972c955edc8635ae5533d96f5cab5eb68b721d74b50b687958314f",
+    "feature_list": ".//outputs//caudales_future_compatible//10a_features_future_compatible_strict.json",
+    "feature_list_sha256": "b88caf52b998a38e7727e9bc198419592bf6a92bf2139fbb80cefcb7ae5086b1",
+    "holdout_72f": ".//outputs//caudales_future_compatible//10b_predicciones_holdout_72f.csv",
+    "holdout_72f_sha256": "dde038074994eedff8246a9482f2b8356609d3de1a3b79f13a16d305235e7094"
+  },
+  "outputs": {
+    "oof_river": ".//outputs//caudales_future_compatible//10d_oof_development_por_rio.csv",
+    "oof_total": ".//outputs//caudales_future_compatible//10d_oof_development_total.csv",
+    "internal_comparison": ".//outputs//caudales_future_compatible//10d_comparacion_correcciones_interna.csv",
+    "holdout_corrected": ".//outputs//caudales_future_compatible//10d_holdout_total_corregido.csv",
+    "summary": ".//outputs//caudales_future_compatible//10d_resumen_calibracion_sesgo.csv",
+    "correction_params": ".//outputs//caudales_future_compatible//10d_parametros_correccion_caudal_total.json"
+  },
+  "notes": [
+    "El holdout 2021-05-24 a 2024-01-09 no participa en el ajuste ni selección de la corrección.",
+    "IDENTITY forma parte de los candidatos para evitar forzar una corrección innecesaria.",
+    "MULTIPLICATIVE usa la mediana de observado/predicho sobre el bloque de ajuste interno.",
+    "LINEAR usa y = intercept + slope*x y rechaza pendiente negativa.",
+    "Una corrección no trivial sólo se selecciona si mejora al menos 2% el MAE interno respecto a IDENTITY.",
+    "Tras seleccionar método, sus parámetros se reajustan usando todo el OOF de DEVELOPMENT.",
+    "No se modifica ningún modelo del PASO 10B."
+  ]
+}

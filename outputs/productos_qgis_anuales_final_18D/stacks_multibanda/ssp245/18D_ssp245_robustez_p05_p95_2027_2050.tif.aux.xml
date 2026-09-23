@@ -1,0 +1,98 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>2027</Description>
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">1</MDI>
+      <MDI key="STATISTICS_MAXIMUM">4</MDI>
+      <MDI key="STATISTICS_MEAN">1.1832337327785</MDI>
+      <MDI key="STATISTICS_STDDEV">0.70632660004161</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">24.08</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="2">
+    <Description>2028</Description>
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">1</MDI>
+      <MDI key="STATISTICS_MAXIMUM">4</MDI>
+      <MDI key="STATISTICS_MEAN">1.1832963090433</MDI>
+      <MDI key="STATISTICS_STDDEV">0.70635466028773</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">24.08</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="3">
+    <Description>2029</Description>
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">1</MDI>
+      <MDI key="STATISTICS_MAXIMUM">4</MDI>
+      <MDI key="STATISTICS_MEAN">1.1833067384208</MDI>
+      <MDI key="STATISTICS_STDDEV">0.70635933634808</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">24.08</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="4">
+    <Description>2030</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="5">
+    <Description>2031</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="6">
+    <Description>2032</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="7">
+    <Description>2033</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="8">
+    <Description>2034</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="9">
+    <Description>2035</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="10">
+    <Description>2036</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="11">
+    <Description>2037</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="12">
+    <Description>2038</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="13">
+    <Description>2039</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="14">
+    <Description>2040</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="15">
+    <Description>2041</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="16">
+    <Description>2042</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="17">
+    <Description>2043</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="18">
+    <Description>2044</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="19">
+    <Description>2045</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="20">
+    <Description>2046</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="21">
+    <Description>2047</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="22">
+    <Description>2048</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="23">
+    <Description>2049</Description>
+  </PAMRasterBand>
+  <PAMRasterBand band="24">
+    <Description>2050</Description>
+  </PAMRasterBand>
+</PAMDataset>

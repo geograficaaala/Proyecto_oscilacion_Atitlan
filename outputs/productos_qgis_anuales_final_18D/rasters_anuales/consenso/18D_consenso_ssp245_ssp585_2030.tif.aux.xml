@@ -1,0 +1,13 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>consenso_ssp245_ssp585_2030</Description>
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">1</MDI>
+      <MDI key="STATISTICS_MAXIMUM">4</MDI>
+      <MDI key="STATISTICS_MEAN">1.183244162156</MDI>
+      <MDI key="STATISTICS_STDDEV">0.70634604261824</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">24.08</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

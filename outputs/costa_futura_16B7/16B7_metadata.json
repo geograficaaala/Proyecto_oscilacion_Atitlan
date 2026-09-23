@@ -1,0 +1,77 @@
+{
+  "step": "16B7",
+  "status": "FUTURE_COASTAL_STATE_PARTIAL_WITH_EXPLICIT_UNKNOWN",
+  "created_utc": "2026-09-18T05:06:21.138833+00:00",
+  "future_source": ".\/outputs/\nivel_future_compatible\\nivel_diario_cmip6_future_compatible.pkl",
+  "detected_columns": {
+    "date": "date",
+    "scenario": "scenario",
+    "model": "model",
+    "level": "level_m"
+  },
+  "anchor": {
+    "date": "2026-08-29",
+    "level_m": 1552.77
+  },
+  "horizons": [
+    2030,
+    2050
+  ],
+  "scenarios": [
+    "ssp245",
+    "ssp585"
+  ],
+  "ensemble_method": "For each scenario and horizon year, compute annual mean lake level for each GCM, then calculate p05/p50/p95 across GCM annual means.",
+  "capability_counts": {
+    "observed_direct_pixels": 6181,
+    "amsclae_supported_pixels": 311,
+    "unknown_pixels": 16998,
+    "domain_pixels": 23490
+  },
+  "median_state_classes": {
+    "0": "outside_domain",
+    "1": "OBSERVADO_DIRECTO_water",
+    "2": "OBSERVADO_DIRECTO_exposed",
+    "3": "AMSCLAE_SOPORTADO_water",
+    "4": "AMSCLAE_SOPORTADO_exposed",
+    "5": "DESCONOCIDO"
+  },
+  "robustness_classes": {
+    "0": "outside_domain",
+    "1": "water_for_all_levels_p05_to_p95",
+    "2": "state_depends_on_ensemble_level",
+    "3": "exposed_for_all_levels_p05_to_p95",
+    "4": "DESCONOCIDO_spatially"
+  },
+  "change_vs_anchor_classes": {
+    "0": "outside_domain",
+    "1": "remains_water",
+    "2": "newly_exposed_OBSERVADO_DIRECTO",
+    "3": "newly_exposed_AMSCLAE_SOPORTADO",
+    "4": "already_exposed_at_2026_anchor",
+    "5": "DESCONOCIDO"
+  },
+  "important_limitations": [
+    "These maps are conditional CMIP6 scenario products, not deterministic forecasts.",
+    "The shoreline is not continuous where 16B6 classified pixels as DESCONOCIDO.",
+    "OBSERVADO_DIRECTO thresholds come from Sentinel/NASA transitions observed within approximately 1552.45-1554.05 m; future levels below that range mean those observed transition pixels are exposed, but the deeper replacement shoreline may still be unknown.",
+    "AMSCLAE thresholds are used only in the very small subset accepted by 16B4d0.",
+    "Unknown pixels remain unknown in all scenarios and are never silently filled."
+  ],
+  "sha256": {
+    "16B7_ssp245_2030_estado_mediano_p50.tif": "a616078e0e32ce1e610fcf8bee75eb7bec04080aeb941b6c36f99120bbc5b490",
+    "16B7_ssp245_2030_robustez_p05_p95.tif": "49e8cbb2d800bd92a0deff02a7edd89f17ed2069e6f2a70047e23040189cf230",
+    "16B7_ssp245_2030_cambio_mediano_vs_2026.tif": "fb3a7472f4aace7720300433b79f1b3b2acc5068a45c34982164d4664c646842",
+    "16B7_ssp245_2050_estado_mediano_p50.tif": "ea7298873351b22cbe7b2415150fede0f47713a709f8dbc9b1d03eb4b2161f37",
+    "16B7_ssp245_2050_robustez_p05_p95.tif": "f906fc0288659cfa71037a5c3590d71f1c5bf21b6b8541871e8526b7949418ec",
+    "16B7_ssp245_2050_cambio_mediano_vs_2026.tif": "cf5c189cc30fa11a89e3d145c19455b128e69085ca0672aa664ead1d0523217d",
+    "16B7_ssp585_2030_estado_mediano_p50.tif": "5e844111cc8576188a3d5ada0ccab833d918f1e5595c40cf006cbd2de32035bd",
+    "16B7_ssp585_2030_robustez_p05_p95.tif": "c2a6646741362c4200fc35c96d4db649e0016d8939d5799b2d7f998c00f10baa",
+    "16B7_ssp585_2030_cambio_mediano_vs_2026.tif": "802ed0b46aef17189000fe1ffe5dc3b9eab34c83c35b68df24470d65a9d2996a",
+    "16B7_ssp585_2050_estado_mediano_p50.tif": "a2cc7d43a8a791f9d8028d0ac647e4a70f23855ab574bd300320c2a29ef41227",
+    "16B7_ssp585_2050_robustez_p05_p95.tif": "69813ba4e1860eb79c21ba3bd362aa666291309a6d643e9cefb1abc784091396",
+    "16B7_ssp585_2050_cambio_mediano_vs_2026.tif": "804b6e70039f9dc4b585ed4d199ad87c2edcc0e9202be9743a83e2021f003522",
+    "16B7_niveles_ensemble_2030_2050.csv": "5d93f7682b52be92da231b300efebe8b6ef07e2ad83260fef290fe2bb71e978f",
+    "16B7_resumen_espacial_2030_2050.csv": "a1033e213345e5da183c8acee8c7a60885e2c66a9111911cf27ba90c52e57e32"
+  }
+}

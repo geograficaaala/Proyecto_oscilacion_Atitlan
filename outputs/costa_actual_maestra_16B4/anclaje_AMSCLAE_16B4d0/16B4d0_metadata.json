@@ -1,0 +1,53 @@
+{
+  "step": "16B4d0",
+  "status": "AMSCLAE_FUTURE_EXTRAPOLATION_SUPPORT_AUDIT",
+  "created_utc": "2026-09-18T04:47:54.189059+00:00",
+  "principle": "AMSCLAE is never altered. This audit only determines where its original relative depths are locally compatible with direct Sentinel/NASA shoreline transitions and can therefore be considered for extrapolation below the directly observed level range.",
+  "H2014_reference": {
+    "median_m": 1557.56,
+    "min_m": 1557.31,
+    "max_m": 1558.09
+  },
+  "shallow_domain": {
+    "depth_min_m": 0.5,
+    "depth_max_m": 30.0,
+    "pixels": 21474
+  },
+  "direct_compatibility": {
+    "comparison_tolerance_m": 1.0,
+    "overlap_pixels": 4738,
+    "compatible_pixels": 793,
+    "compatible_pct": 16.737019839594765,
+    "median_abs_residual_m": 5.6661376953125,
+    "p90_abs_residual_m": 17.500952148437502
+  },
+  "local_support_rule": {
+    "radius_m": 200.0,
+    "nearest_transition_max_m": 120.0,
+    "min_neighbors": 6,
+    "min_compatible_fraction": 0.6,
+    "max_median_abs_residual_m": 1.5,
+    "supported_pixels": 333,
+    "supported_area_km2": 0.1332
+  },
+  "classes": {
+    "0": "outside_or_not_evaluated",
+    "1": "direct_transition_compatible_with_AMSCLAE_2014_bracket",
+    "2": "shallow_AMSCLAE_locally_supported_for_extrapolation",
+    "3": "direct_transition_incompatible_with_AMSCLAE",
+    "4": "shallow_AMSCLAE_without_sufficient_local_support"
+  },
+  "limitations": [
+    "This is not a vertical correction of AMSCLAE.",
+    "Only shallow AMSCLAE depths between 0.5 and 30 m are evaluated.",
+    "Direct compatibility is descriptive and includes a 1 m comparison allowance; it is not a probabilistic confidence interval.",
+    "Unsupported AMSCLAE zones must remain unknown in future shoreline maps rather than being forced into a prediction."
+  ],
+  "sha256": {
+    "16B4d0_soporte_extrapolacion_AMSCLAE.tif": "9c0eb5316c44f9c609dbc7ebcf377639404e3e5cf4e0d99d1be0d2e374d788e3",
+    "16B4d0_residual_directo_Sentinel_menos_AMSCLAE_m.tif": "5e6a006ba7ae27bc0a6e016da2c2f20e32d148b2d13b2c5a522e8f058ccc428b",
+    "16B4d0_fraccion_compatible_local.tif": "3264d62c534798697397591b5afd80f50129c19c1df822638981dd9816920bc2",
+    "16B4d0_mediana_abs_residual_local_m.tif": "5746c1f7daf7cc51ac528eb36376e091e7252d0740667b53e227eb147cd7d213",
+    "16B4d0_distancia_transicion_m.tif": "c773f5eabc4bc3bb104dc956ea2eca825f28ca845b4b2e9091ec9fe30f5d6a94"
+  }
+}

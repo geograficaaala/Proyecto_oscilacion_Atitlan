@@ -1,0 +1,97 @@
+{
+  "pressure_constant_kpa": 80.75782003952993,
+  "physical_constants": {
+    "wind_measurement_height_m": 10.0,
+    "water_albedo": 0.08,
+    "water_emissivity": 0.97,
+    "reference_albedo": 0.23,
+    "reference_emissivity": 0.98,
+    "priestley_taylor_alpha": 1.26,
+    "sigma_mj_m2_day_k4": 4.903e-09
+  },
+  "candidate_parameters": {
+    "EQUILIBRIUM_OPEN_WATER_PROXY": {
+      "RAW": {
+        "mapping": "IDENTITY"
+      },
+      "SCALE": {
+        "mapping": "SCALE",
+        "scale": 0.799926262161655
+      },
+      "AFFINE": {
+        "mapping": "AFFINE_POSITIVE",
+        "intercept": 1.075242180942574,
+        "slope": 0.5562910915490918
+      }
+    },
+    "PRIESTLEY_TAYLOR_OPEN_WATER_PROXY": {
+      "RAW": {
+        "mapping": "IDENTITY"
+      },
+      "SCALE": {
+        "mapping": "SCALE",
+        "scale": 0.6348621128267102
+      },
+      "AFFINE": {
+        "mapping": "AFFINE_POSITIVE",
+        "intercept": 1.0752421809425736,
+        "slope": 0.44150086630880314
+      }
+    },
+    "PM_REFERENCE_DEMAND_PROXY": {
+      "RAW": {
+        "mapping": "IDENTITY"
+      },
+      "SCALE": {
+        "mapping": "SCALE",
+        "scale": 0.980348466244705
+      },
+      "AFFINE": {
+        "mapping": "AFFINE_POSITIVE",
+        "intercept": 1.270295866917718,
+        "slope": 0.6268412190986857
+      }
+    },
+    "RADIATION_ENERGY_PROXY": {
+      "RAW": {
+        "mapping": "IDENTITY"
+      },
+      "SCALE": {
+        "mapping": "SCALE",
+        "scale": 0.5510844498874626
+      },
+      "AFFINE": {
+        "mapping": "AFFINE_POSITIVE",
+        "intercept": 0.9452359639303989,
+        "slope": 0.4033617620788042
+      }
+    },
+    "AERO_VPD_WIND_INDEX": {
+      "RAW": {
+        "mapping": "IDENTITY"
+      },
+      "SCALE": {
+        "mapping": "SCALE",
+        "scale": 3.994856392502756
+      },
+      "AFFINE": {
+        "mapping": "AFFINE_POSITIVE",
+        "intercept": 3.4528223446976627,
+        "slope": 0.0
+      }
+    },
+    "TRANSPARENT_COMBINATION_PT_PLUS_AERO": {
+      "mapping": "TRANSPARENT_COMBINATION",
+      "intercept": 1.075242180942567,
+      "coef_priestley_taylor": 0.44150086630880303,
+      "coef_aero_vpd_wind": 0.0
+    }
+  },
+  "best_by_validation_monthly_total_mae": {
+    "candidate": "EQUILIBRIUM_OPEN_WATER_PROXY",
+    "mapping": "AFFINE",
+    "monthly_total_mae": 14.125296389123987,
+    "rolling_365d_mae_mm": 25.984569322833465,
+    "annual_mean_relative_bias_pct": 0.7880500505979495
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "paso": "11A",
+  "descripcion": "Diagnóstico de formulaciones evaporativas reproducibles con variables disponibles también en NEX-GDDP-CMIP6.",
+  "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "reference_file": ".//data//reference_1981_2014//procesado//atitlan_referencia_1981_2014.csv",
+  "reference_sha256": "c9d392aa7d92b4e67c5375859448a0dea5393067240b69547da0484e215dd7d6",
+  "calibration_period": {
+    "start": "1981-01-01",
+    "end": "2004-12-31",
+    "n_days": 8766
+  },
+  "validation_period": {
+    "start": "2005-01-01",
+    "end": "2014-12-31",
+    "n_days": 3652
+  },
+  "reference_qc": {
+    "evap_mm_negative_days": 0,
+    "evap_mm_zero_days": 0
+  },
+  "pressure_constant_kpa": 80.75782003952993,
+  "future_compatible_inputs_required": [
+    "tas/tmean",
+    "tasmin",
+    "tasmax",
+    "relative humidity OR vapor pressure information",
+    "sfcWind",
+    "rsds",
+    "rlds"
+  ],
+  "candidate_descriptions": {
+    "EQUILIBRIUM_OPEN_WATER_PROXY": "Equilibrium evaporation from positive open-water net-radiation proxy.",
+    "PRIESTLEY_TAYLOR_OPEN_WATER_PROXY": "Priestley-Taylor alpha=1.26 applied to equilibrium open-water proxy.",
+    "PM_REFERENCE_DEMAND_PROXY": "FAO Penman-Monteith atmospheric-demand form used only as a climatic index; it is NOT interpreted as actual lake evaporation.",
+    "RADIATION_ENERGY_PROXY": "Available open-water radiative-energy proxy converted to equivalent water depth.",
+    "AERO_VPD_WIND_INDEX": "Simple aerodynamic vapor-pressure-deficit and wind index; requires calibration.",
+    "TRANSPARENT_COMBINATION_PT_PLUS_AERO": "Positive-coefficient linear combination of Priestley-Taylor energy term and aerodynamic VPD-wind term, calibrated on 1981-2004.",
+    "ERA5_PET_HISTORICAL_BENCHMARK": "Historical benchmark only; not considered future-compatible."
+  },
+  "important_method_notes": [
+    "No se modifica evap_mm.",
+    "No se sustituye evap_mm dentro de PHYSICAL_ONLY en este paso.",
+    "ET0/PM reference proxy is treated only as an atmospheric-demand index, not lake evaporation.",
+    "Net radiation is approximated using incoming shortwave, incoming longwave, albedo, emissivity, and air temperature as a surface-temperature proxy.",
+    "The air-temperature approximation for outgoing longwave is a structural limitation and must remain explicit.",
+    "Pressure is fixed to the calibration-period median so future CMIP6 does not require a pressure predictor.",
+    "All calibration mappings are fitted only on 1981-2004 and evaluated on untouched 2005-2014.",
+    "The automatic ranking prioritizes monthly-total MAE because the lake balance integrates evaporation over time.",
+    "The top-ranked candidate is diagnostic only; it is not accepted until PASO 11B recalibrates and revalidates the lake balance."
+  ],
+  "best_diagnostic_candidate": {
+    "candidate": "EQUILIBRIUM_OPEN_WATER_PROXY",
+    "mapping": "AFFINE",
+    "monthly_total_mae": 14.125296389123987,
+    "rolling_365d_mae_mm": 25.984569322833465,
+    "annual_mean_relative_bias_pct": 0.7880500505979495,
+    "daily_pearson_r": 0.5856654056456851
+  },
+  "outputs": {
+    "ranking": ".//outputs//evaporacion_future_compatible//11a_ranking_evaporacion_future_compatible.csv",
+    "validation_predictions": ".//outputs//evaporacion_future_compatible//11a_predicciones_validacion_2005_2014.csv",
+    "full_indices": ".//outputs//evaporacion_future_compatible//11a_indices_evaporativos_1981_2014.csv",
+    "candidate_parameters": ".//outputs//evaporacion_future_compatible//11a_parametros_candidatos.json"
+  }
+}

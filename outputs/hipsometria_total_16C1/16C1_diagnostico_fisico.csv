@@ -1,0 +1,15 @@
+﻿metric,value,unit
+current_sentinel_area_km2,122.0232,km2
+reference_area_km2,126.55634768650329,km2
+reference_volume_km3,25.315163370056663,km3
+max_depth_m,325.0,m
+mean_depth_m,200.03076758161237,m
+median_depth_m,222.75421,m
+area_anchored_H0_m,1555.3395226,m
+area_anchored_H0_minus_H2014_median_m,-2.220477399999936,m
+area_band_sum_km2,126.55634768650329,km2
+area_band_closure_error_km2,0.0,km2
+volume_band_sum_km3,25.315163370056666,km3
+volume_band_closure_error_km3,3.552713678800501e-15,km3
+dVdH_area_median_abs_error_km2,0.0003646958069083439,km2
+dVdH_area_p95_abs_error_km2,0.0011013476721046796,km2

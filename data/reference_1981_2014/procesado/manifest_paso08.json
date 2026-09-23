@@ -1,0 +1,188 @@
+{
+  "paso": 8,
+  "descripcion": "Preparacion referencia historica ERA5-Land + CHIRPS v2, 1981-2014",
+  "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "periodo": {
+    "inicio": "1981-01-01",
+    "fin": "2014-12-31",
+    "n_dias_esperados": 12418
+  },
+  "inputs_sha256": {
+    "era5": {
+      "ATITLAN_ERA5_LAND_1981_1989.csv": "9664876428c4376de05db8e44f210cb962fa534d462ba424ad76bdaf73cdd306",
+      "ATITLAN_ERA5_LAND_1990_1999.csv": "77842532bec2e2c0a3e70217969e49be2e8907a6e26b837dfa1c7dfdf80f26ff",
+      "ATITLAN_ERA5_LAND_2000_2009.csv": "b3e7b40421f1130efd653049302efb035102007c801d32371aa213efc98695d0",
+      "ATITLAN_ERA5_LAND_2010_2014.csv": "258d1c44366276b23fb87505dfabe012b6e3a51150168d987a266e64443a7498"
+    },
+    "chirps": {
+      "ATITLAN_CHIRPS_V2_1981_1989.csv": "d82fd293d37c24ebe519eb3da1d7765d44dab896c1257cf6fc7a4532aad26f01",
+      "ATITLAN_CHIRPS_V2_1990_1999.csv": "b911b2119a9a2afd2f2de931acc06b790927f10bdcdc6c7ce8891db44fb003ba",
+      "ATITLAN_CHIRPS_V2_2000_2009.csv": "50187aeedc977cf8f8a0e98e0384df207c7cca1327b6daf5cd3f041d395e1e5d",
+      "ATITLAN_CHIRPS_V2_2010_2014.csv": "66ea8b8544b66c27a7e7f7c22f3491b54b2d73994d35a9a91fce6bc6159f3ed7"
+    }
+  },
+  "qc": {
+    "era5_dates": {
+      "n_rows": 12418,
+      "start": "1981-01-01",
+      "end": "2014-12-31",
+      "duplicate_dates": 0,
+      "missing_dates": 0,
+      "extra_dates": 0
+    },
+    "chirps_dates": {
+      "n_rows": 12418,
+      "start": "1981-01-01",
+      "end": "2014-12-31",
+      "duplicate_dates": 0,
+      "missing_dates": 0,
+      "extra_dates": 0
+    },
+    "era5_numeric": {
+      "dewpoint_c": {
+        "nan": 0,
+        "inf": 0,
+        "min": -0.153088197519497,
+        "max": 16.89714891800536,
+        "mean": 12.405947534827183
+      },
+      "era_precip_mm": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.0,
+        "max": 146.46356616767795,
+        "mean": 6.079980339721177
+      },
+      "evap_mm": {
+        "nan": 0,
+        "inf": 0,
+        "min": 1.3610144904137993,
+        "max": 5.808517255164484,
+        "mean": 3.4430833943985055
+      },
+      "pet_mm": {
+        "nan": 0,
+        "inf": 0,
+        "min": 1.3662269106735367,
+        "max": 13.088073033714542,
+        "mean": 6.462183371441169
+      },
+      "pressure_kpa": {
+        "nan": 0,
+        "inf": 0,
+        "min": 80.18464674817844,
+        "max": 81.15729286994618,
+        "mean": 80.75543333449195
+      },
+      "runoff_mm": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.0552414874013702,
+        "max": 89.2772351296319,
+        "mean": 2.35059339582943
+      },
+      "soil_water_1": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.1476690615443248,
+        "max": 0.3899013374964943,
+        "mean": 0.2908231680854668
+      },
+      "soil_water_2": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.1685402767130009,
+        "max": 0.398815857506509,
+        "mean": 0.29431946578385004
+      },
+      "soil_water_3": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.1918476926935337,
+        "max": 0.4104750904663821,
+        "mean": 0.3060660112467427
+      },
+      "soil_water_4": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.322783349611999,
+        "max": 0.4279743215353724,
+        "mean": 0.37673878702613883
+      },
+      "solar_mj_m2": {
+        "nan": 0,
+        "inf": 0,
+        "min": 2.5929999518486677,
+        "max": 29.27937827687016,
+        "mean": 18.958588617734225
+      },
+      "longwave_mj_m2": {
+        "nan": 0,
+        "inf": 0,
+        "min": 23.92676204729149,
+        "max": 34.4050554144454,
+        "mean": 31.14497811398399
+      },
+      "subsurface_runoff_mm": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.0427934570960309,
+        "max": 38.00654468332399,
+        "mean": 1.4700716949002068
+      },
+      "surface_runoff_mm": {
+        "nan": 0,
+        "inf": 0,
+        "min": -1.5439294272215329e-06,
+        "max": 74.64097734934691,
+        "mean": 0.8805217030686272
+      },
+      "tmax_c": {
+        "nan": 0,
+        "inf": 0,
+        "min": 14.424545613466847,
+        "max": 26.1438306944594,
+        "mean": 20.360605624004958
+      },
+      "tmean_c": {
+        "nan": 0,
+        "inf": 0,
+        "min": 10.905585303051026,
+        "max": 20.325755458098172,
+        "mean": 16.271866007186908
+      },
+      "tmin_c": {
+        "nan": 0,
+        "inf": 0,
+        "min": 5.991469599559016,
+        "max": 17.338280462788205,
+        "mean": 13.446130142796218
+      },
+      "wind_ms": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.043295754316645,
+        "max": 3.576542851973823,
+        "mean": 0.8453482250675511
+      }
+    },
+    "chirps_numeric": {
+      "chirps_precip_mm": {
+        "nan": 0,
+        "inf": 0,
+        "min": 0.0,
+        "max": 91.7291150775442,
+        "mean": 4.328760014802917
+      }
+    },
+    "warnings": [
+      "surface_runoff_mm: 2 valores negativos."
+    ]
+  },
+  "outputs": {
+    "era5": ".//data//reference_1981_2014//procesado//atitlan_era5_land_1981_2014.csv",
+    "chirps": ".//data//reference_1981_2014//procesado//atitlan_chirps_v2_1981_2014.csv",
+    "referencia": ".//data//reference_1981_2014//procesado//atitlan_referencia_1981_2014.csv"
+  },
+  "nota_precip_consensus": "precip_consensus_mm se calcula como promedio simple diario de era_precip_mm y chirps_precip_mm, para mantener una referencia transparente y reproducible. No se aplica bias correction."
+}

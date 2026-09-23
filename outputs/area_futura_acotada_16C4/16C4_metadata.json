@@ -1,0 +1,50 @@
+{
+  "step": "16C4",
+  "status": "FUTURE_AREA_BOUNDS_WITH_STORAGE_RETAINED",
+  "created_utc": "2026-09-18T05:33:39.991211+00:00",
+  "current_reference": {
+    "level_m": 1552.77,
+    "area_km2": 122.0232
+  },
+  "interior_guard_distance_m": 120.0,
+  "vertical_bracket_m": {
+    "H2014_min": 1557.31,
+    "H2014_max": 1558.09
+  },
+  "p50_class_codes": {
+    "0": "outside_current_reference_lake",
+    "1": "certain_water_direct_or_locally_supported_threshold",
+    "2": "certain_exposed_direct_or_locally_supported_threshold",
+    "3": "certain_water_deep_interior_AMSCLAE_bracket",
+    "4": "certain_exposed_deep_interior_AMSCLAE_bracket",
+    "5": "uncertain_or_unsupported"
+  },
+  "area_method": {
+    "lower_water_bound": "certain-water pixels inside the frozen current-water reference mask",
+    "upper_water_bound": "current reference area minus certainly exposed pixels",
+    "applicability": "only levels at or below the 2026 anchor; higher levels may inundate land outside the current reference mask"
+  },
+  "decisions": {
+    "16C2_area_point_estimates": "REJECTED_BY_16C3",
+    "16C2_storage_change": "RETAINED_AS_PHYSICALLY_PLAUSIBLE"
+  },
+  "limitations": [
+    "The bounds are referenced to the 2024-2026 Sentinel 50% current-water mask.",
+    "Unsupported coastal pixels remain uncertain.",
+    "AMSCLAE is used outside the supported coastal domain only for robust deep-interior classification at least 120 m inside the current-water mask and with the full 2014 vertical bracket.",
+    "No continuous future shoreline is invented.",
+    "Storage change is physically plausible but not independently validated by a second bathymetric survey.",
+    "Future levels are conditional CMIP6 scenario trajectories, not deterministic forecasts."
+  ],
+  "outputs_sha256": {
+    "16C4_limites_area_futura.csv": "b09d46de4806cb888e182bdebc98962f1172c31e22ad88c1fcfa43a3bb553dbd",
+    "16C4_resumen_p50_area_volumen.csv": "c9d57ef22502b56c37b2a8dc62dcb6d78e2906792a10627005f286ff6c399943",
+    "16C4_limites_area_p50.png": "4e68a5171b4dcd099765d11236193b0dabd426d6a90eb057bceda962a1273e9f",
+    "16C4_ssp245_2030_p50_clases_area_acotada.tif": "9b5f250c95ad83afd9f41c25119d445f3e4ed824cde11c145fbc3784160f843f",
+    "16C4_ssp245_2050_p50_clases_area_acotada.tif": "0b043a613e2c956c90bff88bfaffe2e6f30197214329a12d491ba663a3a3d921",
+    "16C4_ssp245_2090_p50_clases_area_acotada.tif": "db08b4593bac82cda4692fe2fa4593479e7652b670d20e4a1d354477b8eeb24f",
+    "16C4_ssp585_2030_p50_clases_area_acotada.tif": "a26fa2ff455f28677e9192afd5dd0327b3c5e79453195fd729ea396cd3400c97",
+    "16C4_ssp585_2050_p50_clases_area_acotada.tif": "0e84c46191b961d3b07b5cbcea6de11c476c5cdddf244cdf1903a07b92518cab",
+    "16C4_ssp585_2090_p50_clases_area_acotada.tif": "0281dd887ccf8f00bcac82636bb4433e30a991898d9fe98664fdbe8bc1cac642"
+  }
+}

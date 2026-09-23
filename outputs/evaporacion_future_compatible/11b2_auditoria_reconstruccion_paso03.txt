@@ -1,0 +1,71 @@
+====================================================================================================
+PASO 11B2 - AUDITORIA DE RECONSTRUCCION
+====================================================================================================
+
+Forzantes auditados: ./outputs/evaporacion_future_compatible\11b_v3_forzantes_diarios.csv
+Nivel auditado:      ./data/procesados\nivel_canonico.csv
+Columna nivel:        nivel_final_m
+Intervalos completos: 553
+
+FROZEN PARAMS APLICADOS DIRECTAMENTE A LOS FORZANTES ACTUALES
+----------------------------------------------------------------------------------------------------
+MAE=0.161537 | RMSE=0.202177 | bias=-0.089360 | NSE=0.795248 | r=0.916502
+
+Esperado frozen: MAE=0.160801 | RMSE=0.201679 | bias=-0.088605 | NSE=0.796255 | r=0.916673
+
+Diferencia MAE: +0.000736 m
+
+DIAGNOSTICO AUTOMATICO
+----------------------------------------------------------------------------------------------------
+Los parámetros frozen funcionan razonablemente cerca del baseline con los forzantes actuales. Esto apunta a que el problema principal de 11B es la forma de recalibración/función objetivo, no los forzantes.
+
+Coincidencias de scripts/config/resultados con parámetros o PHYSICAL_ONLY: 166
+
+PRIMERAS COINCIDENCIAS RELEVANTES
+----------------------------------------------------------------------------------------------------
+scripts\03_balance_hidrico.py:343 | "precip_scale": float(result.x[0]),
+scripts\03_balance_hidrico.py:344 | "evap_scale": float(result.x[1]),
+scripts\03_balance_hidrico.py:345 | "qin_scale": float(result.x[2]),
+scripts\03_balance_hidrico.py:346 | "net_unresolved_m_per_day": float(result.x[3]),
+scripts\03_balance_hidrico.py:448 | dev_params["precip_scale"],
+scripts\03_balance_hidrico.py:449 | dev_params["evap_scale"],
+scripts\03_balance_hidrico.py:450 | dev_params["qin_scale"],
+scripts\03_balance_hidrico.py:451 | dev_params["net_unresolved_m_per_day"],
+scripts\03_balance_hidrico.py:454 | final_params["precip_scale"],
+scripts\03_balance_hidrico.py:455 | final_params["evap_scale"],
+scripts\03_balance_hidrico.py:456 | final_params["qin_scale"],
+scripts\03_balance_hidrico.py:457 | final_params["net_unresolved_m_per_day"],
+scripts\03_balance_hidrico.py:622 | print("  Escala precipitacion:", round(dev_params["precip_scale"], 6))
+scripts\03_balance_hidrico.py:623 | print("  Escala evaporacion:", round(dev_params["evap_scale"], 6))
+scripts\03_balance_hidrico.py:624 | print("  Escala caudal:", round(dev_params["qin_scale"], 6))
+scripts\03_balance_hidrico.py:625 | print("  Flujo neto no resuelto:", round(dev_params["net_unresolved_m_per_day"], 8), "m/dia")
+scripts\03_balance_hidrico.py:628 | print("  Escala precipitacion:", round(final_params["precip_scale"], 6))
+scripts\03_balance_hidrico.py:629 | print("  Escala evaporacion:", round(final_params["evap_scale"], 6))
+scripts\03_balance_hidrico.py:630 | print("  Escala caudal:", round(final_params["qin_scale"], 6))
+scripts\03_balance_hidrico.py:631 | print("  Flujo neto no resuelto:", round(final_params["net_unresolved_m_per_day"], 8), "m/dia")
+scripts\04_ml_residual.py:671 | ("PHYSICAL_ONLY", level_phys_cal, delta_phys_cal),
+scripts\04_ml_residual.py:695 | selection_df.loc[selection_df["model"] == "PHYSICAL_ONLY", "calibration_composite_score"].iloc[0]
+scripts\04_ml_residual.py:698 | best_candidate_row = selection_df.loc[selection_df["model"] != "PHYSICAL_ONLY"].iloc[0]
+scripts\04_ml_residual.py:705 | selected_model = "PHYSICAL_ONLY"
+scripts\04_ml_residual.py:764 | ("PHYSICAL_ONLY", level_phys_test, delta_phys_test),
+scripts\04_ml_residual.py:783 | test_metrics_df.loc[test_metrics_df["model"] == "PHYSICAL_ONLY", "weighted_MAE_m"].iloc[0]
+scripts\04_ml_residual.py:872 | "fallback": "PHYSICAL_ONLY",
+scripts\05_validar_modelo.py:600 | precip_scale,
+scripts\05_validar_modelo.py:601 | evap_scale,
+scripts\05_validar_modelo.py:602 | qin_scale,
+scripts\05_validar_modelo.py:606 | float(precip_scale)
+scripts\05_validar_modelo.py:608 | - float(evap_scale)
+scripts\05_validar_modelo.py:610 | + float(qin_scale)
+scripts\05_validar_modelo.py:1349 | precip_scale = float(
+scripts\05_validar_modelo.py:1350 | FINAL_PARAMS["precip_scale"]
+scripts\05_validar_modelo.py:1352 | evap_scale = float(
+scripts\05_validar_modelo.py:1353 | FINAL_PARAMS["evap_scale"]
+scripts\05_validar_modelo.py:1355 | qin_scale = float(
+scripts\05_validar_modelo.py:1356 | FINAL_PARAMS["qin_scale"]
+scripts\05_validar_modelo.py:1359 | FINAL_PARAMS["net_unresolved_m_per_day"]
+
+ARCHIVOS
+----------------------------------------------------------------------------------------------------
+./outputs/evaporacion_future_compatible\11b2_predicciones_frozen_con_forzantes_v3.csv
+./outputs/evaporacion_future_compatible\11b2_coincidencias_paso03.csv
+./outputs/evaporacion_future_compatible\11b2_auditoria_reconstruccion_paso03.txt

@@ -1,0 +1,15 @@
+{
+  "precip_scale": 1.3796029397905765,
+  "evap_scale": 2.5707656968524355,
+  "qin_scale": 0.713803694988823,
+  "net_unresolved_m_per_day": 0.0007305165462173727,
+  "success": true,
+  "cost": 4.7653048240973765,
+  "optimality": 1.1038010542540596e-07,
+  "nfev": 8,
+  "message": "`ftol` termination condition is satisfied.",
+  "n_fit": 357,
+  "lake_area_km2": 125.77,
+  "fit_partition": "train",
+  "q_source": "caudal_diario_estimado_desarrollo"
+}

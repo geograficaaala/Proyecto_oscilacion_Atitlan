@@ -1,0 +1,8 @@
+﻿metric,value,unit
+n_level_observations,554,count
+historical_min_level,1552.45,m
+historical_min_date,2026-07-30,date
+exact_2024_2026_min,1552.45,m
+vertical_gain_below_current_exact_min,0.0,m
+observations_below_current_exact_min,0,count
+selected_satellite_search_windows,47,count

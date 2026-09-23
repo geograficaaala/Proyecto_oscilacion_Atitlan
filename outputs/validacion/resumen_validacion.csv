@@ -1,0 +1,7 @@
+criterion,value,pass,interpretation,diagnostic_label
+open_loop_skill_vs_frozen_positive,0.6774752369348693,True,El balance debe superar mantener fijo el nivel inicial del TEST.,ROBUSTO_EN_TEST_RETROSPECTIVO
+open_loop_NSE_positive,0.7962552613300076,True,NSE positivo indica mejora frente a usar la media observada como referencia; no se usa de forma aislada.,ROBUSTO_EN_TEST_RETROSPECTIVO
+bootstrap_95pct_skill_lower_bound_positive,0.4544065434188844,True,La mejora frente al baseline permanece positiva bajo bootstrap temporal en bloques.,ROBUSTO_EN_TEST_RETROSPECTIVO
+trend_direction_correct,0.03094405448167248,True,La tendencia simulada debe tener la misma direccion que la observada.,ROBUSTO_EN_TEST_RETROSPECTIVO
+delta_skill_vs_zero_change_positive,0.01877650230328831,True,Los incrementos fisicos deben mejorar asumir cambio cero entre observaciones.,ROBUSTO_EN_TEST_RETROSPECTIVO
+delta_residual_no_strong_autocorrelation,0.012757800982190263,False,"Ljung-Box no rechaza ausencia de autocorrelacion hasta el mayor lag diagnostico. Un fallo identifica estructura temporal aun no explicada, no invalida automaticamente el modelo.",ROBUSTO_EN_TEST_RETROSPECTIVO

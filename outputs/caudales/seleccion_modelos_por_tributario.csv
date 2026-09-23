@@ -1,0 +1,6 @@
+river,selected_family,best_cv_loss,study_name,n_dev,n_holdout,n_final,dev_last_date,final_last_date,n_features_dev,n_features_final
+Quiscab,XGB_TWEEDIE,0.3922231961582148,Atitlan_Q_0c69121d6640_Quiscab_XGB_TWEEDIE,68,29,97,2021-05-12,2023-12-06,91,91
+San_Francisco,RF_LOG,0.21132860612939244,Atitlan_Q_0c69121d6640_San_Francisco_RF_LOG,72,31,103,2021-05-10,2023-12-04,91,91
+Tzununa,XGB_TWEEDIE,0.04196640134211677,Atitlan_Q_0c69121d6640_Tzununa_XGB_TWEEDIE,67,31,98,2021-05-12,2023-12-06,91,91
+La_Catarata,RF_LOG,0.013182130940037687,Atitlan_Q_0c69121d6640_La_Catarata_RF_LOG,68,31,99,2021-05-10,2023-12-04,91,91
+San_Buenaventura,RF_LOG,0.02560225910687886,Atitlan_Q_0c69121d6640_San_Buenaventura_RF_LOG,69,31,100,2021-05-10,2023-12-04,91,91

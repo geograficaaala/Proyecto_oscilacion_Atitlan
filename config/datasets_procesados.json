@@ -1,0 +1,62 @@
+{
+  "matrix_autoregressive": {
+    "csv": "data/processed/matriz_modelo_autoregresiva.csv",
+    "pkl": "data/processed/matriz_modelo_autoregresiva.pkl"
+  },
+  "features_autoregressive_unique": {
+    "csv": "data/processed/features_autoregresivas_unicas.csv",
+    "pkl": "data/processed/features_autoregresivas_unicas.pkl"
+  },
+  "climate_daily_features": {
+    "csv": "data/processed/clima_diario_features.csv",
+    "pkl": "data/processed/clima_diario_features.pkl"
+  },
+  "climate_daily_clean": {
+    "csv": "data/processed/clima_diario_limpio.csv",
+    "pkl": "data/processed/clima_diario_limpio.pkl"
+  },
+  "level_canonical": {
+    "csv": "data/processed/nivel_canonico.csv",
+    "pkl": "data/processed/nivel_canonico.pkl"
+  },
+  "level_qc": {
+    "csv": "data/processed/nivel_qc.csv",
+    "pkl": "data/processed/nivel_qc.pkl"
+  },
+  "era5_raw": {
+    "csv": "data/processed/era5_diario_cuenca_real.csv",
+    "pkl": "data/processed/era5_diario_cuenca_real.pkl"
+  },
+  "chirps_raw": {
+    "csv": "data/processed/chirps_diario_cuenca_real.csv",
+    "pkl": "data/processed/chirps_diario_cuenca_real.pkl"
+  },
+  "nasa_level_raw": {
+    "csv": "data/processed/nasa_nivel_final_original.csv",
+    "pkl": "data/processed/nasa_nivel_final_original.pkl"
+  },
+  "rivers_clean": {
+    "csv": "data/processed/rivers_clean.csv",
+    "pkl": "data/processed/rivers_clean.pkl"
+  },
+  "rivers_monthly": {
+    "csv": "data/processed/rivers_monthly.csv",
+    "pkl": "data/processed/rivers_monthly.pkl"
+  },
+  "weather_clean": {
+    "csv": "data/processed/weather_clean.csv",
+    "pkl": "data/processed/weather_clean.pkl"
+  },
+  "weather_monthly_basin": {
+    "csv": "data/processed/weather_monthly_basin.csv",
+    "pkl": "data/processed/weather_monthly_basin.pkl"
+  },
+  "lake_legacy": {
+    "csv": "data/processed/lake_legacy.csv",
+    "pkl": "data/processed/lake_legacy.pkl"
+  },
+  "limnology": {
+    "csv": "data/processed/limnology.csv",
+    "pkl": "data/processed/limnology.pkl"
+  }
+}

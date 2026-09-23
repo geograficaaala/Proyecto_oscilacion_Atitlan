@@ -1,0 +1,109 @@
+{
+  "paso": "11B_v3",
+  "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "lake_area_km2": 125.77,
+  "periods": {
+    "calibration_end": "2024-01-10",
+    "test_start": "2024-01-20",
+    "test_end": "2026-08-29"
+  },
+  "inputs": {
+    "climate": ".//outputs//caudales//clima_diario_features_modelo_caudal.pkl",
+    "climate_sha256": "15b44070e716d3d227cc97d3a21a5eaa373247f19bebf58b86b58afefe1b7686",
+    "longwave": ".//data//evaporation//procesado//atitlan_era5_longwave_1981_2026.csv",
+    "longwave_sha256": "506060e19dd1a4d08ae7bbbc167134c6c69ba95d841074d4b65d608c55c95bc8",
+    "flow": ".//outputs//caudales//caudal_diario_estimado_final.pkl",
+    "flow_sha256": "595aefd3af3ad9a9efe16fff17001b3f38722d1e8521b2123a50302cd8b224fc",
+    "level": ".//data//processed//nivel_canonico.csv",
+    "level_sha256": "fe43a0f8e0523fac895e9e6daaa7816fa80a6f4b28a0399a1cf60293e8658ee3",
+    "evap_11a_params": ".//outputs//evaporacion_future_compatible//11a_parametros_candidatos.json",
+    "evap_11a_sha256": "ae0128aff439858d0661b20e6adc39dbf17a8b761975bba0fb4c3d819ecb7350"
+  },
+  "selected_columns": {
+    "precipitation": "precip_consensus_mm",
+    "historical_evap": "evap_mm",
+    "tmean": "tmean_c",
+    "solar": "solar_mj_m2",
+    "flow": "{'Quiscab': 'Quiscab', 'San_Francisco': 'San_Francisco', 'Tzununa': 'Tzununa', 'La_Catarata': 'La_Catarata', 'San_Buenaventura': 'San_Buenaventura'}",
+    "level": "nivel_final_m"
+  },
+  "evaporation_candidate_metadata": {
+    "pressure_constant_kpa": 80.75782003952993,
+    "water_albedo": 0.08,
+    "water_emissivity": 0.97,
+    "sigma_mj_m2_day_k4": 4.903e-09,
+    "affine_intercept": 1.075242180942574,
+    "affine_slope": 0.5562910915490918
+  },
+  "reconstructed_original_params": {
+    "precip_scale": 0.7911420489357714,
+    "evap_scale": 0.20942696408243558,
+    "qin_scale": 2.191272381736431,
+    "net_unresolved_m_day": -0.0061624167804185314,
+    "n_fit_intervals": 460,
+    "cost": 17.338276541899873
+  },
+  "future_compatible_params": {
+    "precip_scale": 0.7735570728402028,
+    "evap_scale": 2.4996352076823427e-10,
+    "qin_scale": 2.2160502137585723,
+    "net_unresolved_m_day": -0.006833849632067889,
+    "n_fit_intervals": 460,
+    "cost": 17.33880140175275
+  },
+  "expected_frozen_params": {
+    "precip_scale": 1.278816,
+    "evap_scale": 2.273196,
+    "qin_scale": 0.758222,
+    "net_unresolved_m_day": -0.00026467
+  },
+  "metrics": {
+    "reconstructed_original_recursive": {
+      "n": 93,
+      "mae": 0.3784402008821695,
+      "rmse": 0.4405457899734528,
+      "bias": 0.2829613808907887,
+      "r2_nse": 0.027820606989123697,
+      "pearson_r": 0.6588107911972235
+    },
+    "future_compatible_recursive": {
+      "n": 93,
+      "mae": 0.38269527641558587,
+      "rmse": 0.4458955330390679,
+      "bias": 0.28398085100145903,
+      "r2_nse": 0.004066034527125395,
+      "pearson_r": 0.6414446651568143
+    },
+    "expected_frozen_recursive": {
+      "mae": 0.160801,
+      "rmse": 0.201679,
+      "bias": -0.088605,
+      "r2_nse": 0.796255,
+      "pearson_r": 0.916673
+    }
+  },
+  "decision": {
+    "baseline_reconstruction_mae_difference_m": 0.2176392008821695,
+    "baseline_reconstruction_ok": false,
+    "candidate_mae_change_vs_reconstructed_pct": 1.124371967750122,
+    "candidate_skill_vs_reconstructed": -0.011243719677501263,
+    "candidate_mae_change_vs_frozen_pct": 137.99309482875472,
+    "rule": "Reconstrucción baseline dentro de 0.05 m MAE del frozen; candidato <=10% peor que reconstrucción; NSE>=0.70; Pearson>=0.85.",
+    "accepted": false
+  },
+  "notes": [
+    "PASO 11B v3 incorpora longwave desde PASO 11B1 y recorta cualquier día climático posterior al fin real del test.",
+    "Sólo cambia la representación de evaporación.",
+    "Precipitación y caudal permanecen históricos para aislar evaporación.",
+    "Se recalibran todos los coeficientes del balance.",
+    "c_day sigue siendo término neto no resuelto; no es groundwater identificado.",
+    "No autoriza aún proyección CMIP6 completa."
+  ],
+  "outputs": {
+    "original_predictions": ".//outputs//evaporacion_future_compatible//11b_v3_predicciones_test_evap_original.csv",
+    "candidate_predictions": ".//outputs//evaporacion_future_compatible//11b_v3_predicciones_test_evap_future_compatible.csv",
+    "metrics": ".//outputs//evaporacion_future_compatible//11b_v3_metricas_balance_evaporacion.csv",
+    "parameters": ".//outputs//evaporacion_future_compatible//11b_v3_parametros_balance_recalibrado.csv",
+    "forcing": ".//outputs//evaporacion_future_compatible//11b_v3_forzantes_diarios.csv"
+  }
+}

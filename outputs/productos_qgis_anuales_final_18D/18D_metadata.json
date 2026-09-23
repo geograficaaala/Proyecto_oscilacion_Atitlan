@@ -1,0 +1,31 @@
+{
+  "step": "18D",
+  "status": "ANNUAL_QGIS_FINAL_VALIDATED",
+  "created_utc": "2026-09-18T06:21:58.128957+00:00",
+  "years": [
+    2027,
+    2050
+  ],
+  "scenarios": [
+    "ssp245",
+    "ssp585"
+  ],
+  "anchor_level_m": 1552.77,
+  "master_crs": "EPSG:32615",
+  "current_reference_area_km2": 122.0232,
+  "interior_distance_guard_m": 120.0,
+  "h2014_vertical_bracket_m": [
+    1557.31,
+    1558.09
+  ],
+  "annual_level_method": "annual mean per GCM followed by ensemble p05/p50/p95; frozen 2030 and 2050 quantiles preserved exactly",
+  "area_method": "16C4 conservative certain-water / certain-exposed / uncertain partition",
+  "key_horizon_validation": "must reproduce 16C4 within 0.0005 km2",
+  "outputs": {
+    "rasters": ".//outputs//productos_qgis_anuales_final_18D//rasters_anuales",
+    "vectors": ".//outputs//productos_qgis_anuales_final_18D//vectores_anuales",
+    "stacks": ".//outputs//productos_qgis_anuales_final_18D//stacks_multibanda",
+    "styles": ".//outputs//productos_qgis_anuales_final_18D//estilos_qml",
+    "tables": ".//outputs//productos_qgis_anuales_final_18D//tablas"
+  }
+}

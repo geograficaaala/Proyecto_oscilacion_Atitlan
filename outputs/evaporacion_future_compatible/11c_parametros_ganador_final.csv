@@ -1,0 +1,2 @@
+candidate,precip_scale,evap_scale,qin_scale,net_unresolved_m_per_day,success,cost,optimality,nfev,message,n_fit
+AERO_VPD_WIND_INDEX__AFFINE,1.1017848932453522,1.456345487114742,0.9556435253902945,-0.0025548535969143315,True,5.911164658642939,8.79587477744268e-09,5,`gtol` termination condition is satisfied.,453

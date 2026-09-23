@@ -1,0 +1,26 @@
+{
+  "selected_method": "LINEAR",
+  "params": {
+    "method": "LINEAR",
+    "slope": 1.1885852684704885,
+    "intercept": 0.05682983145593207
+  },
+  "selection": {
+    "n_oof_months": 31,
+    "n_internal_fit_months": 20,
+    "n_internal_validation_months": 11,
+    "identity_validation_mae": 0.8398979491091393,
+    "best_raw_method": "LINEAR",
+    "best_raw_validation_mae": 0.760493429959524,
+    "best_raw_improvement_vs_identity": 0.09454067513063691,
+    "minimum_improvement_required": 0.02,
+    "selected_method": "LINEAR",
+    "final_params_refit_all_oof": {
+      "method": "LINEAR",
+      "slope": 1.1885852684704885,
+      "intercept": 0.05682983145593207
+    }
+  },
+  "development_cutoff": "2021-05-23",
+  "final_cutoff": "2024-01-09"
+}

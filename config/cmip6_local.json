@@ -1,0 +1,62 @@
+{
+  "pipeline_version": "06_cmip6_local_csv_v1.1.0",
+  "project_root": ".",
+  "raw_dir": "data/cmip6/raw",
+  "processed_dir": "data/cmip6/procesados",
+  "results_dir": "outputs/cmip6",
+  "expected_models": [
+    "ACCESS-CM2",
+    "ACCESS-ESM1-5",
+    "CanESM5",
+    "CMCC-ESM2",
+    "CNRM-CM6-1",
+    "CNRM-ESM2-1",
+    "EC-Earth3",
+    "GFDL-ESM4",
+    "GISS-E2-1-G",
+    "HadGEM3-GC31-LL",
+    "IPSL-CM6A-LR",
+    "MIROC6",
+    "MPI-ESM1-2-HR",
+    "MRI-ESM2-0",
+    "UKESM1-0-LL"
+  ],
+  "expected_scenarios": [
+    "historical",
+    "ssp245",
+    "ssp585"
+  ],
+  "expected_periods": {
+    "historical": [
+      "1981-01-01",
+      "2014-12-31"
+    ],
+    "ssp245": [
+      "2015-01-01",
+      "2100-12-31"
+    ],
+    "ssp585": [
+      "2015-01-01",
+      "2100-12-31"
+    ]
+  },
+  "expected_columns": [
+    "date",
+    "year",
+    "month",
+    "day",
+    "model",
+    "scenario",
+    "pr_mm_day",
+    "tas_c",
+    "tasmin_c",
+    "tasmax_c",
+    "rh_pct",
+    "rsds_mj_m2_day",
+    "rlds_mj_m2_day",
+    "sfcWind_ms"
+  ],
+  "automatic_climate_value_modification": false,
+  "bias_correction_in_step_06": false,
+  "future_level_simulation_in_step_06": false
+}

@@ -1,0 +1,71 @@
+{
+  "step": "16C2",
+  "status": "FROZEN_HYPSOMETRY_FUTURE_COMPATIBLE",
+  "created_utc": "2026-09-18T05:24:41.789020+00:00",
+  "production_reference": {
+    "name": "primary_temporal_2014_median",
+    "H0_m": 1557.56,
+    "basis": "median canonical lake level during May-June 2014"
+  },
+  "vertical_sensitivity_references": {
+    "min_m": 1557.31,
+    "max_m": 1558.09
+  },
+  "rejected_as_production_datum": {
+    "name": "area_anchored_2026",
+    "H0_m": 1555.3395226,
+    "shift_vs_primary_m": -2.220477399999936,
+    "reason": "derived from matching modern Sentinel area to the aggregate raster footprint; retained only as a diagnostic and not used to shift the spatial bathymetry"
+  },
+  "current_anchor": {
+    "date": "2026-08-29",
+    "level_m": 1552.77,
+    "observed_area_km2": 122.0232
+  },
+  "aggregate_area_method": "observed Sentinel anchor area plus hypsometric area change relative to the 2026 anchor under the same temporal reference",
+  "aggregate_volume_method": "raw AMSCLAE hypsometric volume under the temporal reference; changes are reported relative to the 2026 anchor",
+  "published_volume_secondary_series": "published 2014 volume 25.46 km3 plus modeled storage change from relative level 0",
+  "reference_morphometry": {
+    "raster_area_km2": 126.55634768650329,
+    "raster_volume_km3": 25.315163370056663,
+    "max_depth_m": 325.0
+  },
+  "future": {
+    "scenarios": [
+      "ssp245",
+      "ssp585"
+    ],
+    "horizons": [
+      2030,
+      2050,
+      2090
+    ],
+    "quantiles": [
+      "p05",
+      "p50",
+      "p95"
+    ],
+    "models_per_scenario": 15
+  },
+  "scope": {
+    "hypsometry": "aggregate area-volume only",
+    "spatial_shoreline": "resultados/costa_future_compatible remains authoritative",
+    "future_levels": "conditional CMIP6 scenario trajectories, not deterministic forecasts"
+  },
+  "limitations": [
+    "The aggregate hypsometric curve does not repair or redefine unsupported spatial shoreline pixels.",
+    "The absolute raw area from AMSCLAE is not used as the modern area anchor.",
+    "Vertical sensitivity from the May-June 2014 level bracket is retained separately from CMIP6 ensemble spread.",
+    "The area-anchored 2026 H0 is not treated as a validated vertical datum correction.",
+    "2090 is retained as a stress horizon and carries greater scenario and model uncertainty than 2030/2050."
+  ],
+  "outputs_sha256": {
+    "curva_hipsometrica_relativa_frozen.csv": "f7017bb694b13643765edad7ae2b695c5ad89e8074888a2d62d02bd95908b37c",
+    "ancla_area_volumen_referencias.csv": "0aa251798ff02eea82caa664d48e985f6e5779630e2c37d8bb35655b593b4957",
+    "area_volumen_horizontes_cmip6.csv": "768efc91a7075801f6950d66c9cbede04d6593ef53ceee0d64bcd75e8dcb1368",
+    "resumen_horizontes_area_volumen.csv": "66f2d635bd6ad7d1c72e8c164a963679d1f69cb373e2eeeae92e4b6d6dcd6814",
+    "manifiesto_hipsometria_future_compatible.csv": "c8f070f8f0252dfa83849b6853cad49d537b61c5a055c40870298eb9c4bbcfd9",
+    "area_futura_p50.png": "2d4e9f080cb57b465867409c2c31623cde754e2b32fa69bdd136986e02c6dfc5",
+    "volumen_futuro_p50.png": "c396ed9376d011609f93b73a0536e7abb53265823919fcdf55acef2d3204f35b"
+  }
+}

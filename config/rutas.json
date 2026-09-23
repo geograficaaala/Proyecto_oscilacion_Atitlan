@@ -1,0 +1,23 @@
+{
+  "proyecto": ".",
+  "dataset_ml": "data/source/atitlan_matriz_modelo_autoregresiva.csv",
+  "features_autoregresivas": "data/source/atitlan_features_autoregresivas.csv",
+  "era5": "data/source/atitlan_era5_diario_cuenca_real.csv",
+  "chirps": "data/source/atitlan_chirps_diario_cuenca_real.csv",
+  "nasa_nivel": "data/source/atitlan_nivel_final.csv",
+  "rivers": "data/source/rivers_data.xlsx",
+  "weather": "data/source/weather_data.xlsx",
+  "lake": "data/source/lake_data.xlsx",
+  "limnology": "data/source/limnology_data.xlsx",
+  "sarima_notebook": "data/source/SarimaNewDataSet.ipynb",
+  "datos_procesados": "data/processed",
+  "cache": "data/cache",
+  "modelos_caudales": "models/caudales",
+  "modelos_nivel": "models/nivel",
+  "resultados_caudales": "outputs/caudales",
+  "resultados_nivel": "outputs/nivel",
+  "resultados_validacion": "outputs/validacion",
+  "figuras": "outputs/figuras",
+  "optuna_db": "studies",
+  "logs": "logs"
+}

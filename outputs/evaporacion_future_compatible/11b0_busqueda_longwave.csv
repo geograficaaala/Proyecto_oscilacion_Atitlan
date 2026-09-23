@@ -1,0 +1,7 @@
+path,date_col,longwave_cols,start,end,n_rows,missing_by_col,covers_test_2024_2026
+datos/reference_1981_2014/procesado\atitlan_era5_land_1981_2014.csv,date,longwave_mj_m2,1981-01-01,2014-12-31,12418,{'longwave_mj_m2': 0},False
+datos/reference_1981_2014/procesado\atitlan_referencia_1981_2014.csv,date,longwave_mj_m2,1981-01-01,2014-12-31,12418,{'longwave_mj_m2': 0},False
+datos/reference_1981_2014/raw\ATITLAN_ERA5_LAND_2010_2014.csv,date,longwave_mj_m2,2010-01-01,2014-12-31,1826,{'longwave_mj_m2': 0},False
+datos/reference_1981_2014/raw\ATITLAN_ERA5_LAND_2000_2009.csv,date,longwave_mj_m2,2000-01-01,2009-12-31,3653,{'longwave_mj_m2': 0},False
+datos/reference_1981_2014/raw\ATITLAN_ERA5_LAND_1990_1999.csv,date,longwave_mj_m2,1990-01-01,1999-12-31,3652,{'longwave_mj_m2': 0},False
+datos/reference_1981_2014/raw\ATITLAN_ERA5_LAND_1981_1989.csv,date,longwave_mj_m2,1981-01-01,1989-12-31,3287,{'longwave_mj_m2': 0},False

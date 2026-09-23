@@ -1,0 +1,15 @@
+{
+  "precip_scale": 1.278815536652382,
+  "evap_scale": 2.273196372849161,
+  "qin_scale": 0.7582216211994326,
+  "net_unresolved_m_per_day": -0.0002646651582524234,
+  "success": true,
+  "cost": 5.889062491108456,
+  "optimality": 8.374514588611537e-09,
+  "nfev": 6,
+  "message": "`gtol` termination condition is satisfied.",
+  "n_fit": 453,
+  "lake_area_km2": 125.77,
+  "fit_partition": "train+calibration",
+  "q_source": "caudal_diario_estimado_final"
+}

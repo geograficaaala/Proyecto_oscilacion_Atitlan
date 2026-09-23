@@ -1,0 +1,45 @@
+{
+  "step": "16B6",
+  "status": "SPATIAL_CAPABILITY_MAP_READY",
+  "created_utc": "2026-09-18T05:03:10.576531+00:00",
+  "purpose": "Define pixel by pixel where future shoreline position can be supported directly, where only locally supported AMSCLAE may be used, and where shoreline position must remain unknown.",
+  "classes": {
+    "0": "outside_evaluated_coastal_domain",
+    "1": "OBSERVADO_DIRECTO",
+    "2": "AMSCLAE_SOPORTADO",
+    "3": "DESCONOCIDO"
+  },
+  "threshold_provenance": {
+    "1": "Sentinel/NASA direct transition threshold from 16B4c2",
+    "2": "Original AMSCLAE depth converted with H2014_MED=1557.560 m, only where 16B4d0 accepted local support"
+  },
+  "counts": {
+    "domain_pixels": 23490,
+    "observed_direct_pixels": 6181,
+    "amsclae_supported_pixels": 311,
+    "unknown_pixels": 16998,
+    "known_capability_pct": 27.637292464878673
+  },
+  "current_water_without_amsclae": {
+    "total_pixels": 891,
+    "known_pixels": 318,
+    "unknown_pixels": 573
+  },
+  "important_limitations": [
+    "This product is a capability/provenance map, not a future shoreline map.",
+    "No unsupported coastal pixel is filled or interpolated.",
+    "AMSCLAE is not globally corrected or shifted.",
+    "Future shoreline maps must preserve these provenance classes and must not turn DESCONOCIDO into land or water.",
+    "Deep lake bathymetry can remain useful for basin morphology even where the precise shallow shoreline position is unsupported."
+  ],
+  "sha256": {
+    "16B6_capacidad_espacial_costera.tif": "df92814d82092671264095331b6fd4443de43cbc5cc996348a8235a63da12d80",
+    "16B6_nivel_umbral_con_fuente_m.tif": "60936dcf8542860bb5d3401fd65a18045853baf6c2cae0c29abd357c4e5cd7d4",
+    "16B6_procedencia_umbral.tif": "2eedcfa0fca10aa540eda1474e0d11f2af7e8d04b009446d00b50b80f6028509",
+    "16B6_dominio_costero_evaluado.tif": "fba23516dbdf1f6e888dcf4c0f96b2c8d9859338835956318dc2955a5366982e",
+    "16B6_resumen_global.csv": "d0c3424371eb7fc60b873a4834299175579b673d6be4dcc8ede7a18478b137f1",
+    "16B6_resumen_profundidad.csv": "b21821f282951b34b6bbee40df13ba3203b8e2d0345ed9e7f34b4b2ce06a8a0a",
+    "16B6_resumen_sectores.csv": "6e023f3aeeb61a1a985976628237a53fc1375edcdb114c3853f72b85dd117314"
+  },
+  "next_step": "Apply frozen 2030/2050 scenario lake levels to this threshold/provenance map, producing observed/supported/unknown shoreline-state products without forcing continuity across unknown zones."
+}

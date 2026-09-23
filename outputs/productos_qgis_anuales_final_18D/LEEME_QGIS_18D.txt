@@ -1,0 +1,35 @@
+PAQUETE QGIS ANUAL FINAL 18D
+
+Periodo principal: 2027-2050
+Escenarios: SSP245 y SSP585
+Ancla 2026: 1552.770 m
+CRS: EPSG:32615
+
+RASTERS ANUALES POR ESCENARIO
+estado_p50:
+1 agua cierta por evidencia costera
+2 expuesto cierto por evidencia costera
+3 agua cierta por interior AMSCLAE conservador
+4 expuesto cierto por interior AMSCLAE conservador
+5 incierto o sin soporte espacial suficiente
+
+robustez_p05_p95:
+1 agua robusta
+2 sensible al ensemble o al intervalo vertical
+3 exposicion robusta
+4 incertidumbre espacial
+
+consenso:
+1 agua cierta en ambos escenarios
+2 expuesto cierto en ambos escenarios
+3 diferencia entre SSP245 y SSP585
+4 incierto en uno o ambos escenarios
+
+Los GeoTIFF nivel_p50_m contienen el nivel anual p50 dentro de la mascara actual.
+Los GeoTIFF delta_nivel_vs_2026_m contienen el cambio respecto a 1552.770 m.
+Los GeoTIFF ancho_incertidumbre_m contienen p95-p05.
+Los stacks multibanda tienen una banda por ano, de 2027 a 2050.
+
+El area futura total no debe representarse con un unico valor.
+Usar water_area_lower_bound_p50_km2 y water_area_upper_bound_p50_km2.
+Las zonas inciertas no deben convertirse en una costa continua interpolada.

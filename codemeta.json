@@ -1,0 +1,20 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Modelación de la oscilación del nivel del Lago de Atitlán",
+  "version": "1.0.0",
+  "datePublished": "2026-09-18",
+  "programmingLanguage": [
+    "Python",
+    "PyQGIS"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Asociación Amigos del Lago de Atitlán"
+  },
+  "contributor": {
+    "@type": "Organization",
+    "name": "Autoridad para el Manejo Sustentable de la Cuenca del Lago de Atitlán y su Entorno (AMSCLAE)"
+  },
+  "description": "Modelación hidrológica, climática y geoespacial de la oscilación del nivel del Lago de Atitlán con productos históricos, CMIP6, Sentinel-2, batimetría y cartografía anual."
+}

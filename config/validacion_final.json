@@ -1,0 +1,76 @@
+{
+  "script_version": "1.0.0",
+  "created_utc": "2026-09-14T06:55:50.501948+00:00",
+  "project_root": ".",
+  "validated_model": "PHYSICAL_ONLY",
+  "selected_model_from_stage04": "PHYSICAL_ONLY",
+  "test_period_start": "2024-01-20 20:16:00",
+  "test_period_end": "2026-08-29 17:55:00",
+  "n_test": 93,
+  "diagnostic_label": "ROBUSTO_EN_TEST_RETROSPECTIVO",
+  "bootstrap": {
+    "resamples": 5000,
+    "block_lengths": [
+      5,
+      10,
+      15
+    ],
+    "method": "moving block bootstrap paired model/baseline"
+  },
+  "rolling_horizons": [
+    [
+      "1obs",
+      null
+    ],
+    [
+      "1m",
+      30
+    ],
+    [
+      "3m",
+      90
+    ],
+    [
+      "6m",
+      180
+    ],
+    [
+      "12m",
+      365
+    ],
+    [
+      "24m",
+      730
+    ]
+  ],
+  "season_definition": {
+    "rainy": "May-Oct",
+    "dry": "Nov-Apr",
+    "note": "Clasificacion diagnostica simplificada; el inicio real de la epoca lluviosa varia espacial e interanualmente."
+  },
+  "sensitivity": {
+    "one_at_a_time_factors": [
+      0.8,
+      0.9,
+      1.0,
+      1.1,
+      1.2
+    ],
+    "monte_carlo_draws": 2000,
+    "monte_carlo_uniform_fraction": 0.1,
+    "interpretation": "sensibilidad local, no incertidumbre probabilistica calibrada"
+  },
+  "outputs": {
+    "global_metrics": "outputs/validacion/metricas_globales_test.csv",
+    "horizon_metrics": "outputs/validacion/metricas_por_horizonte.csv",
+    "annual_metrics": "outputs/validacion/metricas_por_ano.csv",
+    "season_metrics": "outputs/validacion/metricas_por_estacion.csv",
+    "regime_metrics": "outputs/validacion/metricas_por_regimen.csv",
+    "bootstrap": "outputs/validacion/bootstrap_skill.csv",
+    "residual_diagnostics": "outputs/validacion/diagnostico_residuos.csv",
+    "parameter_sensitivity": "outputs/validacion/sensibilidad_parametros.csv",
+    "monte_carlo": "outputs/validacion/sensibilidad_monte_carlo.csv",
+    "summary": "outputs/validacion/resumen_validacion.csv",
+    "report": "outputs/validacion/reporte_validacion_final.md"
+  }
+}

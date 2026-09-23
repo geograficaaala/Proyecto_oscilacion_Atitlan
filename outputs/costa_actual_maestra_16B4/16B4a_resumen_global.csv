@@ -1,0 +1,9 @@
+﻿metric,value,unit
+current_lake_pixels,305058.0,pixels
+current_lake_area,122.0232,km2
+current_lake_with_bathy_pixels,304167.0,pixels
+current_lake_without_bathy_pixels,891.0,pixels
+current_lake_without_bathy_area,0.3564,km2
+shore_without_bathy_pixels,499.0,pixels
+shore_without_bathy_area,0.1996,km2
+missing_components,89.0,count

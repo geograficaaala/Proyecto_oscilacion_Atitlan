@@ -1,0 +1,56 @@
+{
+  "step": "16C5",
+  "status": "FROZEN_INTEGRATED_HYDROMORPHOLOGY",
+  "created_utc": "2026-09-18T05:36:51.546875+00:00",
+  "current_reference": {
+    "area_km2": 122.0232,
+    "source": "Sentinel 2024-2026 50% modern-water reference mask"
+  },
+  "spatial_coast": {
+    "status": "PARTIAL_WITH_EXPLICIT_UNKNOWN",
+    "known_capability_pct": 27.637292464878673,
+    "unknown_coastal_domain_area_km2": 6.7992,
+    "authority": "resultados/costa_future_compatible"
+  },
+  "future_area": {
+    "status": "BOUNDS_ONLY",
+    "point_estimates": "REJECTED_BY_16C3",
+    "source": "16C4 conservative certain-wet / certain-exposed partition",
+    "primary_horizons": [
+      2030,
+      2050
+    ],
+    "stress_horizon": 2090
+  },
+  "storage": {
+    "status": "PHYSICALLY_PLAUSIBLE_NOT_INDEPENDENTLY_VALIDATED",
+    "source": "frozen aggregate AMSCLAE hypsometry with temporal 2014 reference"
+  },
+  "future_levels": {
+    "status": "CONDITIONAL_CMIP6_SCENARIO_TRAJECTORIES",
+    "scenarios": [
+      "ssp245",
+      "ssp585"
+    ],
+    "primary_horizons": [
+      2030,
+      2050
+    ],
+    "stress_horizon": 2090
+  },
+  "reporting_rules": [
+    "Do not report a single total future lake area; report lower and upper bounds.",
+    "Do not draw a continuous future shoreline through unsupported pixels.",
+    "Report certain exposed area separately from uncertain current-mask area.",
+    "Storage change may be reported as physically plausible aggregate sensitivity, not independently validated bathymetric truth.",
+    "Treat 2090 as a stress horizon with substantially greater uncertainty."
+  ],
+  "outputs_sha256": {
+    "resumen_hidromorfologico_final.csv": "550e0ce84f593634a089834be6b6db444116d4a3826af81c9590e3eb9978db7a",
+    "resumen_hidromorfologico_cuantiles.csv": "a22fb3895bc520daf82d08d3b54b1575fc3391cdad673b21b1b0ce14632e8087",
+    "limites_area_futura_p50.csv": "aa07e5085ca8c58fed6d550dec0073f3c58d301179701c0b470b23469c2ae569",
+    "manifiesto_hidromorfologia_future_compatible.csv": "faad3fb9d00174ba9295059f0843541c1b326e4f91556d2abb4301484d702b73",
+    "resumen_area_futura_p50.png": "aa4c4bc0d666416b552fec85a999e073af926019058753a860eca22a23333fd4",
+    "resumen_perdida_almacenamiento_p50.png": "4a5c58294639c3024bb4e7dd77458ed8a802821e8620ba741b805dfc88a5e99b"
+  }
+}

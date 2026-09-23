@@ -1,0 +1,174 @@
+{
+  "paso": "11C",
+  "descripcion": "Selección de formulación de evaporación future-compatible usando TRAIN para ajuste, CALIBRATION para selección y TEST una sola vez para el ganador.",
+  "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "stage03_script": ".//src//03_balance_hidrico.py",
+  "stage03_sha256": "8c9aa874245f6637ff0d9dfae996e07cb4c9bfa6ba473f59f4535e30db3f5595",
+  "stage03_prefix_boundary_line": 365,
+  "inputs": {
+    "matrix": ".//data//processed//matriz_modelo_autoregresiva.pkl",
+    "climate": ".//data//processed//clima_diario_features.pkl",
+    "q_dev": ".//outputs//caudales//caudal_diario_estimado_desarrollo.pkl",
+    "q_final": ".//outputs//caudales//caudal_diario_estimado_final.pkl",
+    "longwave": ".//data//evaporation//procesado//atitlan_era5_longwave_1981_2026.csv",
+    "evap_params_11a": ".//outputs//evaporacion_future_compatible//11a_parametros_candidatos.json"
+  },
+  "candidate_metadata": {
+    "date_col": "date",
+    "tmean_col": "tmean_c",
+    "tmin_col": "tmin_c",
+    "tmax_col": "tmax_c",
+    "dewpoint_col": "dewpoint_c",
+    "rh_col": "rh_pct",
+    "vapor_pressure_source_historical": "dewpoint_c",
+    "wind_col": "wind_ms",
+    "solar_col": "solar_mj_m2",
+    "historical_evap_col": "evap_mm",
+    "pressure_constant_kpa": 80.75782003952993,
+    "water_albedo": 0.08,
+    "water_emissivity": 0.97,
+    "reference_albedo": 0.23,
+    "reference_emissivity": 0.98,
+    "priestley_taylor_alpha": 1.26,
+    "sigma_mj_m2_day_k4": 4.903e-09,
+    "n_candidates": 16
+  },
+  "selection_protocol": {
+    "fit_candidates_on": "train",
+    "flow_for_candidate_fit_and_calibration": "q_in_dev_equiv_m",
+    "select_on": "calibration",
+    "primary_metric": "recursive weighted MAE",
+    "tie_breakers": [
+      "recursive weighted RMSE",
+      "recursive MAE"
+    ],
+    "avoid_evap_scale_bound_in_selection": true,
+    "test_used_in_selection": false,
+    "winner_refit_on": [
+      "train",
+      "calibration"
+    ],
+    "flow_for_final_refit_and_test": "q_in_final_equiv_m"
+  },
+  "baseline": {
+    "dev_params": {
+      "precip_scale": 1.3796029397905765,
+      "evap_scale": 2.5707656968524355,
+      "qin_scale": 0.713803694988823,
+      "net_unresolved_m_per_day": 0.0007305165462173727,
+      "success": true,
+      "cost": 4.7653048240973765,
+      "optimality": 1.1038010542540596e-07,
+      "nfev": 8,
+      "message": "`ftol` termination condition is satisfied.",
+      "n_fit": 357
+    },
+    "final_params": {
+      "precip_scale": 1.278815536652382,
+      "evap_scale": 2.273196372849161,
+      "qin_scale": 0.7582216211994326,
+      "net_unresolved_m_per_day": -0.0002646651582524234,
+      "success": true,
+      "cost": 5.889062491108456,
+      "optimality": 8.374514588611537e-09,
+      "nfev": 6,
+      "message": "`gtol` termination condition is satisfied.",
+      "n_fit": 453
+    },
+    "calibration_metrics": {
+      "n": 96,
+      "mae": 0.28120585357219124,
+      "rmse": 0.3418796534655705,
+      "bias": 0.2614479004211532,
+      "r2_nse": -0.23690485573045672,
+      "pearson_r": 0.7150312191760841,
+      "weighted_mae": 0.24449005330930923,
+      "weighted_rmse": 0.29154454292749593,
+      "weighted_bias": 0.21797276170615273
+    },
+    "test_metrics": {
+      "n": 93,
+      "mae": 0.16080068521595695,
+      "rmse": 0.20167917264461743,
+      "bias": -0.08860520359283533,
+      "r2_nse": 0.7962552613300076,
+      "pearson_r": 0.9166727852692577,
+      "weighted_mae": 0.16278604070782676,
+      "weighted_rmse": 0.2045391029008235,
+      "weighted_bias": -0.10845631351480206
+    },
+    "reconstruction_ok": true
+  },
+  "winner": {
+    "candidate": "AERO_VPD_WIND_INDEX__AFFINE",
+    "calibration_metrics": {
+      "candidate": "AERO_VPD_WIND_INDEX__AFFINE",
+      "base": "AERO_VPD_WIND_INDEX",
+      "mapping": "AFFINE",
+      "uses_vpd_wind": 1.0,
+      "n_cal": 96.0,
+      "cal_mae": 0.3533623266999821,
+      "cal_rmse": 0.41282462715173557,
+      "cal_bias": 0.34578288257960094,
+      "cal_nse": -0.8035200672246803,
+      "cal_pearson_r": 0.7009248402023006,
+      "cal_weighted_mae": 0.3160163691054292,
+      "cal_weighted_rmse": 0.36546801511585386,
+      "cal_weighted_bias": 0.3049639540101436,
+      "cal_skill_vs_original_wmae": -0.29255307047453005,
+      "train_precip_scale": 1.2230242194191652,
+      "train_evap_scale": 1.401875934805686,
+      "train_qin_scale": 0.45263290492593417,
+      "train_net_unresolved_m_per_day": -0.002317468842335054,
+      "evap_scale_at_bound": 0.0,
+      "invariant_max_diff": 0.0
+    },
+    "final_params": {
+      "precip_scale": 1.1017848932453522,
+      "evap_scale": 1.456345487114742,
+      "qin_scale": 0.9556435253902945,
+      "net_unresolved_m_per_day": -0.0025548535969143315,
+      "success": true,
+      "cost": 5.911164658642939,
+      "optimality": 8.79587477744268e-09,
+      "nfev": 5,
+      "message": "`gtol` termination condition is satisfied.",
+      "n_fit": 453
+    },
+    "test_metrics": {
+      "n": 93,
+      "mae": 0.16895566477422264,
+      "rmse": 0.21212252391719097,
+      "bias": -0.10532863973907375,
+      "r2_nse": 0.7746083243052204,
+      "pearson_r": 0.9121914903718454,
+      "weighted_mae": 0.1696964204182793,
+      "weighted_rmse": 0.21451619623545506,
+      "weighted_bias": -0.11905668005587139
+    }
+  },
+  "decision": {
+    "test_mae_change_pct": 5.0714830893372564,
+    "test_skill_mae": -0.050714830893372476,
+    "evap_scale_at_bound": false,
+    "acceptance_rule": "winner test MAE <= 110% baseline; NSE >= 0.70; Pearson >= 0.85; final evap_scale not at original 0/3 bound.",
+    "accepted": true
+  },
+  "important_notes": [
+    "El test no se usó para ordenar candidatos.",
+    "El ganador fue seleccionado exclusivamente con calibration.",
+    "Todos los candidatos usan el build_interval_components y fit_balance originales del PASO 03.",
+    "Las formulaciones con VPD usan dewpoint histórico porque así fue calibrado PASO 11A; al aplicar CMIP6 deberá derivarse presión de vapor a partir de RH.",
+    "Este paso sólo resuelve la representación de evaporación; aún falta integrar precipitación y caudales future-compatible antes de proyectar niveles."
+  ],
+  "outputs": {
+    "ranking_calibration": ".//outputs//evaporacion_future_compatible//11c_ranking_calibration_evaporacion.csv",
+    "winner_params": ".//outputs//evaporacion_future_compatible//11c_parametros_ganador_final.csv",
+    "test_metrics": ".//outputs//evaporacion_future_compatible//11c_metricas_test_ganador.csv",
+    "baseline_test_predictions": ".//outputs//evaporacion_future_compatible//11c_predicciones_test_baseline_original.csv",
+    "winner_test_predictions": ".//outputs//evaporacion_future_compatible//11c_predicciones_test_ganador.csv",
+    "daily_candidates": ".//outputs//evaporacion_future_compatible//11c_evaporacion_diaria_candidatos.csv",
+    "catalog": ".//outputs//evaporacion_future_compatible//11c_catalogo_candidatos.csv",
+    "winner_intervals": ".//outputs//evaporacion_future_compatible//11c_intervalos_ganador.csv"
+  }
+}

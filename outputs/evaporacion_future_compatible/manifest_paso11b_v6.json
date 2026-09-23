@@ -1,0 +1,126 @@
+{
+  "paso": "11B_v6",
+  "descripcion": "Evaporación future-compatible evaluada con las funciones, split, pesos, robust loss y agregación temporal exactos del PASO 03.",
+  "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "stage03_script": ".//src//03_balance_hidrico.py",
+  "stage03_sha256": "8c9aa874245f6637ff0d9dfae996e07cb4c9bfa6ba473f59f4535e30db3f5595",
+  "stage03_prefix_boundary_line": 365,
+  "inputs": {
+    "matrix": ".//data//processed//matriz_modelo_autoregresiva.pkl",
+    "climate": ".//data//processed//clima_diario_features.pkl",
+    "q_dev": ".//outputs//caudales//caudal_diario_estimado_desarrollo.pkl",
+    "q_final": ".//outputs//caudales//caudal_diario_estimado_final.pkl",
+    "longwave": ".//data//evaporation//procesado//atitlan_era5_longwave_1981_2026.csv",
+    "evap_11a_params": ".//outputs//evaporacion_future_compatible//11a_parametros_candidatos.json"
+  },
+  "stage03_exact_logic": {
+    "F_SCALE_M": 0.15,
+    "fit_function": "fit_balance cargado del 03_balance_hidrico.py",
+    "interval_function": "build_interval_components cargado del 03_balance_hidrico.py",
+    "q_column": "q_in_final_equiv_m",
+    "fit_partitions": [
+      "train",
+      "calibration"
+    ]
+  },
+  "evap_candidate_metadata": {
+    "date_col": "date",
+    "tmean_col": "tmean_c",
+    "solar_col": "solar_mj_m2",
+    "historical_evap_col": "evap_mm",
+    "pressure_constant_kpa": 80.75782003952993,
+    "water_albedo": 0.08,
+    "water_emissivity": 0.97,
+    "sigma_mj_m2_day_k4": 4.903e-09,
+    "affine_intercept": 1.075242180942574,
+    "affine_slope": 0.5562910915490918,
+    "last_candidate_date": "2026-08-29"
+  },
+  "invariant_max_differences": {
+    "delta_h_obs_m": 0.0,
+    "interval_weight": 0.0,
+    "p_consensus_m": 0.0,
+    "q_in_final_equiv_m": 0.0,
+    "duration_days": 0.0
+  },
+  "original_params": {
+    "precip_scale": 1.278815536652382,
+    "evap_scale": 2.273196372849161,
+    "qin_scale": 0.7582216211994326,
+    "net_unresolved_m_per_day": -0.0002646651582524234,
+    "success": true,
+    "cost": 5.889062491108456,
+    "optimality": 8.374514588611537e-09,
+    "nfev": 6,
+    "message": "`gtol` termination condition is satisfied.",
+    "n_fit": 453
+  },
+  "candidate_params": {
+    "precip_scale": 1.1653939637046278,
+    "evap_scale": 2.9999999999999996,
+    "qin_scale": 0.41273618512489435,
+    "net_unresolved_m_per_day": 0.003372630294682225,
+    "success": true,
+    "cost": 5.892999423508777,
+    "optimality": 4.00935512768785e-08,
+    "nfev": 7,
+    "message": "`ftol` termination condition is satisfied.",
+    "n_fit": 453
+  },
+  "expected_frozen_params": {
+    "precip_scale": 1.278816,
+    "evap_scale": 2.273196,
+    "qin_scale": 0.758222,
+    "net_unresolved_m_per_day": -0.00026467
+  },
+  "frozen_param_differences": {
+    "precip_scale": -4.633476180515572e-07,
+    "evap_scale": 3.7284916087898523e-07,
+    "qin_scale": -3.788005673577288e-07,
+    "net_unresolved_m_per_day": 4.841747576597635e-09
+  },
+  "original_test_metrics": {
+    "n": 93,
+    "mae": 0.16080068521595695,
+    "rmse": 0.20167917264461743,
+    "bias": -0.08860520359283533,
+    "r2_nse": 0.7962552613300076,
+    "pearson_r": 0.9166727852692577,
+    "weighted_mae": 0.16278604070782676,
+    "weighted_rmse": 0.2045391029008235,
+    "weighted_bias": -0.10845631351480206
+  },
+  "candidate_test_metrics": {
+    "n": 93,
+    "mae": 0.20929809911401345,
+    "rmse": 0.2523677498336192,
+    "bias": -0.1733286887520887,
+    "r2_nse": 0.6809696417647784,
+    "pearson_r": 0.9124996941737671,
+    "weighted_mae": 0.2151157226752663,
+    "weighted_rmse": 0.2584725258175535,
+    "weighted_bias": -0.18749701209404745
+  },
+  "expected_test_metrics": {
+    "mae": 0.160801,
+    "rmse": 0.201679,
+    "bias": -0.088605,
+    "r2_nse": 0.796255,
+    "pearson_r": 0.916673
+  },
+  "decision": {
+    "baseline_reconstruction_ok": true,
+    "candidate_mae_change_pct": 30.159954749523603,
+    "candidate_skill_vs_original": -0.301599547495236,
+    "accepted": false,
+    "rule": "Baseline: MAE dentro de 0.01 m y parámetros dentro de 0.02 del frozen. Candidato: MAE <=110% del original exacto, NSE>=0.70 y Pearson>=0.85."
+  },
+  "outputs": {
+    "params": ".//outputs//evaporacion_future_compatible//11b_v6_parametros_recalibracion_exacta.csv",
+    "metrics": ".//outputs//evaporacion_future_compatible//11b_v6_metricas_test.csv",
+    "original_predictions": ".//outputs//evaporacion_future_compatible//11b_v6_predicciones_test_evap_original.csv",
+    "candidate_predictions": ".//outputs//evaporacion_future_compatible//11b_v6_predicciones_test_evap_future_compatible.csv",
+    "daily_candidate": ".//outputs//evaporacion_future_compatible//11b_v6_evaporacion_diaria_candidate.csv",
+    "candidate_intervals": ".//outputs//evaporacion_future_compatible//11b_v6_intervalos_candidate.csv"
+  }
+}

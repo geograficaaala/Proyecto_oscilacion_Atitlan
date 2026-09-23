@@ -1,0 +1,11 @@
+﻿metric,value,unit
+direct_transition_pixels,6181.0,pixels
+shallow_amsclae_pixels,21474.0,pixels
+direct_overlap_pixels,4738.0,pixels
+direct_compatible_pixels,793.0,pixels
+direct_compatible_pct,16.737019839594765,percent
+direct_residual_median_abs,5.6661376953125,m
+direct_residual_p90_abs,17.500952148437502,m
+local_supported_pixels,333.0,pixels
+local_supported_area,0.1332,km2
+local_supported_pct_shallow,1.5507124895222129,percent

@@ -1,0 +1,26 @@
+{
+  "step": "16C3",
+  "status": "COAST_HYPSOMETRY_CONSISTENCY_AUDIT_COMPLETE",
+  "created_utc": "2026-09-18T05:29:09.689603+00:00",
+  "area_decision": "REJECT_C2_AREA_POINT_ESTIMATES",
+  "volume_decision": "RETAIN_STORAGE_CHANGE_AS_PLAUSIBLE",
+  "n_area_contradictions": 4,
+  "n_storage_rejects": 0,
+  "current_area_km2": 122.0232,
+  "logic": {
+    "hard_minimum_area_loss": "newly exposed p50 pixels from the frozen coastal product intersected with the frozen current-water mask",
+    "future_area_upper_bound": "current observed area minus hard minimum known exposure",
+    "area_contradiction": "aggregate hypsometric loss is smaller than spatially observed-supported loss inside the current-water mask",
+    "storage_check": "storage loss must be nonnegative and no larger than current surface area times drawdown"
+  },
+  "interpretation": {
+    "area": "If contradiction is detected, the C2 aggregate area point estimate cannot be used as total future lake area.",
+    "volume": "A plausible storage change is not automatically independently validated; it may be retained only as aggregate storage sensitivity until further validation.",
+    "spatial_coast": "Frozen coastal products remain authoritative for supported spatial exposure."
+  },
+  "outputs_sha256": {
+    "16C3_auditoria_consistencia_area_volumen.csv": "85ecbc5c543b73d9a16d8c9e5e3fed94ad7d2c5c5decadee174c9801d30b9ec4",
+    "16C3_resumen_clases_espaciales.csv": "918bc6c3f38f9730bb770d33c54d6118a62faa901ad1bd5fc224fedbeebe4aba",
+    "16C3_comparacion_perdida_area.png": "87cc581640ef7e86dcc7fd66df2d473c64f803d690b69e5d4268a684e5fa2460"
+  }
+}

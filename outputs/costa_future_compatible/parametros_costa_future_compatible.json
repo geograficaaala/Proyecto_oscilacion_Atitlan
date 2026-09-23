@@ -1,0 +1,82 @@
+{
+  "step": "16B9",
+  "status": "FROZEN_COAST_FUTURE_COMPATIBLE",
+  "created_utc": "2026-09-18T05:11:15.205525+00:00",
+  "current_lake": {
+    "reference": "Sentinel 2024-2026 50% modern water mask",
+    "pixels": 305058,
+    "area_km2": 122.0232
+  },
+  "spatial_capability": {
+    "domain_pixels": 23490,
+    "observed_direct_pixels": 6181,
+    "amsclae_supported_pixels": 311,
+    "unknown_pixels": 16998,
+    "known_pct": 27.637292464878673,
+    "unknown_area_km2": 6.7992
+  },
+  "direct_observation_range_m": {
+    "min": 1552.45,
+    "max": 1554.05
+  },
+  "future_horizons": [
+    2030,
+    2050
+  ],
+  "future_scenarios": [
+    "ssp245",
+    "ssp585"
+  ],
+  "interpretation": {
+    "future_levels": "Conditional CMIP6 scenario trajectories, not deterministic forecasts.",
+    "exposure_area": "Area of newly exposed pixels only within the spatially supported part of the coastal domain. It is NOT total lake-wide exposed area.",
+    "unknown": "Pixels without sufficient spatial support. They must remain unknown and must not be treated as land or water in downstream analyses.",
+    "deep_bathymetry": "The poor shallow-coast alignment does not imply that the entire deep AMSCLAE bathymetry is invalid. The limitation applies primarily to exact shoreline positioning in poorly supported shallow zones."
+  },
+  "key_results": [
+    {
+      "scenario": "ssp245",
+      "year": 2030,
+      "level_p50_m": 1552.348610031073,
+      "new_exposed_total_area_km2": 1.9312,
+      "new_exposed_robust_area_km2": 0.0,
+      "new_exposed_ensemble_sensitive_area_km2": 1.9312,
+      "unknown_area_km2": 6.7992
+    },
+    {
+      "scenario": "ssp245",
+      "year": 2050,
+      "level_p50_m": 1550.3365020596582,
+      "new_exposed_total_area_km2": 1.944,
+      "new_exposed_robust_area_km2": 1.9348,
+      "new_exposed_ensemble_sensitive_area_km2": 0.0092,
+      "unknown_area_km2": 6.7992
+    },
+    {
+      "scenario": "ssp585",
+      "year": 2030,
+      "level_p50_m": 1552.293234566714,
+      "new_exposed_total_area_km2": 1.932,
+      "new_exposed_robust_area_km2": 0.0,
+      "new_exposed_ensemble_sensitive_area_km2": 1.932,
+      "unknown_area_km2": 6.7992
+    },
+    {
+      "scenario": "ssp585",
+      "year": 2050,
+      "level_p50_m": 1548.1447400878528,
+      "new_exposed_total_area_km2": 1.9572,
+      "new_exposed_robust_area_km2": 0.0,
+      "new_exposed_ensemble_sensitive_area_km2": 1.9572,
+      "unknown_area_km2": 6.7992
+    }
+  ],
+  "manifest_sha256": "fd74509f46fb1084713d75a1cc3743d6099715b172392c0508e401a167221bb0",
+  "limitations": [
+    "Only 27.64% of the evaluated coastal domain has direct or locally supported spatial thresholds.",
+    "The 6.7992 km2 classified as unknown are not predicted.",
+    "The observed direct shoreline relation is supported only over the 2024-2026 exact Sentinel/NASA range 1552.450-1554.050 m.",
+    "AMSCLAE is used for shoreline extrapolation only in the small subset accepted by the local compatibility audit.",
+    "These products must not be represented as a continuous deterministic future shoreline around the whole lake."
+  ]
+}

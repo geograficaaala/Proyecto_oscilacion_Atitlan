@@ -1,0 +1,6 @@
+﻿tributario,n_features_total,n_blocked_cross_source,n_ambiguous_source_specific,n_compatible_probable,n_review_manual,n_strict_future_compatible,blocked_importance_fraction,blocked_importance_pct,feature_source,model_path
+Quiscab,91,19,0,72,0,72,,,config:root.river_models.Quiscab.dev_features,./models/caudales\quiscab_desarrollo_xgb_tweedie_preprocessor.joblib
+San_Francisco,91,19,0,72,0,72,,,config:root.river_models.San_Francisco.dev_features,./models/caudales\san_francisco_desarrollo_rf_log.joblib
+Tzununa,91,19,0,72,0,72,,,config:root.river_models.Tzununa.dev_features,./models/caudales\tzununa_desarrollo_xgb_tweedie_preprocessor.joblib
+La_Catarata,91,19,0,72,0,72,,,config:root.river_models.La_Catarata.dev_features,./models/caudales\la_catarata_desarrollo_rf_log.joblib
+San_Buenaventura,91,19,0,72,0,72,,,config:root.river_models.San_Buenaventura.dev_features,./models/caudales\san_buenaventura_desarrollo_rf_log.joblib

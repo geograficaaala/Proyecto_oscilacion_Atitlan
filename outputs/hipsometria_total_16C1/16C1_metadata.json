@@ -1,0 +1,82 @@
+{
+  "step": "16C1",
+  "status": "TOTAL_HYPSOMETRY_DIAGNOSTIC_COMPLETE",
+  "created_utc": "2026-09-18T05:19:45.487123+00:00",
+  "amsclae_source": "data/external/batimetria_amsclae.tif",
+  "amsclae_sha256": "07ff0fd1b9f57977860b0a34d6bb9656f7b2507e5ce7917d62781d5cc4863b04",
+  "raster": {
+    "shape": [
+      2050,
+      2470
+    ],
+    "crs": "ESRI:103598",
+    "valid_pixels": 2269141,
+    "pixel_area_m2": 55.77280022991224,
+    "reference_area_km2": 126.55634768650329,
+    "reference_volume_km3": 25.315163370056663,
+    "max_depth_m": 325.0,
+    "mean_depth_m": 200.03076758161237,
+    "median_depth_m": 222.75421
+  },
+  "published_reference": {
+    "area_km2": 125.77,
+    "volume_km3": 25.46,
+    "max_depth_m": 327.56,
+    "mean_depth_m": 202.4330126421245
+  },
+  "current_lake": {
+    "date": "2026-08-29",
+    "level_m": 1552.77,
+    "sentinel_area_km2": 122.0232
+  },
+  "vertical_references": {
+    "temporal_2014_median": 1557.56,
+    "temporal_2014_min": 1557.31,
+    "temporal_2014_max": 1558.09,
+    "area_anchored_2026": 1555.3395226
+  },
+  "curve": {
+    "relative_min_m": -325.0,
+    "relative_max_m": 0.0,
+    "step_m": 0.1,
+    "rows": 3251
+  },
+  "future": {
+    "scenarios": [
+      "ssp245",
+      "ssp585"
+    ],
+    "horizons": [
+      2030,
+      2050,
+      2090
+    ],
+    "quantiles": [
+      "p05",
+      "p50",
+      "p95"
+    ],
+    "models_per_scenario": 15
+  },
+  "interpretation": {
+    "spatial_coast_authority": "resultados/costa_future_compatible",
+    "hypsometry_role": "aggregate area-volume morphometry only",
+    "area_anchored_reference": "bulk scalar sensitivity reference only, not a spatial datum correction",
+    "future_levels": "conditional CMIP6 scenario trajectories, not deterministic forecasts"
+  },
+  "outputs_sha256": {
+    "16C1_curva_hipsometrica_total.csv": "f7017bb694b13643765edad7ae2b695c5ad89e8074888a2d62d02bd95908b37c",
+    "16C1_niveles_relativos_clave.csv": "2768bd5ba61df18d1f0af236c3aea0cb9b639d1a93c67d20c28eb64cc54bc842",
+    "16C1_bandas_profundidad.csv": "468da43e375f93f64e66770e8eb1dde8c072e670a0de591df86cac5efe13a713",
+    "16C1_percentiles_profundidad.csv": "13909f3ec1fb9e5eff60c0462552b22b8d16868d2d167909b0cb0b950e7f56e3",
+    "16C1_referencias_verticales.csv": "ced698a681fcfb0ac74f231445a1d716c5d9e18f167811b6971d9744dc6b97a8",
+    "16C1_hipsometria_futura_2030_2050_2090.csv": "6de06dd487103b5778b7dad69e234d056dcc40664c1551af36017917efcda6e4",
+    "16C1_comparacion_morfometria_publicada.csv": "591f48151bfd967d7eee3a38a05725a2a53e6b246a57ff194a73cf4dc66f527b",
+    "16C1_diagnostico_fisico.csv": "fab85ca5456e65539f2e33a25e234994a6a0897779578cca8e0962f7aa940ee0",
+    "16C1_area_vs_nivel_relativo.png": "79f7d356d387b4b35b8a3db51ecd8dca8ea03ca96b842fcd352ff5b07c4853da",
+    "16C1_volumen_vs_nivel_relativo.png": "1e37124419b49be74e9d06bc0f68af260ada14f85c0593fa170886024aef6bf4",
+    "16C1_area_vs_volumen.png": "573374f4adc1744149aa04d769e66b162dd0baf01f3a090f2826ea4170ceea58",
+    "16C1_distribucion_profundidad.png": "b0dc724f21f92554524e84871e3f067f2cb440c87557feb8d736af7c2d63aa83",
+    "16C1_sensibilidad_referencia_vertical.png": "ec7857856d52ef05af4fc10521e231b5c746a1a3e01990ec535fdd6f9c91ec98"
+  }
+}

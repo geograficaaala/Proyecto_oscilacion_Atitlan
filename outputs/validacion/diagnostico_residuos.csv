@@ -1,0 +1,11 @@
+diagnostic,lag,statistic,value,pvalue
+level_open_loop_residual,0,durbin_watson,0.6200506727127356,
+level_open_loop_residual,1,ljung_box,32.04295336272302,1.5080110250097365e-08
+level_open_loop_residual,3,ljung_box,42.071518321690284,3.874339187045095e-09
+level_open_loop_residual,6,ljung_box,53.857702817279694,7.880994072244853e-10
+level_open_loop_residual,12,ljung_box,111.26571737564203,3.361392391971343e-18
+delta_residual,0,durbin_watson,2.2879059130475543,
+delta_residual,1,ljung_box,3.021490508571157,0.08216791500778059
+delta_residual,3,ljung_box,7.059055520141167,0.070039103517041
+delta_residual,6,ljung_box,9.638518330354362,0.1407235491938201
+delta_residual,12,ljung_box,25.467171910292613,0.012757800982190263

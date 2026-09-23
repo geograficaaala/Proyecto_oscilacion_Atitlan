@@ -1,0 +1,47 @@
+{
+  "step": "16B4b",
+  "status": "OBSERVATIONAL_LITTORAL_SURFACE_CANDIDATE",
+  "created_utc": "2026-09-18T04:38:47.377749+00:00",
+  "principle": "The observational littoral surface is built only from Sentinel/NASA shoreline constraints and is independent of the AMSCLAE bathymetry edge.",
+  "stable_constraints": {
+    "n": 5103,
+    "z_min_m": 1552.479,
+    "z_max_m": 1554.0349999999999
+  },
+  "interpolation": {
+    "method": "local IDW",
+    "k_neighbors": 8,
+    "min_neighbors": 3,
+    "max_distance_m": 120.0,
+    "power": 2.0,
+    "coastal_domain_expansion_m": 120.0
+  },
+  "current_water_without_amsclae": {
+    "total_pixels": 891,
+    "supported_pixels": 751,
+    "unsupported_pixels": 140,
+    "supported_pct": 84.28731762065095
+  },
+  "cross_validation": {
+    "n": 5010,
+    "mae_m": 0.21476253023977843,
+    "rmse_m": 0.41842658046710596,
+    "median_abs_m": 0.062384855827758656,
+    "p90_abs_m": 0.7339857223423698
+  },
+  "important_limitations": [
+    "This is a shoreline-elevation surface, not a replacement lake-wide bathymetry.",
+    "No AMSCLAE depth value or AMSCLAE edge condition is used in the interpolation.",
+    "Values are kept within the directly observed stable Sentinel/NASA elevation range.",
+    "Pixels of current Sentinel water without sufficient local stable constraints remain explicitly unsupported rather than being invented.",
+    "Future levels below the directly observed shoreline range require a separate extrapolation treatment and must be flagged as such."
+  ],
+  "sha256": {
+    "16B4b_superficie_litoral_Z_absoluta_m.tif": "15615b5c2035fce1a4f1419e16d91fdf4c77b2bafc5aec29ce571c700a3dcad9",
+    "16B4b_soporte_superficie_litoral.tif": "50ee9dd47d0a0e70177479de4d7de5186912b9550eaec9dac18414f309c83f66",
+    "16B4b_distancia_restriccion_estable_m.tif": "0406ae13c3b6bf566a5808db2354963718460fd929ba740ac4422072ac05750f",
+    "16B4b_dispersion_local_m.tif": "4d2e1f62ecde24cb0e7ad68f3e8c9d6edb0db4791943320adb3a88ef719c02eb",
+    "16B4b_agua_actual_sin_AMSCLAE_con_soporte.tif": "399d4db04f0b87c48e4e2dfc17d3933fe3a71c69c6ec6a41faff041d07c3a478",
+    "16B4b_agua_actual_sin_AMSCLAE_sin_soporte.tif": "7f41b773a9c517a7e14ecc8c01a09c72d81380edc8a66ab286605e28d28e1d44"
+  }
+}
