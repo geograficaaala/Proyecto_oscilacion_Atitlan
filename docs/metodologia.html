@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#dceff4">
+<title>Metodología | Oscilación del nivel del Lago de Atitlán</title>
+<meta name="description" content="Metodología matemática, hidrológica, climática y geoespacial utilizada para modelar la oscilación del nivel del Lago de Atitlán.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fbfcfa;--sky1:#edf7f9;--sky2:#dceff4;--sky3:#c5e2ea;--lake:#5f9fb2;--lake2:#477f91;--green1:#edf3ed;--green2:#cad9c8;--green:#708b73;--brown1:#f3ede5;--brown2:#dfd0bf;--brown:#947c65;--ink:#29424c;--muted:#5b7078;--line:rgba(41,66,76,.14);--white:#fff;--max:1440px;--display:"Source Serif 4",Georgia,serif;--sans:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:105px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}body.menu-open{overflow:hidden}img{max-width:100%;display:block}a{color:inherit}button{font:inherit}p{text-align:justify;text-justify:inter-word;text-wrap:pretty}h1,h2,h3,h4,p,a,span{overflow-wrap:break-word}h1,h2,h3,h4{text-wrap:balance}.shell{width:min(var(--max),calc(100% - 64px));margin:auto}
+.header{position:sticky;top:0;z-index:1000;background:rgba(251,252,250,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.header-inner{min-height:94px;display:flex;align-items:center;gap:30px}.brand{display:flex;align-items:center;gap:15px;text-decoration:none;min-width:340px}.brand-logos{display:flex;align-items:center;gap:9px}.brand-logos img{width:46px;height:46px;object-fit:contain}.brand-copy{display:flex;flex-direction:column;gap:3px}.brand-name{font-size:.84rem;font-weight:800;letter-spacing:-.02em}.brand-place{font-size:.62rem;color:var(--muted)}.nav{margin-left:auto;display:flex;align-items:center;gap:22px}.nav a{position:relative;padding:10px 0;font-size:.74rem;font-weight:600;text-decoration:none;white-space:nowrap}.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:var(--lake);transition:right .22s}.nav a:hover::after,.nav a[aria-current=page]::after{right:0}.nav .geo{padding:12px 17px;background:#79aebb;color:#fff}.nav .geo::after{display:none}.nav .geo:hover{background:var(--lake2)}.menu-toggle{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--line);background:transparent;align-items:center;justify-content:center}.menu-lines,.menu-lines::before,.menu-lines::after{display:block;width:20px;height:1.5px;background:var(--ink);content:"";transition:.2s}.menu-lines{position:relative}.menu-lines::before{position:absolute;top:-6px}.menu-lines::after{position:absolute;top:6px}.menu-toggle[aria-expanded=true] .menu-lines{background:transparent}.menu-toggle[aria-expanded=true] .menu-lines::before{transform:translateY(6px) rotate(45deg)}.menu-toggle[aria-expanded=true] .menu-lines::after{transform:translateY(-6px) rotate(-45deg)}
+.hero{background:linear-gradient(135deg,var(--sky1),var(--sky2));border-bottom:1px solid var(--line)}.hero-inner{padding:108px 0 92px;display:grid;grid-template-columns:1.15fr .65fr;gap:86px;align-items:end}.eyebrow{margin:0 0 18px;font-size:.65rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--lake2)}.hero h1{margin:0;font-family:var(--display);font-size:clamp(3.4rem,6vw,6.8rem);line-height:.95;font-weight:600;letter-spacing:-.035em}.hero-lead{margin:31px 0 0;max-width:920px;color:var(--muted);font-size:.9rem;line-height:1.9}.hero-side{border-left:1px solid rgba(41,66,76,.22);padding-left:34px}.hero-side strong{display:block;font-family:var(--display);font-size:2rem;font-weight:600}.hero-side p{margin:10px 0 0;color:var(--muted);font-size:.72rem;line-height:1.75}.hero-side .mini{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);display:grid;gap:8px}.hero-side .mini span{font-size:.65rem;color:var(--muted)}
+.map-section{padding:92px 0 100px;background:#fff}.map-head{display:grid;grid-template-columns:.7fr 1fr;gap:76px;align-items:end;margin-bottom:42px}.map-head h2{margin:0;font-family:var(--display);font-size:clamp(2.4rem,4vw,4.5rem);line-height:1.03;font-weight:600}.map-head p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.85}.map-help{margin:0 0 22px;padding:14px 18px;background:var(--sky1);color:var(--muted);font-size:.68rem;line-height:1.6;border-left:3px solid var(--lake)}
+.mind-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.55fr);gap:22px;align-items:stretch}.mindmap{position:relative;min-height:760px;background:linear-gradient(145deg,#f9fcfc,var(--sky1));border:1px solid var(--line);overflow:hidden}.mindmap svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}.mind-nodes{position:absolute;inset:28px;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(7,1fr);gap:18px;z-index:2}.node{align-self:center;justify-self:stretch;min-height:72px;padding:14px 12px;border:1px solid rgba(41,66,76,.16);background:#fff;color:var(--ink);cursor:pointer;text-align:left;box-shadow:0 8px 22px rgba(41,66,76,.045);transition:transform .18s,box-shadow .18s,border-color .18s,background .18s}.node:hover,.node:focus-visible{transform:translateY(-2px);box-shadow:0 12px 28px rgba(41,66,76,.09);outline:none;border-color:var(--lake)}.node.active{background:var(--lake2);color:#fff;border-color:var(--lake2)}.node small{display:block;margin-bottom:5px;font-size:.51rem;letter-spacing:.1em;text-transform:uppercase;opacity:.68;font-weight:800}.node strong{display:block;font-size:.68rem;line-height:1.35}.node.central{background:var(--ink);color:#fff;border-color:var(--ink)}.node.climate{background:var(--sky2)}.node.hydro{background:var(--green1)}.node.spatial{background:var(--brown1)}.node.output{background:#e4f0f3}.node.active.climate,.node.active.hydro,.node.active.spatial,.node.active.output{background:var(--lake2);color:#fff}.detail-panel{background:var(--ink);color:#fff;padding:34px;min-height:760px;display:flex;flex-direction:column}.detail-panel .detail-kicker{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#a9cbd4;font-weight:800}.detail-panel h3{margin:12px 0 18px;font-family:var(--display);font-size:2rem;line-height:1.08;font-weight:600}.detail-panel p{margin:0 0 18px;color:#d3e1e5;font-size:.75rem;line-height:1.8}.detail-meta{margin-top:auto;border-top:1px solid rgba(255,255,255,.16);padding-top:20px;display:grid;gap:14px}.detail-meta div{display:grid;grid-template-columns:70px 1fr;gap:12px}.detail-meta strong{font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:#9ec4ce}.detail-meta span{font-size:.68rem;line-height:1.55;color:#e4edef}
+.content{padding:98px 0;background:#fff}.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:84px}.side{position:sticky;top:126px;align-self:start;border-top:1px solid var(--line)}.side a{display:block;padding:13px 3px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--muted);font-size:.65rem;font-weight:700;line-height:1.4}.side a:hover{color:var(--lake2)}.article{max-width:990px}.section{padding-bottom:76px;margin-bottom:76px;border-bottom:1px solid var(--line)}.section:last-child{border:0;margin:0;padding:0}.kicker{margin:0 0 13px;color:var(--lake2);font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.section h2{margin:0 0 28px;font-family:var(--display);font-size:clamp(2.15rem,3.2vw,3.65rem);line-height:1.06;font-weight:600;letter-spacing:-.02em}.section h3{margin:40px 0 15px;font-family:var(--display);font-size:1.58rem;font-weight:600}.section p{margin:0 0 19px;color:var(--muted);font-size:.82rem;line-height:1.9}.lead{font-family:var(--display);font-size:1.3rem!important;line-height:1.55!important;color:var(--ink)!important}
+.process{display:grid;gap:0;margin:30px 0;border-top:1px solid var(--line)}.process-row{display:grid;grid-template-columns:72px 1fr;gap:22px;padding:23px 0;border-bottom:1px solid var(--line)}.process-row .num{font-family:var(--display);font-size:1.9rem;color:var(--lake)}.process-row strong{display:block;margin-bottom:8px;font-size:.77rem}.process-row p{margin:0;font-size:.75rem;line-height:1.75}
+.eq-card{margin:34px 0;border:1px solid var(--line);background:#fff}.eq-head{padding:24px 28px;background:var(--sky1);border-bottom:1px solid var(--line)}.eq-head .eq-number{display:block;margin-bottom:9px;font-size:.55rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lake2)}.equation{font-family:var(--display);font-size:clamp(1.18rem,2.4vw,1.8rem);line-height:1.45;overflow-x:auto;padding-bottom:3px;white-space:nowrap}.eq-body{padding:25px 28px}.eq-body>p{font-size:.76rem;line-height:1.8;margin-bottom:20px}.terms{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}.term{background:var(--paper);padding:17px}.term strong{display:block;margin-bottom:6px;font-size:.67rem}.term span{display:block;color:var(--muted);font-size:.66rem;line-height:1.6}.term em{display:block;margin-top:7px;color:var(--lake2);font-style:normal;font-size:.61rem;font-weight:800;line-height:1.55}
+.callout{margin:34px 0;padding:31px 35px;background:var(--sky2);border-left:4px solid var(--lake)}.callout.green{background:var(--green1);border-color:var(--green)}.callout.brown{background:var(--brown1);border-color:var(--brown)}.callout strong{display:block;margin-bottom:9px;font-family:var(--display);font-size:1.35rem;font-weight:600}.callout p{margin:0;color:var(--ink);font-size:.78rem;line-height:1.8}.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin:28px 0}.data-card{padding:27px;background:var(--paper)}.data-card:nth-child(3n+1){background:var(--sky1)}.data-card:nth-child(3n+2){background:var(--green1)}.data-card:nth-child(3n){background:var(--brown1)}.data-card strong{display:block;font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:9px}.data-card p{margin:0;font-size:.7rem;line-height:1.7}.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}.pill{padding:9px 12px;background:var(--sky1);border:1px solid rgba(71,127,145,.12);font-size:.62rem;font-weight:700}
+.qa{padding:92px 0;background:var(--green1)}.qa-head{display:grid;grid-template-columns:.7fr 1fr;gap:72px;margin-bottom:44px}.qa h2{margin:0;font-family:var(--display);font-size:clamp(2.3rem,4vw,4.3rem);line-height:1.03;font-weight:600}.qa-head p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.85}.qa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}.qa-card{padding:30px;background:var(--paper)}.qa-card strong{display:block;margin-bottom:11px;font-family:var(--display);font-size:1.35rem;font-weight:600}.qa-card p{margin:0;color:var(--muted);font-size:.72rem;line-height:1.75}
+.next{padding:90px 0;background:var(--sky2)}.next-grid{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}.next h2{margin:0;font-family:var(--display);font-size:clamp(2.2rem,4vw,4rem);font-weight:600;line-height:1.04}.next p{margin:18px 0 0;max-width:780px;color:var(--muted);font-size:.81rem;line-height:1.8}.buttons{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:0 22px;border:1px solid var(--lake2);background:var(--lake2);color:#fff;text-decoration:none;font-size:.72rem;font-weight:800}.btn.alt{background:transparent;color:var(--lake2)}
+.footer{background:var(--ink);color:var(--sky1)}.footer-main{display:grid;grid-template-columns:1.5fr repeat(3,.5fr);gap:52px;padding:66px 0 50px}.footer-brand-row{display:flex;align-items:center;gap:12px}.footer-brand-row img{width:52px;height:52px;object-fit:contain}.footer-brand{margin-left:5px;font-family:var(--display);font-size:1.55rem;line-height:1.05}.footer-about{max-width:550px;margin:23px 0 0;color:#c8d9de;font-size:.69rem;line-height:1.8}.footer h3{margin:3px 0 17px;font-size:.63rem;text-transform:uppercase;letter-spacing:.14em}.footer-links{display:grid;gap:11px}.footer-links a{color:#c8d9de;text-decoration:none;font-size:.68rem}.footer-bottom{min-height:64px;border-top:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:space-between;gap:20px;color:#a9c2c9;font-size:.6rem}
+@media(max-width:1150px){.header-inner{min-height:78px}.brand{min-width:0}.menu-toggle{display:flex}.nav{position:fixed;left:0;right:0;top:78px;height:calc(100dvh - 78px);padding:30px 32px;background:rgba(251,252,250,.99);flex-direction:column;align-items:stretch;gap:0;transform:translateX(100%);transition:.25s;overflow:auto}.nav.open{transform:none}.nav a{padding:18px 0;border-bottom:1px solid var(--line);font-size:.86rem}.nav a::after{display:none}.nav .geo{margin-top:22px;text-align:center}.hero-inner{grid-template-columns:1fr;gap:42px}.hero-side{border-left:0;border-top:1px solid var(--line);padding:26px 0 0}.mind-layout{grid-template-columns:1fr}.detail-panel{min-height:0}.layout{grid-template-columns:1fr}.side{position:static;display:grid;grid-template-columns:repeat(3,1fr)}.side a{padding:12px}.article{max-width:none}.footer-main{grid-template-columns:1.5fr 1fr 1fr}}
+@media(max-width:760px){.shell{width:calc(100% - 28px)}.header-inner{min-height:68px;gap:12px}.nav{top:68px;height:calc(100dvh - 68px);padding:20px}.brand{gap:10px;flex:1}.brand-logos{gap:5px}.brand-logos img{width:32px;height:32px}.brand-name{font-size:.66rem;line-height:1.15}.brand-place{display:none}.menu-toggle{width:46px;height:46px;flex:0 0 46px}p{text-align:left}.hero-inner{padding:58px 0 54px}.hero h1{font-size:clamp(2.8rem,14vw,4.3rem)}.hero-lead{font-size:.81rem;line-height:1.75}.map-section{padding:62px 0}.map-head{grid-template-columns:1fr;gap:22px;margin-bottom:30px}.mindmap{min-height:0;background:transparent;border:0;overflow:visible}.mindmap svg{display:none}.mind-nodes{position:static;display:flex;flex-direction:column;gap:9px}.node{width:100%;min-height:64px}.node.central{order:-1}.detail-panel{padding:27px;min-height:0}.detail-panel h3{font-size:1.65rem}.content{padding:62px 0}.layout{gap:0}.side{display:none}.section{padding-bottom:52px;margin-bottom:52px}.section h2{font-size:clamp(2rem,10vw,2.8rem)}.section p{font-size:.78rem;line-height:1.78}.lead{font-size:1.15rem!important}.terms{grid-template-columns:1fr}.eq-head,.eq-body{padding:22px}.equation{font-size:1.13rem}.data-grid{grid-template-columns:1fr}.process-row{grid-template-columns:50px 1fr;gap:13px}.process-row .num{font-size:1.5rem}.callout{padding:25px 23px}.qa{padding:62px 0}.qa-head{grid-template-columns:1fr;gap:22px}.qa-grid{grid-template-columns:1fr}.next{padding:62px 0}.next-grid{grid-template-columns:1fr;gap:30px}.buttons{display:grid;grid-template-columns:1fr}.btn{width:100%;min-height:50px}.footer-main{grid-template-columns:1fr;padding:48px 0 36px;gap:32px}.footer-brand-row{flex-wrap:wrap}.footer-brand-row img{width:44px;height:44px}.footer-brand{width:100%;margin:6px 0 0}.footer-bottom{flex-direction:column;align-items:flex-start;padding:22px 0;min-height:0}}
+</style>
+</head>
+<body>
+<header class="header">
+<div class="shell header-inner">
+<a class="brand" href="./index.html">
+<span class="brand-logos"><img src="./aala_logo.png" alt="Asociación Amigos del Lago de Atitlán"><img src="./logoamsclaePNG.png" alt="AMSCLAE"></span>
+<span class="brand-copy"><span class="brand-name">Oscilación del nivel del Lago de Atitlán</span><span class="brand-place">Modelación hidrológica y geoespacial · 2027–2050</span></span>
+</a>
+<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle><span class="menu-lines"></span></button>
+<nav class="nav" data-nav>
+<a href="./index.html">Inicio</a><a href="./resultados.html">Resultados</a><a href="./metodologia.html" aria-current="page">Metodología</a><a href="./proyecto.html">Sobre el proyecto</a><a class="geo" href="./geoportal.html">Abrir geoportal</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="shell hero-inner">
+<div>
+<p class="eyebrow">Metodología</p>
+<h1>Cómo se construyó el modelo</h1>
+<p class="hero-lead">La metodología conecta observaciones de nivel, climatologías, precipitación, evaporación, caudal, modelos climáticos CMIP6, observación Sentinel-2 y batimetría AMSCLAE. Esta página explica la cadena completa con lenguaje accesible, pero conserva las ecuaciones, unidades, parámetros y decisiones técnicas necesarias para comprender exactamente qué se calculó.</p>
+</div>
+<div class="hero-side">
+<strong>Una cadena, varias evidencias</strong>
+<p>El nivel del lago se calcula en el tiempo mediante un balance diario. La posición espacial de agua y exposición se evalúa después, utilizando evidencia geoespacial independiente. Separar ambos problemas evita convertir automáticamente un descenso vertical en una costa futura inventada.</p>
+<div class="mini"><span>Referencia climática: 1981–2014</span><span>Ancla: 1552.770 m · 29/08/2026</span><span>15 GCM × 2 SSP = 30 trayectorias</span><span>Grilla espacial: 20 × 20 m</span></div>
+</div>
+</div>
+</section>
+
+<section class="map-section">
+<div class="shell">
+<div class="map-head">
+<div><p class="eyebrow">Mapa interactivo</p><h2>Ruta completa de la metodología</h2></div>
+<p>Selecciona cualquier nodo para ver qué información entra, qué proceso se realiza y qué producto sale de esa etapa. El diagrama permite recorrer la metodología desde las observaciones iniciales hasta los productos del geoportal.</p>
+</div>
+<p class="map-help">Haz clic en los bloques del diagrama. En teléfono, los nodos se presentan como una ruta vertical para facilitar la navegación táctil.</p>
+<div class="mind-layout">
+<div class="mindmap" data-mindmap>
+<svg aria-hidden="true" data-lines></svg>
+<div class="mind-nodes">
+<button class="node central active" style="grid-column:3;grid-row:1" data-node="core"><small>Sistema central</small><strong>Oscilación del nivel del Lago de Atitlán</strong></button>
+<button class="node hydro" style="grid-column:1;grid-row:2" data-node="observed" data-parent="core"><small>Entrada</small><strong>Nivel observado</strong></button>
+<button class="node climate" style="grid-column:2;grid-row:2" data-node="climate" data-parent="core"><small>Referencia</small><strong>Climatología 1981–2014</strong></button>
+<button class="node hydro" style="grid-column:3;grid-row:2" data-node="forcing" data-parent="core"><small>Forzamientos</small><strong>P · E · Q</strong></button>
+<button class="node climate" style="grid-column:4;grid-row:2" data-node="cmip" data-parent="core"><small>Futuro</small><strong>CMIP6</strong></button>
+<button class="node spatial" style="grid-column:5;grid-row:2" data-node="evidence" data-parent="core"><small>Espacio</small><strong>Evidencia geoespacial</strong></button>
+
+<button class="node hydro" style="grid-column:2;grid-row:3" data-node="anomaly" data-parent="climate"><small>Transformación</small><strong>Anomalías mensuales</strong></button>
+<button class="node hydro" style="grid-column:3;grid-row:3" data-node="balance" data-parent="forcing"><small>Modelo</small><strong>Balance diario ΔH</strong></button>
+<button class="node climate" style="grid-column:4;grid-row:3" data-node="scenarios" data-parent="cmip"><small>Escenarios</small><strong>SSP2-4.5 · SSP5-8.5</strong></button>
+<button class="node spatial" style="grid-column:5;grid-row:3" data-node="sentinel" data-parent="evidence"><small>Observación</small><strong>Sentinel-2 + AMSCLAE</strong></button>
+
+<button class="node hydro" style="grid-column:3;grid-row:4" data-node="integration" data-parent="balance"><small>Integración</small><strong>Nivel absoluto H(t)</strong></button>
+<button class="node climate" style="grid-column:4;grid-row:4" data-node="ensemble" data-parent="scenarios"><small>Ensamble</small><strong>15 GCM por escenario</strong></button>
+<button class="node spatial" style="grid-column:5;grid-row:4" data-node="domain" data-parent="sentinel"><small>Control</small><strong>Dominio espacial evaluable</strong></button>
+
+<button class="node climate" style="grid-column:3;grid-row:5" data-node="annual" data-parent="integration"><small>Resumen</small><strong>Media anual por GCM</strong></button>
+<button class="node climate" style="grid-column:4;grid-row:5" data-node="quantiles" data-parent="ensemble"><small>Estadística</small><strong>p05 · p50 · p95</strong></button>
+<button class="node spatial" style="grid-column:5;grid-row:5" data-node="classification" data-parent="domain"><small>Clasificación</small><strong>Estado · Robustez · Consenso</strong></button>
+
+<button class="node output" style="grid-column:3;grid-row:6" data-node="validation" data-parent="annual"><small>Control</small><strong>Validación 18D</strong></button>
+<button class="node output" style="grid-column:4;grid-row:6" data-node="rasters" data-parent="quantiles"><small>Salida</small><strong>Productos 2027–2050</strong></button>
+<button class="node output" style="grid-column:5;grid-row:6" data-node="uncertainty" data-parent="classification"><small>Salida</small><strong>Incertidumbre explícita</strong></button>
+
+<button class="node output" style="grid-column:4;grid-row:7" data-node="portal" data-parent="rasters"><small>Consulta</small><strong>Geoportal de resultados</strong></button>
+</div>
+</div>
+<aside class="detail-panel" data-detail>
+<span class="detail-kicker">Sistema central</span>
+<h3>Oscilación del nivel del Lago de Atitlán</h3>
+<p>El sistema integra un modelo temporal y una traducción espacial. El modelo temporal calcula cambios diarios del nivel a partir de anomalías de precipitación, evaporación y caudal, más una componente estacional de suma anual cero. La etapa espacial utiliza observación Sentinel-2 y batimetría AMSCLAE para establecer dónde existe soporte suficiente para clasificar agua, exposición o incertidumbre.</p>
+<div class="detail-meta"><div><strong>Entrada</strong><span>Observaciones, clima, hidrología y evidencia geoespacial.</span></div><div><strong>Proceso</strong><span>Balance diario, ensamble CMIP6 y clasificación espacial conservadora.</span></div><div><strong>Salida</strong><span>Niveles, cuantiles y productos cartográficos 2027–2050.</span></div></div>
+</aside>
+</div>
+</div>
+</section>
+
+<section class="content">
+<div class="shell layout">
+<aside class="side">
+<a href="#estructura">Estructura general</a><a href="#datos">Datos y referencias</a><a href="#climatologia">Climatología y anomalías</a><a href="#balance">Ecuación del balance</a><a href="#precipitacion">Precipitación</a><a href="#evaporacion">Evaporación</a><a href="#caudal">Caudal</a><a href="#integracion">Integración del nivel</a><a href="#cmip6">CMIP6 y escenarios</a><a href="#ensamble">Ensamble y cuantiles</a><a href="#espacial">Metodología espacial</a><a href="#validacion">Validación 18D</a><a href="#limitaciones">Limitaciones</a>
+</aside>
+
+<article class="article">
+<section class="section" id="estructura">
+<p class="kicker">01 · Estructura general</p>
+<h2>Dos problemas que se resuelven de forma coordinada</h2>
+<p class="lead">La metodología separa deliberadamente la evolución temporal del nivel y la posición espacial de la costa. El primer problema se resuelve con hidrología y clima; el segundo necesita evidencia geoespacial y control vertical.</p>
+<p>La variable de estado es H(t), la elevación absoluta del espejo de agua. El modelo no intenta adivinar directamente una costa futura. Primero calcula cuánto cambia el nivel cada día. Después integra esos cambios desde una observación conocida. Solo cuando existe una trayectoria de nivel se inicia la traducción espacial.</p>
+<p>Esta separación es importante porque un descenso de un metro tiene un significado vertical claro, pero no corresponde a una distancia horizontal única. En una costa empinada puede producir poco desplazamiento lateral; en una costa suave puede producir mucho más. Por ello, la metodología espacial necesita información adicional sobre la geometría y la evidencia observada.</p>
+<div class="process">
+<div class="process-row"><div class="num">01</div><div><strong>Preparar referencias y observaciones</strong><p>Se organiza la serie de nivel, las climatologías y los forzamientos hidrológicos con unidades y fechas compatibles.</p></div></div>
+<div class="process-row"><div class="num">02</div><div><strong>Calcular anomalías</strong><p>Cada valor diario se compara con el promedio de su mismo mes durante 1981–2014.</p></div></div>
+<div class="process-row"><div class="num">03</div><div><strong>Resolver el balance diario</strong><p>Precipitación, evaporación, caudal y estacionalidad se convierten a metros de nivel por día.</p></div></div>
+<div class="process-row"><div class="num">04</div><div><strong>Integrar la trayectoria</strong><p>Los cambios diarios se acumulan desde 1552.770 m, observado el 29 de agosto de 2026.</p></div></div>
+<div class="process-row"><div class="num">05</div><div><strong>Forzar con CMIP6</strong><p>Quince GCM se procesan bajo SSP2-4.5 y SSP5-8.5, produciendo treinta trayectorias.</p></div></div>
+<div class="process-row"><div class="num">06</div><div><strong>Resumir el ensamble</strong><p>Primero se calcula la media anual dentro de cada GCM; después se obtienen p05, p50 y p95 entre modelos.</p></div></div>
+<div class="process-row"><div class="num">07</div><div><strong>Traducir a espacio</strong><p>Sentinel-2 y AMSCLAE delimitan dónde la clasificación espacial está respaldada y dónde debe conservarse incertidumbre.</p></div></div>
+</div>
+</section>
+
+<section class="section" id="datos">
+<p class="kicker">02 · Datos y valores de referencia</p>
+<h2>Información que fija la escala del modelo</h2>
+<p>La serie canónica de nivel contiene 554 observaciones entre el 16 de diciembre de 2008 y el 29 de agosto de 2026. Su último valor, 1552.770 m, es el ancla absoluta de las trayectorias futuras. El mínimo observado es 1552.450 m y el máximo 1558.470 m. Esta amplitud también es relevante para la componente espacial porque por debajo del mínimo canónico no existe observación directa equivalente de la posición de la costa dentro de esa serie.</p>
+<div class="data-grid">
+<div class="data-card"><strong>1552.770 m</strong><p>Ancla absoluta utilizada para iniciar todas las trayectorias futuras.</p></div>
+<div class="data-card"><strong>1981–2014</strong><p>Periodo común utilizado para construir climatologías mensuales de referencia.</p></div>
+<div class="data-card"><strong>125.77 km²</strong><p>Área de referencia utilizada para convertir anomalías de caudal en lámina equivalente de agua.</p></div>
+<div class="data-card"><strong>15 GCM</strong><p>Número de modelos climáticos utilizados dentro de cada escenario.</p></div>
+<div class="data-card"><strong>2 SSP</strong><p>SSP2-4.5 y SSP5-8.5 se procesan por separado y no reciben probabilidades de ocurrencia.</p></div>
+<div class="data-card"><strong>20 × 20 m</strong><p>Resolución de la grilla espacial maestra; cada píxel representa 400 m².</p></div>
+</div>
+</section>
+
+<section class="section" id="climatologia">
+<p class="kicker">03 · Climatología y anomalías</p>
+<h2>Cómo se construye una referencia comparable</h2>
+<p>El modelo trabaja con anomalías y no directamente con valores absolutos. Esto significa que un día de enero se compara con la climatología de enero, un día de febrero con la de febrero y así sucesivamente. De esta forma se conserva la estacionalidad básica y se reduce el efecto de diferencias sistemáticas entre fuentes y modelos.</p>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 1 · Climatología mensual</span><div class="equation">X̄<sub>m</sub> = (1 / N<sub>m</sub>) Σ<sub>t∈m</sub> X<sub>t</sub></div></div>
+<div class="eq-body"><p>Para cada variable X se calcula el promedio de todos los días del mismo mes dentro del periodo de referencia.</p><div class="terms">
+<div class="term"><strong>X̄m</strong><span>Promedio climatológico del mes m.</span><em>Valor usado: se calcula por variable, GCM y mes; no existe un único valor fijo.</em></div>
+<div class="term"><strong>Xt</strong><span>Valor diario de la variable analizada.</span><em>Valor usado: dato diario de precipitación, evaporación o caudal.</em></div>
+<div class="term"><strong>Nm</strong><span>Número de observaciones disponibles para ese mes.</span><em>Valor usado: depende del calendario y de los datos válidos del periodo 1981–2014.</em></div>
+<div class="term"><strong>Periodo</strong><span>Ventana temporal utilizada para definir la referencia.</span><em>Valor usado: 1981–2014.</em></div>
+</div></div>
+</div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 2 · Anomalía diaria</span><div class="equation">X′<sub>t</sub> = X<sub>t</sub> − X̄<sub>m(t)</sub></div></div>
+<div class="eq-body"><p>La anomalía indica cuánto se aparta el día de la condición media de su propio mes. Un valor positivo está por encima de la referencia mensual; uno negativo está por debajo.</p><div class="terms">
+<div class="term"><strong>X′t</strong><span>Anomalía diaria.</span><em>Valor usado: calculado día por día; no es constante.</em></div>
+<div class="term"><strong>Xt</strong><span>Valor diario original.</span><em>Valor usado: dato diario correspondiente.</em></div>
+<div class="term"><strong>X̄m(t)</strong><span>Climatología del mes al que pertenece el día t.</span><em>Valor usado: climatología mensual 1981–2014 del mismo GCM o fuente.</em></div>
+<div class="term"><strong>m(t)</strong><span>Mes calendario asociado a la fecha t.</span><em>Valor usado: entero de 1 a 12 según la fecha.</em></div>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="balance">
+<p class="kicker">04 · Modelo hidrológico</p>
+<h2>Ecuación diaria del cambio de nivel</h2>
+<p>La ecuación central expresa todos los componentes como metros de nivel por día. La precipitación y la evaporación parten de milímetros por día y se convierten a metros. El caudal parte de metros cúbicos por segundo, se transforma a volumen diario y luego a una lámina equivalente sobre el área de referencia del lago.</p>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 3 · Balance diario</span><div class="equation">ΔH<sub>t</sub> = S*<sub>t</sub> + a<sub>P</sub>(P<sub>t</sub>−P̄<sub>m(t)</sub>)/1000 − a<sub>E</sub>(E<sub>t</sub>−Ē<sub>m(t)</sub>)/1000 + a<sub>Q</sub>·86400(Q<sub>t</sub>−Q̄<sub>m(t)</sub>)/A<sub>L</sub></div></div>
+<div class="eq-body"><p>Esta es la formulación congelada del cambio diario. El signo positivo de precipitación y caudal representa entradas; el signo negativo de evaporación representa una pérdida. La implementación conserva además un término constante diario c = 0.0, por lo que no introduce deriva adicional.</p><div class="terms">
+<div class="term"><strong>ΔHt</strong><span>Cambio del nivel durante el día t.</span><em>Valor usado: resultado calculado en m/día.</em></div>
+<div class="term"><strong>S*t</strong><span>Componente estacional residual centrada.</span><em>Valor usado: varía con el mes y se fuerza a suma anual cero.</em></div>
+<div class="term"><strong>aP</strong><span>Coeficiente efectivo de precipitación.</span><em>Valor usado: 1.278816.</em></div>
+<div class="term"><strong>aE</strong><span>Coeficiente efectivo de evaporación.</span><em>Valor usado: 2.273196.</em></div>
+<div class="term"><strong>aQ</strong><span>Coeficiente efectivo de caudal.</span><em>Valor usado: 0.758222.</em></div>
+<div class="term"><strong>P − P̄m</strong><span>Anomalía diaria de precipitación.</span><em>Valor usado: variable diaria en mm/día respecto de 1981–2014.</em></div>
+<div class="term"><strong>E − Ēm</strong><span>Anomalía diaria de evaporación.</span><em>Valor usado: variable diaria en mm/día respecto de 1981–2014.</em></div>
+<div class="term"><strong>Q − Q̄m</strong><span>Anomalía diaria de caudal agregado.</span><em>Valor usado: variable diaria en m³/s respecto de 1981–2014.</em></div>
+<div class="term"><strong>1000</strong><span>Conversión de milímetros a metros.</span><em>Valor usado: 1000 mm = 1 m.</em></div>
+<div class="term"><strong>86400</strong><span>Conversión de segundos a día.</span><em>Valor usado: 86 400 s/día.</em></div>
+<div class="term"><strong>AL</strong><span>Área de referencia del lago para convertir volumen en lámina.</span><em>Valor usado: 125.77 × 10⁶ m².</em></div>
+<div class="term"><strong>c</strong><span>Término constante diario de la implementación.</span><em>Valor usado: 0.0.</em></div>
+</div></div>
+</div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 4 · Restricción estacional</span><div class="equation">Σ<sub>d=1</sub><sup>D<sub>y</sub></sup> S*<sub>d</sub> = 0</div></div>
+<div class="eq-body"><p>La componente estacional representa estructura intraanual que no queda explicada por los tres forzamientos principales. Se centra para impedir que produzca una tendencia artificial al acumularse.</p><div class="terms">
+<div class="term"><strong>S*d</strong><span>Término estacional centrado para el día o mes correspondiente.</span><em>Valor usado: serie estacional reconstruida; no tiene un único valor constante.</em></div>
+<div class="term"><strong>Dy</strong><span>Número de días del año.</span><em>Valor usado: 365 o 366 según el año.</em></div>
+<div class="term"><strong>Suma anual</strong><span>Condición de cierre de la componente estacional.</span><em>Valor usado: exactamente 0.</em></div>
+<div class="term"><strong>Interpretación</strong><span>Separa oscilación estacional de tendencia forzada.</span><em>Valor usado: restricción obligatoria del modelo.</em></div>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="precipitacion">
+<p class="kicker">05 · Precipitación</p>
+<h2>Cómo la anomalía de lluvia modifica el nivel</h2>
+<p>La precipitación se expresa como una lámina de agua. Por eso, la conversión de milímetros a metros es directa. El coeficiente aP es efectivo: representa la relación calibrada entre la anomalía utilizada por el modelo y la respuesta observada del nivel, y no debe interpretarse como una eficiencia física aislada.</p>
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 5 · Contribución de precipitación</span><div class="equation">ΔH<sub>P,t</sub> = a<sub>P</sub> · 10<sup>−3</sup> · P′<sub>t</sub></div></div>
+<div class="eq-body"><p>Una anomalía de +1 mm/día produce aproximadamente +1.279 mm/día de contribución modelada al nivel cuando los demás términos permanecen constantes.</p><div class="terms">
+<div class="term"><strong>ΔHP,t</strong><span>Contribución diaria de precipitación al cambio de nivel.</span><em>Valor usado: calculado en m/día.</em></div>
+<div class="term"><strong>aP</strong><span>Coeficiente calibrado de precipitación.</span><em>Valor usado: 1.278816.</em></div>
+<div class="term"><strong>10−3</strong><span>Conversión de mm a m.</span><em>Valor usado: 0.001 m/mm.</em></div>
+<div class="term"><strong>P′t</strong><span>Anomalía diaria de precipitación.</span><em>Valor usado: variable diaria en mm/día.</em></div>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="evaporacion">
+<p class="kicker">06 · Evaporación</p>
+<h2>Balance radiativo y pérdida de agua</h2>
+<p>La evaporación future-compatible se construyó para responder a radiación de onda corta, radiación de onda larga y temperatura. No pretende resolver un modelo aerodinámico completo de intercambio aire–agua. Su función es producir una variable de evaporación que pueda calcularse de manera compatible en el histórico y en CMIP6.</p>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 6 · Radiación neta efectiva</span><div class="equation">R<sub>n,t</sub> = 0.92 R<sub>s,t</sub>↓ + R<sub>l,t</sub>↓ − 0.97 σ (T<sub>t</sub> + 273.15)<sup>4</sup></div></div>
+<div class="eq-body"><p>La onda corta absorbida se obtiene usando un albedo de 0.08, por lo que se conserva 0.92 de la radiación incidente. La emisión térmica utiliza emisividad 0.97 y temperatura absoluta.</p><div class="terms">
+<div class="term"><strong>Rn,t</strong><span>Radiación neta efectiva.</span><em>Valor usado: calculado diariamente.</em></div>
+<div class="term"><strong>0.92</strong><span>Fracción absorbida de onda corta.</span><em>Valor usado: 1 − albedo 0.08 = 0.92.</em></div>
+<div class="term"><strong>Rs↓</strong><span>Radiación de onda corta descendente.</span><em>Valor usado: variable climática diaria; no constante.</em></div>
+<div class="term"><strong>Rl↓</strong><span>Radiación de onda larga descendente.</span><em>Valor usado: variable climática diaria; no constante.</em></div>
+<div class="term"><strong>0.97</strong><span>Emisividad adoptada para la superficie.</span><em>Valor usado: 0.97.</em></div>
+<div class="term"><strong>σ</strong><span>Constante de Stefan–Boltzmann en unidades compatibles con la implementación.</span><em>Valor usado: constante física de la implementación; el informe no imprime un valor numérico independiente y aquí no se sustituye por uno supuesto.</em></div>
+<div class="term"><strong>Tt</strong><span>Temperatura utilizada en el término de emisión.</span><em>Valor usado: variable diaria en °C.</em></div>
+<div class="term"><strong>273.15</strong><span>Conversión de °C a K.</span><em>Valor usado: 273.15.</em></div>
+</div></div>
+</div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 7 · Estimador de evaporación</span><div class="equation">E<sub>t</sub> = 0.551084449887 × 0.408 × max(R<sub>n,t</sub>, 0)</div></div>
+<div class="eq-body"><p>La función máximo impide producir evaporación radiativa negativa cuando la radiación neta estimada es menor que cero. El resultado se utiliza como estimador operacional y no como una ecuación universal del lago.</p><div class="terms">
+<div class="term"><strong>Et</strong><span>Evaporación diaria estimada.</span><em>Valor usado: resultado diario en mm/día.</em></div>
+<div class="term"><strong>0.551084449887</strong><span>Factor de ajuste congelado.</span><em>Valor usado: 0.551084449887.</em></div>
+<div class="term"><strong>0.408</strong><span>Factor de conversión energética a lámina de agua bajo la parametrización adoptada.</span><em>Valor usado: 0.408.</em></div>
+<div class="term"><strong>max(Rn,0)</strong><span>Radiación neta truncada en cero.</span><em>Valor usado: Rn cuando Rn &gt; 0; en otro caso 0.</em></div>
+</div></div>
+</div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 8 · Contribución de evaporación</span><div class="equation">ΔH<sub>E,t</sub> = −a<sub>E</sub> · 10<sup>−3</sup> · E′<sub>t</sub></div></div>
+<div class="eq-body"><p>Una anomalía positiva de evaporación reduce el almacenamiento. El signo negativo es físico: representa salida de agua.</p><div class="terms">
+<div class="term"><strong>ΔHE,t</strong><span>Contribución diaria de evaporación al nivel.</span><em>Valor usado: calculado en m/día.</em></div>
+<div class="term"><strong>aE</strong><span>Coeficiente calibrado de evaporación.</span><em>Valor usado: 2.273196.</em></div>
+<div class="term"><strong>10−3</strong><span>Conversión de mm a m.</span><em>Valor usado: 0.001 m/mm.</em></div>
+<div class="term"><strong>E′t</strong><span>Anomalía diaria de evaporación.</span><em>Valor usado: variable diaria en mm/día.</em></div>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="caudal">
+<p class="kicker">07 · Caudal</p>
+<h2>Submodelo future-compatible y conversión a lámina</h2>
+<p>El componente de caudal se construyó con una arquitectura de 72 características disponibles de manera compatible en el histórico y en el futuro. El conjunto futuro contiene cinco ríos. Los modelos basados en árboles permiten relaciones no lineales, pero fuera del dominio de entrenamiento pueden saturarse; esta condición se registra como OOD y es una limitación importante para horizontes lejanos.</p>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 9 · Corrección del caudal</span><div class="equation">Q<sub>corr</sub> = 0.056829831456 + 1.188585268470 · Q<sub>72f</sub></div></div>
+<div class="eq-body"><p>La transformación corrige desplazamiento y escala del caudal producido por el modelo de 72 características. No convierte el modelo de árboles en un modelo físicamente extrapolativo.</p><div class="terms">
+<div class="term"><strong>Qcorr</strong><span>Caudal después de la corrección lineal.</span><em>Valor usado: resultado de la transformación.</em></div>
+<div class="term"><strong>Intercepto</strong><span>Corrección de desplazamiento.</span><em>Valor usado: 0.056829831456.</em></div>
+<div class="term"><strong>Pendiente</strong><span>Corrección de escala.</span><em>Valor usado: 1.188585268470.</em></div>
+<div class="term"><strong>Q72f</strong><span>Salida del modelo future-compatible de 72 características.</span><em>Valor usado: variable diaria; no constante.</em></div>
+</div></div>
+</div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 10 · Contribución de caudal</span><div class="equation">ΔH<sub>Q,t</sub> = a<sub>Q</sub> · 86400 · Q′<sub>t</sub> / (125.77 × 10<sup>6</sup>)</div></div>
+<div class="eq-body"><p>El caudal en m³/s se transforma a volumen diario y luego se divide por el área de referencia para obtener metros de lámina por día. Una anomalía positiva eleva el nivel; una negativa lo reduce.</p><div class="terms">
+<div class="term"><strong>ΔHQ,t</strong><span>Contribución diaria del caudal al nivel.</span><em>Valor usado: calculado en m/día.</em></div>
+<div class="term"><strong>aQ</strong><span>Coeficiente calibrado de caudal.</span><em>Valor usado: 0.758222.</em></div>
+<div class="term"><strong>86400</strong><span>Segundos contenidos en un día.</span><em>Valor usado: 86 400.</em></div>
+<div class="term"><strong>Q′t</strong><span>Anomalía diaria de caudal.</span><em>Valor usado: variable diaria en m³/s.</em></div>
+<div class="term"><strong>Área</strong><span>Área de referencia del lago.</span><em>Valor usado: 125.77 × 10⁶ m² = 125.77 km².</em></div>
+<div class="term"><strong>Ejemplo de conversión</strong><span>Antes de aplicar aQ, 10 m³/s equivalen a aproximadamente 0.00687 m/día de lámina.</span><em>Valor usado en el ejemplo: Q′ = 10 m³/s.</em></div>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="integracion">
+<p class="kicker">08 · Integración temporal</p>
+<h2>De cambios diarios a nivel absoluto</h2>
+<p>Después de calcular ΔH para cada día, el modelo acumula esos incrementos desde una condición inicial observada. No se aplica un ajuste vertical diferente para cada escenario.</p>
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 11 · Integración del nivel</span><div class="equation">H<sub>t</sub> = H<sub>t0</sub> + Σ<sub>τ=t0+1</sub><sup>t</sup> ΔH<sub>τ</sub></div></div>
+<div class="eq-body"><p>La ecuación convierte la secuencia de cambios diarios en una trayectoria de elevación absoluta.</p><div class="terms">
+<div class="term"><strong>Ht</strong><span>Nivel absoluto en la fecha t.</span><em>Valor usado: resultado acumulado en metros.</em></div>
+<div class="term"><strong>Ht0</strong><span>Condición inicial observada.</span><em>Valor usado: 1552.770 m.</em></div>
+<div class="term"><strong>t0</strong><span>Fecha del ancla.</span><em>Valor usado: 29 de agosto de 2026.</em></div>
+<div class="term"><strong>ΔHτ</strong><span>Cambio diario calculado por el balance.</span><em>Valor usado: variable diaria en metros.</em></div>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="cmip6">
+<p class="kicker">09 · Clima futuro</p>
+<h2>CMIP6 y los dos escenarios</h2>
+<p>CMIP6 proporciona series climáticas futuras coherentes de variables que alimentan los submodelos. No proporciona directamente el nivel del Lago de Atitlán. La transformación desde clima global hasta nivel local ocurre dentro de la cadena hidrológica descrita anteriormente.</p>
+<p>Se utilizan SSP2-4.5 y SSP5-8.5 como escenarios condicionantes. El primero representa una trayectoria intermedia de forzamiento y el segundo una trayectoria de forzamiento alto. El estudio no asigna una probabilidad a ninguno de los dos.</p>
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 12 · Número de trayectorias</span><div class="equation">N<sub>trayectorias</sub> = N<sub>GCM</sub> × N<sub>SSP</sub> = 15 × 2 = 30</div></div>
+<div class="eq-body"><p>Cada combinación modelo–escenario se mantiene separada hasta la etapa de resumen estadístico.</p><div class="terms">
+<div class="term"><strong>NGCM</strong><span>Número de modelos climáticos por escenario.</span><em>Valor usado: 15.</em></div>
+<div class="term"><strong>NSSP</strong><span>Número de escenarios.</span><em>Valor usado: 2.</em></div>
+<div class="term"><strong>Ntrayectorias</strong><span>Total de combinaciones modelo–escenario.</span><em>Valor usado: 30.</em></div>
+<div class="term"><strong>Escenarios</strong><span>Condiciones de forzamiento analizadas.</span><em>Valor usado: SSP2-4.5 y SSP5-8.5.</em></div>
+</div></div>
+</div>
+<div class="callout green"><strong>Por qué no se promedian los GCM desde el inicio</strong><p>Si los modelos se mezclaran antes de construir sus trayectorias se perdería información sobre su dispersión estructural. La metodología conserva la identidad de cada GCM hasta después de obtener su resumen anual.</p></div>
+</section>
+
+<section class="section" id="ensamble">
+<p class="kicker">10 · Estadística del ensamble</p>
+<h2>Media anual, p05, p50 y p95</h2>
+<p>La versión final anual corrige un detalle estadístico importante: primero se calcula la media anual dentro de cada GCM y después se calculan los cuantiles entre los quince valores. Hacerlo al revés, obteniendo medianas diarias y luego una media anual, responde a una pregunta diferente y no reproduce necesariamente los horizontes congelados.</p>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 13 · Media anual por GCM</span><div class="equation">H̄<sub>g,y</sub> = (1 / n<sub>y</sub>) Σ<sub>t∈y</sub> H<sub>g,t</sub></div></div>
+<div class="eq-body"><p>Cada modelo conserva su identidad y se resume en un solo nivel medio para cada año.</p><div class="terms">
+<div class="term"><strong>H̄g,y</strong><span>Nivel medio anual del GCM g en el año y.</span><em>Valor usado: calculado para cada GCM y año.</em></div>
+<div class="term"><strong>ny</strong><span>Número de días disponibles del año.</span><em>Valor usado: normalmente 365 o 366, según el año y cobertura válida.</em></div>
+<div class="term"><strong>Hg,t</strong><span>Nivel diario del GCM g.</span><em>Valor usado: trayectoria diaria calculada.</em></div>
+<div class="term"><strong>g</strong><span>Identificador del modelo climático.</span><em>Valor usado: uno de 15 GCM por escenario.</em></div>
+</div></div>
+</div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 14 · Cuantiles entre GCM</span><div class="equation">H<sub>p,y</sub> = Q<sub>p</sub>(H̄<sub>1,y</sub>, … , H̄<sub>15,y</sub>)</div></div>
+<div class="eq-body"><p>Los quince niveles medios anuales se ordenan y se aplica el operador cuantílico.</p><div class="terms">
+<div class="term"><strong>Qp</strong><span>Operador de cuantil empírico.</span><em>Valores usados: p = 0.05, 0.50 y 0.95.</em></div>
+<div class="term"><strong>p05</strong><span>Parte baja de la distribución entre modelos.</span><em>Valor usado: cuantil 0.05.</em></div>
+<div class="term"><strong>p50</strong><span>Mediana del ensamble.</span><em>Valor usado: cuantil 0.50.</em></div>
+<div class="term"><strong>p95</strong><span>Parte alta de la distribución entre modelos.</span><em>Valor usado: cuantil 0.95.</em></div>
+</div></div>
+</div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 15 · Ancho del ensamble</span><div class="equation">W<sub>y</sub> = H<sub>p95,y</sub> − H<sub>p05,y</sub></div></div>
+<div class="eq-body"><p>W resume la separación entre los extremos descriptivos p05 y p95. Es dispersión entre modelos, no error instrumental.</p><div class="terms">
+<div class="term"><strong>Wy</strong><span>Ancho p05–p95 para el año y.</span><em>Valor usado: calculado año por año en metros.</em></div>
+<div class="term"><strong>Hp95,y</strong><span>Cuantil superior anual.</span><em>Valor usado: p = 0.95.</em></div>
+<div class="term"><strong>Hp05,y</strong><span>Cuantil inferior anual.</span><em>Valor usado: p = 0.05.</em></div>
+<div class="term"><strong>Interpretación</strong><span>Mayor W significa mayor divergencia entre GCM.</span><em>Valor usado: no existe un umbral fijo de aceptación.</em></div>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="espacial">
+<p class="kicker">11 · Metodología geoespacial</p>
+<h2>Cómo se traduce el nivel al territorio</h2>
+<p>La etapa espacial utiliza una grilla maestra de 1607 × 1607 píxeles en EPSG:32615, con resolución de 20 m. Cada píxel representa 400 m². Sentinel-2 aporta evidencia moderna de presencia de agua y permite construir un corredor costero observacional. La batimetría AMSCLAE aporta geometría profunda y soporte interior bajo controles de referencia vertical.</p>
+<p>La metodología no desplaza globalmente la batimetría para obligarla a coincidir con la costa moderna. Tampoco extiende una costa futura continua cuando el nivel simulado sale del rango vertical respaldado. En esos sectores se conserva una clase de incertidumbre.</p>
+<div class="pill-row"><span class="pill">EPSG:32615</span><span class="pill">1607 × 1607 píxeles</span><span class="pill">20 m por píxel</span><span class="pill">400 m² por celda</span><span class="pill">Sentinel-2</span><span class="pill">Batimetría AMSCLAE</span></div>
+
+<div class="eq-card">
+<div class="eq-head"><span class="eq-number">Ecuación 16 · Control de coherencia espacial</span><div class="equation">ΔA<sub>total</sub> ≥ A<sub>exp,certain</sub></div></div>
+<div class="eq-body"><p>La pérdida total de área inferida por una representación morfométrica no puede ser menor que la superficie de exposición que ya está demostrada de manera independiente. Cuando una rama previa violó esta desigualdad, su estimación puntual fue rechazada y se sustituyó por límites conservadores.</p><div class="terms">
+<div class="term"><strong>ΔAtotal</strong><span>Cambio total de área inferido por la relación nivel–área evaluada.</span><em>Valor usado: variable según nivel; no existe un único valor fijo.</em></div>
+<div class="term"><strong>Aexp,certain</strong><span>Área de exposición respaldada por evidencia costera.</span><em>Valor usado: calculado por escenario y horizonte dentro del dominio conocido.</em></div>
+<div class="term"><strong>Operador ≥</strong><span>Condición física mínima de coherencia.</span><em>Valor usado: obligatorio; una violación invalida la estimación puntual.</em></div>
+<div class="term"><strong>Resultado metodológico</strong><span>Si la desigualdad falla, no se conserva la salida solo por ser numéricamente conveniente.</span><em>Valor usado: criterio de auditoría aplicado.</em></div>
+</div></div>
+</div>
+
+<h3>Estado p50</h3>
+<p>La clasificación p50 utiliza el nivel central del ensamble y distingue agua cierta, exposición cierta, soporte interior y sectores inciertos. El gris no significa tierra ni ausencia de cambio; significa que la evidencia vertical o espacial no permite asignar una clase futura con suficiente respaldo.</p>
+<h3>Robustez p05–p95</h3>
+<p>Se compara la clasificación a través del rango del ensamble. Una celda es más robusta cuando mantiene su estado frente a los niveles asociados a p05 y p95. Una celda sensible puede cambiar de clase según la posición dentro del ensamble.</p>
+<h3>Consenso entre escenarios</h3>
+<p>Para cada año se comparan SSP2-4.5 y SSP5-8.5. El producto distingue acuerdo en agua, acuerdo en exposición, diferencia entre escenarios e incertidumbre en uno o ambos. Este producto ya contiene la comparación entre SSP y por ello no depende de seleccionar un escenario adicional.</p>
+</section>
+
+<section class="section" id="validacion">
+<p class="kicker">12 · Validación y control</p>
+<h2>Cómo se evita que una salida incorrecta pase a ser resultado final</h2>
+<p>El proyecto se organizó en ramas verificables. Una rama se declara congelada cuando su definición, unidades, columnas y controles quedan fijados. Congelar no significa afirmar que el resultado sea perfecto; significa impedir que cambios posteriores alteren silenciosamente productos que ya fueron auditados.</p>
+<p>La versión anual final 18D aplica el orden estadístico correcto: media anual dentro de cada GCM y después cuantiles entre modelos. Además, verifica que 2030 y 2050 reproduzcan los resultados congelados de la rama hidromorfológica. Este control es importante porque una operación estadística aparentemente similar puede responder a una pregunta distinta si se cambia el orden.</p>
+<div class="data-grid">
+<div class="data-card"><strong>30 trayectorias</strong><p>Se verifica la combinación completa de 15 GCM y 2 escenarios.</p></div>
+<div class="data-card"><strong>2027–2050</strong><p>Periodo principal de los productos cartográficos anuales finales.</p></div>
+<div class="data-card"><strong>2030 y 2050</strong><p>Horizontes utilizados como checkpoints prioritarios de reproducción.</p></div>
+<div class="data-card"><strong>2090</strong><p>Se conserva como horizonte de estrés y no con el mismo peso interpretativo.</p></div>
+<div class="data-card"><strong>Nodata y CRS</strong><p>Los productos espaciales mantienen controles de grilla, referencia y valores fuera del dominio.</p></div>
+<div class="data-card"><strong>Trazabilidad</strong><p>Los productos intermedios permiten reconstruir cómo se obtuvo cada nivel y cada clasificación.</p></div>
+</div>
+</section>
+
+<section class="section" id="limitaciones">
+<p class="kicker">13 · Alcance y limitaciones</p>
+<h2>Qué simplifica el modelo y por qué debe declararse</h2>
+<p>Los coeficientes aP, aE y aQ permanecen congelados durante la aplicación futura. Esto supone que la relación efectiva entre los forzamientos y el nivel no cambia estructuralmente. Cambios importantes en la cuenca, infiltración, conectividad hidrológica o intercambios subterráneos podrían modificar esa relación.</p>
+<p>La evaporación es un estimador radiativamente informado y no un modelo completo de transferencia turbulenta. El caudal future-compatible utiliza modelos basados en árboles, que pueden saturarse cuando los predictores futuros quedan fuera del rango histórico. Los GCM tampoco constituyen una muestra aleatoria independiente, por lo que p05–p95 se interpreta como dispersión empírica del ensamble.</p>
+<p>En la componente espacial, la principal limitación es la ausencia de una superficie topobatimétrica litoral moderna y continua vinculada a la misma referencia vertical de la serie de nivel. Por eso el proyecto conserva incertidumbre en lugar de inventar una línea de costa para niveles sin soporte observacional suficiente.</p>
+<div class="callout brown"><strong>La incertidumbre es una salida del método</strong><p>Cuando una zona aparece como incierta, la metodología está indicando el límite de la evidencia disponible. Reducir esa zona requiere nueva información de campo, topografía, topobatimetría o observaciones costeras con control vertical; no basta con suavizar o interpolar el mapa.</p></div>
+</section>
+</article>
+</div>
+</section>
+
+<section class="qa">
+<div class="shell">
+<div class="qa-head"><h2>Cómo interpretar la metodología</h2><p>Estas ideas resumen las decisiones más importantes para leer correctamente el modelo sin perder su significado técnico.</p></div>
+<div class="qa-grid">
+<div class="qa-card"><strong>Las unidades cierran</strong><p>Todos los términos del balance diario terminan expresados como metros de nivel por día antes de sumarse.</p></div>
+<div class="qa-card"><strong>El ancla es única</strong><p>Todas las trayectorias futuras parten de 1552.770 m y no reciben un ajuste vertical distinto por escenario.</p></div>
+<div class="qa-card"><strong>Los SSP no tienen probabilidad asignada</strong><p>Se utilizan como condiciones de forzamiento para comparar respuestas, no como pronósticos probabilísticos.</p></div>
+<div class="qa-card"><strong>p50 es una mediana</strong><p>Resume el centro de los quince GCM después de calcular la media anual de cada modelo.</p></div>
+<div class="qa-card"><strong>El gris tiene significado científico</strong><p>Representa falta de soporte suficiente para clasificar el estado espacial futuro, no tierra disponible.</p></div>
+<div class="qa-card"><strong>18D preserva el orden estadístico</strong><p>Primero resume cada GCM por año y después calcula los cuantiles entre modelos.</p></div>
+</div>
+</div>
+</section>
+
+<section class="next">
+<div class="shell next-grid">
+<div><h2>De la metodología a los resultados</h2><p>La sección de resultados muestra cómo estas ecuaciones y controles se traducen en niveles, descensos, exposición costera y productos espaciales. El geoportal permitirá explorar las capas por año y escenario.</p></div>
+<div class="buttons"><a class="btn" href="./resultados.html">Ver resultados</a><a class="btn alt" href="./geoportal.html">Abrir geoportal</a></div>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="shell footer-main">
+<div><div class="footer-brand-row"><img src="./aala_logo.png" alt="Amigos del Lago de Atitlán"><img src="./logoamsclaePNG.png" alt="AMSCLAE"><div class="footer-brand">Oscilación del nivel<br>del Lago de Atitlán</div></div><p class="footer-about">Portal de consulta de resultados hidrológicos y geoespaciales desarrollado por la Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE.</p></div>
+<div><h3>Navegación</h3><div class="footer-links"><a href="./index.html">Inicio</a><a href="./geoportal.html">Geoportal</a><a href="./resultados.html">Resultados</a></div></div>
+<div><h3>Proyecto</h3><div class="footer-links"><a href="./proyecto.html">Sobre el proyecto</a><a href="./metodologia.html">Metodología</a></div></div>
+<div><h3>Instituciones</h3><div class="footer-links"><a href="https://amigosdeatitlan.org/" target="_blank" rel="noopener noreferrer">Amigos del Lago de Atitlán</a><a href="https://www.amsclae.gob.gt/category/departamentos/dica/" target="_blank" rel="noopener noreferrer">AMSCLAE · DICA</a></div></div>
+</div>
+<div class="shell footer-bottom"><span>Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE</span><span>Lago de Atitlán · Sololá, Guatemala</span></div>
+</footer>
+
+<script>
+const b=document.querySelector("[data-menu-toggle]"),n=document.querySelector("[data-nav]");
+if(b&&n){b.addEventListener("click",()=>{const o=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",String(!o));n.classList.toggle("open",!o);document.body.classList.toggle("menu-open",!o)});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{b.setAttribute("aria-expanded","false");n.classList.remove("open");document.body.classList.remove("menu-open")}))}
+const info={
+core:{k:"Sistema central",t:"Oscilación del nivel del Lago de Atitlán",p:"El sistema integra un modelo temporal y una traducción espacial. El modelo temporal calcula cambios diarios del nivel a partir de anomalías de precipitación, evaporación y caudal, más una componente estacional de suma anual cero. La etapa espacial utiliza observación Sentinel-2 y batimetría AMSCLAE para establecer dónde existe soporte suficiente para clasificar agua, exposición o incertidumbre.",i:"Observaciones, clima, hidrología y evidencia geoespacial.",r:"Balance diario, ensamble CMIP6 y clasificación espacial conservadora.",o:"Niveles, cuantiles y productos cartográficos 2027–2050."},
+observed:{k:"Entrada observada",t:"Nivel observado",p:"La serie canónica fija la referencia vertical del proyecto. Contiene 554 observaciones entre 2008 y 2026. El último valor observado, 1552.770 m del 29 de agosto de 2026, se utiliza como condición inicial común de todas las trayectorias futuras.",i:"Serie de elevación del espejo de agua.",r:"Control temporal, referencia vertical y ancla futura.",o:"H(t0) = 1552.770 m."},
+climate:{k:"Referencia climática",t:"Climatología 1981–2014",p:"Para cada variable y cada mes se calcula un promedio de referencia. Enero se compara con enero, febrero con febrero y así sucesivamente. Esto permite trabajar con desviaciones comparables en lugar de mezclar diferencias climatológicas permanentes con señal hidrológica.",i:"Series históricas diarias.",r:"Promedio mensual por variable y modelo.",o:"Doce climatologías mensuales por variable."},
+forcing:{k:"Forzamientos",t:"Precipitación, evaporación y caudal",p:"Son las tres contribuciones físicas explícitas del balance. La precipitación y la evaporación se manejan como láminas en mm/día; el caudal se transforma desde m³/s a una lámina equivalente sobre el área de referencia del lago.",i:"P, E y Q diarios.",r:"Conversión de unidades y aplicación de coeficientes calibrados.",o:"Contribuciones diarias en metros de nivel."},
+cmip:{k:"Clima futuro",t:"CMIP6",p:"CMIP6 aporta las variables climáticas futuras que alimentan los submodelos. No entrega directamente niveles del Lago de Atitlán. La respuesta local se obtiene después de procesar los forzamientos mediante la cadena future-compatible.",i:"Variables climáticas de modelos globales.",r:"Procesamiento compatible con la referencia histórica.",o:"Forzamientos diarios por GCM y escenario."},
+evidence:{k:"Evidencia espacial",t:"Información geoespacial",p:"La posición territorial del agua requiere evidencia independiente del modelo temporal. Sentinel-2 aporta observación moderna de agua y AMSCLAE aporta información batimétrica y soporte interior bajo controles específicos.",i:"Imágenes satelitales y batimetría.",r:"Construcción de dominio evaluable y controles de soporte.",o:"Base para clasificar agua, exposición e incertidumbre."},
+anomaly:{k:"Transformación",t:"Anomalías mensuales",p:"Cada dato diario se resta de la climatología de su propio mes. Una anomalía positiva significa que la variable está por encima de su referencia mensual; una negativa, por debajo.",i:"Dato diario y climatología mensual.",r:"X′t = Xt − X̄m(t).",o:"Anomalías diarias centradas."},
+balance:{k:"Modelo hidrológico",t:"Balance diario ΔH",p:"El cambio diario combina estacionalidad, precipitación, evaporación y caudal. Los coeficientes congelados son aP=1.278816, aE=2.273196 y aQ=0.758222. Todos los términos terminan en metros de nivel por día.",i:"S*, P′, E′ y Q′.",r:"Balance dimensionalmente consistente.",o:"ΔH diario."},
+scenarios:{k:"Escenarios",t:"SSP2-4.5 y SSP5-8.5",p:"Los dos SSP se utilizan como condiciones de forzamiento. No se les asigna una probabilidad de ocurrencia. Cada uno se procesa con los quince GCM y se conserva de forma independiente.",i:"Dos trayectorias de forzamiento.",r:"Aplicación separada del sistema hidrológico.",o:"Dos conjuntos de 15 trayectorias."},
+sentinel:{k:"Observación espacial",t:"Sentinel-2 y batimetría AMSCLAE",p:"Sentinel-2 ayuda a identificar evidencia moderna de agua y construir el corredor costero. La batimetría AMSCLAE describe la geometría sumergida y aporta soporte interior, pero no se desplaza globalmente para forzar una coincidencia artificial con la costa.",i:"Observación satelital y batimetría.",r:"Auditoría de soporte horizontal y vertical.",o:"Evidencia espacial jerarquizada."},
+integration:{k:"Integración",t:"Nivel absoluto H(t)",p:"Los cambios diarios se acumulan desde una condición inicial única. La trayectoria futura no recibe un intercepto diferente por GCM o escenario.",i:"ΔH diario y H(t0).",r:"Suma acumulativa.",o:"Elevación absoluta diaria del lago."},
+ensemble:{k:"Ensamble",t:"15 GCM por escenario",p:"Cada GCM conserva su identidad. La diversidad entre modelos se utiliza para describir incertidumbre estructural y no se elimina mediante un promedio prematuro.",i:"15 trayectorias por SSP.",r:"Conservación de cada miembro.",o:"Distribución multimodelo."},
+domain:{k:"Control espacial",t:"Dominio evaluable",p:"La metodología identifica dónde existe evidencia suficiente para asignar una condición espacial. Cuando el nivel simulado sale del rango respaldado, la zona se conserva como incierta.",i:"Corredor costero y soporte AMSCLAE.",r:"Control de extrapolación.",o:"Zona conocida y zona incierta."},
+annual:{k:"Resumen temporal",t:"Media anual por GCM",p:"La versión final calcula primero el promedio anual de los niveles diarios de cada GCM. Este orden mantiene a cada modelo como unidad estadística del ensamble.",i:"Niveles diarios de un GCM.",r:"Promedio dentro del año.",o:"Un nivel medio anual por GCM."},
+quantiles:{k:"Estadística",t:"p05, p50 y p95",p:"Los quince valores medios anuales se ordenan para calcular cuantiles empíricos. p50 es la mediana; p05 y p95 describen la parte baja y alta del conjunto. No son probabilidades asignadas al futuro.",i:"15 medias anuales.",r:"Cuantiles 0.05, 0.50 y 0.95.",o:"Centro y dispersión del ensamble."},
+classification:{k:"Clasificación",t:"Estado, robustez y consenso",p:"Estado p50 representa la condición asociada a la mediana. Robustez evalúa persistencia a través de p05–p95. Consenso compara SSP2-4.5 y SSP5-8.5 para un mismo año.",i:"Niveles y dominio espacial.",r:"Reglas conservadoras de clasificación.",o:"Capas categóricas interpretables."},
+validation:{k:"Control final",t:"Validación 18D",p:"La versión anual final calcula primero la media anual por GCM y después los cuantiles. Los horizontes 2030 y 2050 se verifican contra los resultados congelados de la rama hidromorfológica.",i:"Trayectorias y productos previos.",r:"Checkpoints, grilla, clases y consistencia.",o:"Productos anuales validados."},
+rasters:{k:"Productos",t:"Resultados 2027–2050",p:"Se generan productos por año y escenario para nivel p50, cambio respecto de 2026, ancho p05–p95, estado p50 y robustez, además del consenso entre escenarios.",i:"Resultados temporales y clasificación espacial.",r:"Construcción de raster anuales.",o:"GeoTIFF y stacks multibanda."},
+uncertainty:{k:"Salida científica",t:"Incertidumbre explícita",p:"La metodología conserva la incertidumbre en lugar de rellenarla. El gris representa falta de soporte suficiente para ubicar la costa futura, mientras el ancho p05–p95 representa dispersión entre GCM.",i:"Dispersión climática y límites espaciales.",r:"Separación de fuentes de incertidumbre.",o:"Mapas que distinguen conocido e incierto."},
+portal:{k:"Consulta",t:"Geoportal de resultados",p:"El geoportal organiza las capas para explorar año, escenario y tipo de producto. Su función es facilitar la lectura de resultados ya validados, no recalcular el modelo dentro del navegador.",i:"Productos finales.",r:"Visualización y selección de capas.",o:"Consulta interactiva del proyecto."}
+};
+const detail=document.querySelector("[data-detail]"),nodes=[...document.querySelectorAll("[data-node]")];
+function show(key){const d=info[key];if(!d)return;nodes.forEach(x=>x.classList.toggle("active",x.dataset.node===key));detail.innerHTML=`<span class="detail-kicker">${d.k}</span><h3>${d.t}</h3><p>${d.p}</p><div class="detail-meta"><div><strong>Entrada</strong><span>${d.i}</span></div><div><strong>Proceso</strong><span>${d.r}</span></div><div><strong>Salida</strong><span>${d.o}</span></div></div>`}
+nodes.forEach(x=>x.addEventListener("click",()=>show(x.dataset.node)));
+function lines(){const box=document.querySelector("[data-mindmap]"),svg=document.querySelector("[data-lines]");if(!box||!svg||innerWidth<=760)return;const br=box.getBoundingClientRect();svg.innerHTML="";nodes.forEach(x=>{const p=x.dataset.parent;if(!p)return;const y=document.querySelector(`[data-node="${p}"]`);if(!y)return;const a=y.getBoundingClientRect(),c=x.getBoundingClientRect();const x1=a.left+a.width/2-br.left,y1=a.top+a.height/2-br.top,x2=c.left+c.width/2-br.left,y2=c.top+c.height/2-br.top,mid=(y1+y2)/2;const path=document.createElementNS("http://www.w3.org/2000/svg","path");path.setAttribute("d",`M${x1},${y1} C${x1},${mid} ${x2},${mid} ${x2},${y2}`);path.setAttribute("fill","none");path.setAttribute("stroke","rgba(71,127,145,.32)");path.setAttribute("stroke-width","1.5");svg.appendChild(path)})}
+addEventListener("load",lines);addEventListener("resize",lines);
+</script>
+</body>
+</html>
