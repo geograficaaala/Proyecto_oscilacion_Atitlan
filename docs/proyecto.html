@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#dceff4">
+  <title>Sobre el proyecto | Oscilación del nivel del Lago de Atitlán</title>
+  <meta name="description" content="Descripción amplia del proyecto de modelación matemática, hidrológica y geoespacial de la oscilación del nivel del Lago de Atitlán.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#fbfcfa;
+      --sky-1:#edf7f9;
+      --sky-2:#dceff4;
+      --sky-3:#c5e2ea;
+      --sky-4:#9fcbd8;
+      --lake:#5f9fb2;
+      --lake-deep:#477f91;
+      --green-1:#edf3ed;
+      --green-2:#cad9c8;
+      --green:#708b73;
+      --brown-1:#f3ede5;
+      --brown-2:#dfd0bf;
+      --brown:#947c65;
+      --ink:#29424c;
+      --ink-2:#5b7078;
+      --line:rgba(41,66,76,.14);
+      --white:#fff;
+      --max:1440px;
+      --display:"Source Serif 4",Georgia,"Times New Roman",serif;
+      --sans:"Manrope",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:112px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    button{font:inherit}
+    p{text-align:justify;text-justify:inter-word;text-wrap:pretty}
+    h1,h2,h3,h4,p,a,span{overflow-wrap:break-word}
+    h1,h2,h3,h4{text-wrap:balance}
+    .shell{width:min(var(--max),calc(100% - 64px));margin:0 auto}
+    .header{position:sticky;top:0;z-index:1000;background:rgba(251,252,250,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .header-inner{min-height:94px;display:flex;align-items:center;gap:30px}
+    .brand{display:flex;align-items:center;gap:15px;text-decoration:none;min-width:340px}
+    .brand-logos{display:flex;align-items:center;gap:9px}
+    .brand-logos img{width:46px;height:46px;object-fit:contain}
+    .brand-copy{display:flex;flex-direction:column;gap:3px}
+    .brand-name{font-size:.84rem;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+    .brand-place{font-size:.62rem;color:var(--ink-2)}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+    .nav a{position:relative;padding:10px 0;color:var(--ink);font-size:.74rem;font-weight:600;text-decoration:none;white-space:nowrap}
+    .nav a::after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:var(--lake);transition:right .22s ease}
+    .nav a:hover::after,.nav a:focus-visible::after,.nav a[aria-current="page"]::after{right:0}
+    .nav .geoportal-link{padding:12px 17px;background:#79aebb;color:#fff}
+    .nav .geoportal-link::after{display:none}
+    .nav .geoportal-link:hover{background:var(--lake-deep)}
+    .menu-toggle{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--line);background:transparent;align-items:center;justify-content:center;cursor:pointer}
+    .menu-lines,.menu-lines::before,.menu-lines::after{display:block;width:20px;height:1.5px;background:var(--ink);content:"";transition:.2s ease}
+    .menu-lines{position:relative}
+    .menu-lines::before{position:absolute;top:-6px}
+    .menu-lines::after{position:absolute;top:6px}
+    .menu-toggle[aria-expanded="true"] .menu-lines{background:transparent}
+    .menu-toggle[aria-expanded="true"] .menu-lines::before{transform:translateY(6px) rotate(45deg)}
+    .menu-toggle[aria-expanded="true"] .menu-lines::after{transform:translateY(-6px) rotate(-45deg)}
+    .eyebrow{margin:0 0 20px;font-size:.66rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--lake-deep)}
+    .page-hero{background:linear-gradient(135deg,var(--sky-1),var(--sky-2));border-bottom:1px solid var(--line)}
+    .page-hero-inner{padding:112px 0 104px;display:grid;grid-template-columns:minmax(0,1.28fr) minmax(300px,.58fr);gap:90px;align-items:end}
+    .page-title{margin:0;font-family:var(--display);font-size:clamp(3.2rem,6vw,6.8rem);line-height:.96;font-weight:600;letter-spacing:-.035em;max-width:1050px}
+    .page-lead{margin:34px 0 0;max-width:920px;color:var(--ink-2);font-size:.92rem;line-height:1.9}
+    .hero-facts{border-left:1px solid rgba(41,66,76,.22);padding-left:36px;display:grid;gap:25px}
+    .hero-fact{padding-bottom:22px;border-bottom:1px solid rgba(41,66,76,.13)}
+    .hero-fact:last-child{border-bottom:0;padding-bottom:0}
+    .hero-fact strong{display:block;margin-bottom:7px;font-family:var(--display);font-size:1.35rem;font-weight:600}
+    .hero-fact span{display:block;color:var(--ink-2);font-size:.72rem;line-height:1.65}
+    .overview{padding:100px 0;background:#fff}
+    .overview-grid{display:grid;grid-template-columns:minmax(240px,.42fr) minmax(0,1fr);gap:86px}
+    .side-nav{position:sticky;top:126px;align-self:start;border-top:1px solid var(--line)}
+    .side-nav a{display:block;padding:14px 3px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink-2);font-size:.68rem;font-weight:700;line-height:1.4}
+    .side-nav a:hover,.side-nav a:focus-visible{color:var(--lake-deep)}
+    .article{max-width:940px}
+    .article-section{padding:0 0 78px;margin:0 0 78px;border-bottom:1px solid var(--line)}
+    .article-section:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+    .section-kicker{margin:0 0 14px;color:var(--lake-deep);font-size:.63rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .section-title{margin:0 0 30px;font-family:var(--display);font-size:clamp(2.15rem,3.2vw,3.65rem);line-height:1.06;font-weight:600;letter-spacing:-.02em}
+    .article h3{margin:42px 0 16px;font-family:var(--display);font-size:1.62rem;line-height:1.2;font-weight:600}
+    .article h4{margin:32px 0 12px;font-size:.82rem;line-height:1.4;font-weight:800;letter-spacing:.01em}
+    .article p{margin:0 0 20px;color:var(--ink-2);font-size:.83rem;line-height:1.9}
+    .article p:last-child{margin-bottom:0}
+    .lead-paragraph{font-family:var(--display);font-size:1.34rem!important;line-height:1.55!important;color:var(--ink)!important}
+    .plain-list{margin:22px 0 24px;padding:0;list-style:none;border-top:1px solid var(--line)}
+    .plain-list li{padding:15px 0 15px 22px;border-bottom:1px solid var(--line);position:relative;color:var(--ink-2);font-size:.8rem;line-height:1.75}
+    .plain-list li::before{content:"";position:absolute;left:2px;top:24px;width:7px;height:7px;background:var(--lake)}
+    .definition-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:30px 0}
+    .definition{padding:28px;background:var(--sky-1);border:1px solid rgba(71,127,145,.12)}
+    .definition:nth-child(3n+2){background:var(--green-1)}
+    .definition:nth-child(3n){background:var(--brown-1)}
+    .definition strong{display:block;margin-bottom:10px;font-family:var(--display);font-size:1.25rem;font-weight:600}
+    .definition p{margin:0;font-size:.75rem;line-height:1.75}
+    .process{display:grid;gap:0;margin:32px 0;border-top:1px solid var(--line)}
+    .process-item{display:grid;grid-template-columns:78px 1fr;gap:24px;padding:25px 0;border-bottom:1px solid var(--line)}
+    .process-number{font-family:var(--display);font-size:2rem;color:var(--lake)}
+    .process-item h3{margin:0 0 9px;font-family:var(--sans);font-size:.82rem;font-weight:800}
+    .process-item p{margin:0;font-size:.77rem;line-height:1.8}
+    .callout{margin:36px 0;padding:34px 38px;background:var(--sky-2);border-left:4px solid var(--lake)}
+    .callout.green{background:var(--green-1);border-left-color:var(--green)}
+    .callout.brown{background:var(--brown-1);border-left-color:var(--brown)}
+    .callout strong{display:block;margin-bottom:10px;font-family:var(--display);font-size:1.4rem;font-weight:600}
+    .callout p{margin:0;color:var(--ink);font-size:.8rem;line-height:1.82}
+    .scope-band{padding:100px 0;background:var(--green-1)}
+    .scope-head{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1fr);gap:80px;align-items:start;margin-bottom:54px}
+    .scope-head h2{margin:0;font-family:var(--display);font-size:clamp(2.3rem,4vw,4.4rem);line-height:1.02;font-weight:600}
+    .scope-head p{margin:0;color:var(--ink-2);font-size:.84rem;line-height:1.9}
+    .scope-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(41,66,76,.12)}
+    .scope-card{padding:34px;background:var(--paper)}
+    .scope-card h3{margin:0 0 15px;font-family:var(--display);font-size:1.5rem;font-weight:600}
+    .scope-card p{margin:0;color:var(--ink-2);font-size:.75rem;line-height:1.78}
+    .glossary{padding:100px 0;background:var(--brown-1)}
+    .glossary-head{max-width:900px;margin-bottom:48px}
+    .glossary-head h2{margin:0;font-family:var(--display);font-size:clamp(2.3rem,4vw,4.3rem);font-weight:600;line-height:1.04}
+    .glossary-head p{margin:22px 0 0;color:var(--ink-2);font-size:.82rem;line-height:1.85}
+    .glossary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .term{background:rgba(255,255,255,.64);padding:28px}
+    .term strong{display:block;margin-bottom:10px;font-size:.75rem;font-weight:800}
+    .term p{margin:0;color:var(--ink-2);font-size:.72rem;line-height:1.72}
+    .next{padding:92px 0;background:var(--sky-2)}
+    .next-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:60px;align-items:center}
+    .next h2{margin:0;font-family:var(--display);font-size:clamp(2.2rem,4vw,4rem);line-height:1.04;font-weight:600}
+    .next p{margin:20px 0 0;max-width:780px;color:var(--ink-2);font-size:.82rem;line-height:1.8}
+    .btn-row{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:0 22px;border:1px solid var(--lake-deep);background:var(--lake-deep);color:#fff;text-decoration:none;font-size:.74rem;font-weight:800;transition:transform .2s ease,background .2s ease}
+    .btn:hover,.btn:focus-visible{transform:translateY(-2px);background:#6d9fad;border-color:#6d9fad;outline:none}
+    .btn-light{background:transparent;color:var(--lake-deep)}
+    .btn-light:hover,.btn-light:focus-visible{background:var(--lake-deep);color:#fff}
+    .footer{background:#29424c;color:#edf7f9}
+    .footer-main{display:grid;grid-template-columns:minmax(300px,1.5fr) repeat(3,minmax(130px,.5fr));gap:55px;padding:68px 0 52px}
+    .footer-brand-row{display:flex;align-items:center;gap:12px}
+    .footer-brand-row img{width:52px;height:52px;object-fit:contain;background:transparent;padding:0}
+    .footer-brand{margin-left:6px;font-family:var(--display);font-size:1.6rem;line-height:1.05}
+    .footer-about{max-width:560px;margin:24px 0 0;color:#c8d9de;font-size:.7rem;line-height:1.8}
+    .footer h3{margin:3px 0 18px;font-size:.65rem;text-transform:uppercase;letter-spacing:.14em}
+    .footer-links{display:grid;gap:11px}
+    .footer-links a{color:#c8d9de;text-decoration:none;font-size:.69rem}
+    .footer-links a:hover{color:#fff}
+    .footer-bottom{min-height:64px;border-top:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:space-between;gap:24px;color:#a9c2c9;font-size:.61rem}
+    @media(max-width:1100px){
+      .header-inner{min-height:78px}
+      .brand{min-width:0}
+      .menu-toggle{display:flex}
+      .nav{position:fixed;left:0;right:0;top:78px;height:calc(100dvh - 78px);padding:30px 32px;background:rgba(251,252,250,.99);display:flex;flex-direction:column;align-items:stretch;gap:0;transform:translateX(100%);transition:transform .25s ease;overflow:auto}
+      .nav.open{transform:translateX(0)}
+      .nav a{padding:18px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+      .nav a::after{display:none}
+      .nav .geoportal-link{margin-top:22px;padding:16px;text-align:center;border:0}
+      .page-hero-inner{grid-template-columns:1fr;gap:48px;padding:84px 0}
+      .hero-facts{grid-template-columns:repeat(3,1fr);border-left:0;border-top:1px solid rgba(41,66,76,.22);padding:30px 0 0;gap:22px}
+      .hero-fact{border-bottom:0;padding:0 18px 0 0;border-right:1px solid rgba(41,66,76,.13)}
+      .hero-fact:last-child{border-right:0}
+      .overview-grid{grid-template-columns:1fr}
+      .side-nav{position:static;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+      .side-nav a{padding:12px}
+      .article{max-width:none}
+      .scope-grid,.glossary-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-main{grid-template-columns:1.5fr 1fr 1fr}
+      .footer-main>div:last-child{grid-column:2}
+    }
+    @media(max-width:760px){
+      .shell{width:calc(100% - 28px)}
+      .header-inner{min-height:68px;gap:12px}
+      .nav{top:68px;height:calc(100dvh - 68px);padding:20px 20px calc(28px + env(safe-area-inset-bottom))}
+      .nav a{min-height:52px;display:flex;align-items:center}
+      .brand{gap:10px;min-width:0;flex:1}
+      .brand-logos{gap:5px;flex:0 0 auto}
+      .brand-logos img{width:32px;height:32px}
+      .brand-copy{min-width:0}
+      .brand-name{font-size:.66rem;line-height:1.15}
+      .brand-place{display:none}
+      .menu-toggle{width:46px;height:46px;flex:0 0 46px}
+      p{text-align:left;text-justify:auto}
+      .page-hero-inner{padding:58px 0 54px;gap:34px}
+      .page-title{font-size:clamp(2.7rem,14vw,4.2rem)}
+      .page-lead{font-size:.82rem;line-height:1.75;margin-top:25px}
+      .hero-facts{grid-template-columns:1fr;gap:0;padding-top:20px}
+      .hero-fact{padding:16px 0;border-right:0;border-bottom:1px solid rgba(41,66,76,.13)}
+      .hero-fact:last-child{border-bottom:0}
+      .overview{padding:64px 0}
+      .overview-grid{gap:48px}
+      .side-nav{display:none}
+      .article-section{padding-bottom:54px;margin-bottom:54px}
+      .section-title{font-size:clamp(2rem,10vw,2.8rem);margin-bottom:24px}
+      .article h3{font-size:1.42rem;margin-top:34px}
+      .article p{font-size:.79rem;line-height:1.78}
+      .lead-paragraph{font-size:1.18rem!important;line-height:1.5!important}
+      .definition-grid{grid-template-columns:1fr}
+      .definition{padding:24px}
+      .process-item{grid-template-columns:52px 1fr;gap:14px}
+      .process-number{font-size:1.55rem}
+      .callout{padding:26px 24px;margin:30px 0}
+      .scope-band,.glossary,.next{padding:64px 0}
+      .scope-head{grid-template-columns:1fr;gap:24px;margin-bottom:36px}
+      .scope-grid,.glossary-grid{grid-template-columns:1fr}
+      .scope-card,.term{padding:25px}
+      .next-grid{grid-template-columns:1fr;gap:32px}
+      .btn-row{display:grid;grid-template-columns:1fr;width:100%}
+      .btn{width:100%;min-height:50px}
+      .footer-main{grid-template-columns:1fr;padding:50px 0 38px;gap:34px}
+      .footer-brand-row{flex-wrap:wrap;gap:10px}
+      .footer-brand-row img{width:44px;height:44px}
+      .footer-brand{width:100%;margin:6px 0 0;font-size:1.4rem}
+      .footer-main>div:last-child{grid-column:auto}
+      .footer-bottom{align-items:flex-start;flex-direction:column;padding:22px 0 calc(24px + env(safe-area-inset-bottom));min-height:0}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="./index.html" aria-label="Inicio del portal">
+        <span class="brand-logos">
+          <img src="./aala_logo.png" alt="Asociación Amigos del Lago de Atitlán">
+          <img src="./logoamsclaePNG.png" alt="AMSCLAE">
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">Oscilación del nivel del Lago de Atitlán</span>
+          <span class="brand-place">Modelación hidrológica y geoespacial · 2027–2050</span>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle>
+        <span class="menu-lines"></span>
+      </button>
+      <nav class="nav" aria-label="Navegación principal" data-nav>
+        <a href="./index.html">Inicio</a>
+        <a href="./resultados.html">Resultados</a>
+        <a href="./metodologia.html">Metodología</a>
+        <a href="./proyecto.html" aria-current="page">Sobre el proyecto</a>
+        <a class="geoportal-link" href="./geoportal.html">Abrir geoportal</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="shell page-hero-inner">
+        <div>
+          <p class="eyebrow">Sobre el proyecto</p>
+          <h1 class="page-title">Modelación de la oscilación del nivel del Lago de Atitlán</h1>
+          <p class="page-lead">Este proyecto desarrolla un sistema técnico para estudiar cómo cambia el nivel del Lago de Atitlán, cómo puede responder ante diferentes condiciones climáticas futuras y hasta dónde esos cambios verticales pueden representarse de manera responsable sobre el territorio. El trabajo integra hidrología, climatología, estadística, teledetección, batimetría y análisis geoespacial dentro de una misma cadena de procesamiento, manteniendo separadas las fuentes de información según aquello que cada una puede demostrar.</p>
+        </div>
+        <div class="hero-facts">
+          <div class="hero-fact">
+            <strong>2027–2050</strong>
+            <span>Periodo principal de los productos cartográficos anuales.</span>
+          </div>
+          <div class="hero-fact">
+            <strong>15 GCM</strong>
+            <span>Modelos climáticos globales utilizados por escenario.</span>
+          </div>
+          <div class="hero-fact">
+            <strong>20 × 20 m</strong>
+            <span>Resolución de la grilla espacial utilizada en los productos finales.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overview">
+      <div class="shell overview-grid">
+        <aside class="side-nav" aria-label="Contenido de la página">
+          <a href="#descripcion">Descripción general</a>
+          <a href="#problema">Problema de estudio</a>
+          <a href="#objetivo">Objetivo y alcance</a>
+          <a href="#componentes">Componentes del sistema</a>
+          <a href="#informacion">Información utilizada</a>
+          <a href="#futuro">Escenarios futuros</a>
+          <a href="#espacial">Componente espacial</a>
+          <a href="#incertidumbre">Incertidumbre</a>
+          <a href="#productos">Productos generados</a>
+          <a href="#calidad">Control de calidad</a>
+          <a href="#uso">Uso e interpretación</a>
+          <a href="#limitaciones">Limitaciones</a>
+          <a href="#actualizacion">Actualización futura</a>
+        </aside>
+
+        <article class="article">
+          <section class="article-section" id="descripcion">
+            <p class="section-kicker">01 · Descripción general</p>
+            <h2 class="section-title">¿Qué es este proyecto?</h2>
+            <p class="lead-paragraph">Es un sistema de modelación diseñado para analizar la oscilación del nivel del Lago de Atitlán y traducir esa información, con controles explícitos, a productos espaciales que puedan consultarse, compararse y utilizarse en procesos de planificación.</p>
+            <p>El proyecto parte de una idea sencilla: el nivel del lago no cambia por una sola causa. La elevación del espejo de agua refleja el efecto acumulado de diferentes entradas y pérdidas de agua, de la variación estacional y de procesos hidrológicos que actúan de manera conjunta. Por esa razón, el análisis no se construyó a partir de una tendencia aislada ni de una extrapolación lineal del nivel observado. Se desarrolló una cadena que conecta información histórica, variables climáticas e hidrológicas, escenarios futuros y evidencia geoespacial.</p>
+            <p>La variable principal es la elevación absoluta del espejo de agua, representada como H. El modelo calcula cómo cambia esa elevación a través del tiempo. Posteriormente, una etapa espacial independiente analiza qué significado puede tener un nivel determinado sobre la superficie del lago y su franja costera. Esta separación es fundamental: calcular una elevación futura y dibujar una línea de costa futura no son el mismo problema y no requieren la misma evidencia.</p>
+            <p>El sistema se diseñó para que las decisiones técnicas puedan rastrearse. Las transformaciones de datos, las unidades, los parámetros, las condiciones iniciales, los modelos climáticos, las clasificaciones espaciales y los controles de consistencia forman parte de una estructura reproducible. Esto permite revisar no solo el resultado final, sino también el camino utilizado para obtenerlo.</p>
+            <div class="callout">
+              <strong>Una distinción fundamental</strong>
+              <p>El modelo temporal responde a la pregunta “¿qué nivel puede alcanzar el lago bajo determinadas condiciones de forzamiento?”. La componente espacial responde a otra pregunta: “¿qué partes del territorio pueden clasificarse con evidencia suficiente para ese nivel?”. Mantener ambas preguntas separadas evita presentar una precisión cartográfica que los datos no sostienen.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="problema">
+            <p class="section-kicker">02 · Problema de estudio</p>
+            <h2 class="section-title">¿Por qué es necesario modelar la oscilación del nivel?</h2>
+            <p>El Lago de Atitlán es un sistema endorreico. En términos sencillos, esto significa que no posee una salida superficial permanente equivalente a la de un río que drena directamente hacia el mar. En un sistema de este tipo, los cambios del almacenamiento de agua adquieren una importancia especial. El nivel observado integra el efecto de las entradas, las pérdidas y otros intercambios que pueden no medirse de manera directa en cada momento.</p>
+            <p>La precipitación aporta agua al sistema. La evaporación representa una pérdida hacia la atmósfera. Los ríos y otros aportes superficiales trasladan agua desde la cuenca hacia el lago. A estas señales se suman la estacionalidad y procesos que pueden incluir retardos, almacenamiento en la cuenca e intercambios subterráneos no resueltos explícitamente por el modelo. El nivel es, por tanto, una respuesta integrada y no el reflejo directo de una sola variable meteorológica.</p>
+            <p>Esto crea dos dificultades. La primera es temporal: se necesita una formulación capaz de relacionar las variables disponibles con los cambios diarios del nivel sin introducir más complejidad de la que los datos permiten identificar. La segunda es espacial: aun cuando pueda estimarse un nivel, la posición exacta de una costa futura depende de conocer adecuadamente la elevación y geometría de la franja litoral. Una batimetría útil para representar la cubeta profunda no necesariamente resuelve con la misma precisión los cambios de pocos metros cerca de la costa.</p>
+            <p>Por ello, el proyecto adopta un criterio conservador. Cuando existe evidencia suficiente, el sistema la utiliza. Cuando la información no permite una clasificación espacial defendible, esa falta de soporte se conserva como incertidumbre. La zona incierta no se rellena con una línea inventada ni se interpreta automáticamente como tierra expuesta.</p>
+          </section>
+
+          <section class="article-section" id="objetivo">
+            <p class="section-kicker">03 · Objetivo y alcance</p>
+            <h2 class="section-title">Qué busca resolver el proyecto</h2>
+            <p>El propósito general es disponer de una herramienta técnica para estudiar la evolución del nivel del Lago de Atitlán bajo condiciones históricas y escenarios climáticos futuros, y vincular esa evolución con una representación espacial que indique dónde existe evidencia suficiente para interpretar cambios en el estado de la superficie costera.</p>
+            <p>El proyecto no busca producir una predicción determinista del nivel exacto que se observará en una fecha futura. Tampoco pretende establecer una línea de costa futura con precisión catastral. Su función es analizar trayectorias condicionadas por escenarios, conservar la variabilidad entre modelos climáticos y mostrar de manera explícita la incertidumbre asociada tanto al componente temporal como al componente espacial.</p>
+            <h3>Objetivos técnicos</h3>
+            <ul class="plain-list">
+              <li>Representar el cambio diario del nivel mediante una ecuación hidrológica interpretable y dimensionalmente consistente.</li>
+              <li>Integrar precipitación, evaporación, caudal y estacionalidad sin mezclar sus unidades ni sus funciones dentro del balance.</li>
+              <li>Construir ramas de datos compatibles entre el periodo histórico y el futuro para evitar utilizar en las proyecciones variables que no estén disponibles de manera equivalente.</li>
+              <li>Aplicar el modelo a un conjunto de modelos climáticos globales de CMIP6 bajo dos escenarios de forzamiento.</li>
+              <li>Conservar la dispersión entre modelos mediante cuantiles del ensamble, en lugar de reducir toda la información a una única trayectoria.</li>
+              <li>Traducir los niveles a productos geoespaciales únicamente dentro del dominio donde Sentinel-2, la batimetría y los controles espaciales aportan soporte suficiente.</li>
+              <li>Generar productos anuales comparables y reproducibles para consulta técnica, planificación y análisis territorial.</li>
+            </ul>
+            <p>Los horizontes principales del trabajo son 2030 y 2050, mientras que la serie anual de productos cartográficos cubre 2027–2050. El horizonte 2090 se mantiene como una referencia de estrés de largo plazo y requiere una lectura especialmente cautelosa debido al aumento de la incertidumbre y a las limitaciones de extrapolación de algunos submodelos.</p>
+          </section>
+
+          <section class="article-section" id="componentes">
+            <p class="section-kicker">04 · Arquitectura del sistema</p>
+            <h2 class="section-title">Cómo se organiza el proyecto</h2>
+            <p>La cadena de trabajo se puede entender como una secuencia de módulos. Cada módulo cumple una función específica y utiliza la fuente de información que corresponde a esa función. Esta organización evita que una fuente de datos sea utilizada para responder preguntas que están fuera de su capacidad real.</p>
+            <div class="process">
+              <div class="process-item">
+                <div class="process-number">01</div>
+                <div>
+                  <h3>Serie observada de nivel</h3>
+                  <p>Establece la referencia vertical del lago, permite evaluar el comportamiento histórico y proporciona la condición inicial desde la cual se integran las trayectorias futuras.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <div class="process-number">02</div>
+                <div>
+                  <h3>Forzamientos hidrológicos y climáticos</h3>
+                  <p>La precipitación, la evaporación y el caudal se expresan como anomalías respecto de climatologías mensuales. El objetivo es representar cuánto se aparta cada día de las condiciones climáticas de referencia.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <div class="process-number">03</div>
+                <div>
+                  <h3>Modelo de oscilación</h3>
+                  <p>Combina las anomalías con un término estacional y coeficientes calibrados. El resultado diario se expresa como cambio de nivel y luego se acumula para reconstruir la elevación absoluta del lago.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <div class="process-number">04</div>
+                <div>
+                  <h3>Escenarios CMIP6</h3>
+                  <p>Los forzamientos futuros se construyen para quince modelos climáticos globales bajo SSP2-4.5 y SSP5-8.5. Cada combinación modelo–escenario produce una trayectoria independiente.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <div class="process-number">05</div>
+                <div>
+                  <h3>Ensamble y cuantiles</h3>
+                  <p>Las trayectorias no se tratan como una sola predicción. Se resumen mediante p05, p50 y p95 para conservar la posición central y la dispersión entre modelos.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <div class="process-number">06</div>
+                <div>
+                  <h3>Traducción espacial</h3>
+                  <p>Los niveles se relacionan con evidencia Sentinel-2 y con la batimetría AMSCLAE bajo reglas conservadoras. La clasificación distingue agua, exposición y sectores donde no existe soporte suficiente.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <div class="process-number">07</div>
+                <div>
+                  <h3>Productos cartográficos</h3>
+                  <p>La información se organiza en GeoTIFF, capas de apoyo y productos anuales que permiten consultar estado p50, robustez, cambio vertical, amplitud de incertidumbre y consenso entre escenarios.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="article-section" id="informacion">
+            <p class="section-kicker">05 · Fuentes de información</p>
+            <h2 class="section-title">Qué información utiliza el sistema</h2>
+            <p>Una característica central del proyecto es la jerarquía de evidencia. No todas las fuentes tienen la misma función. La serie de nivel es la autoridad para la condición inicial y la validación temporal. Los productos climáticos suministran los forzamientos. Sentinel-2 aporta evidencia moderna sobre la presencia de agua. La batimetría de AMSCLAE aporta información de la morfología profunda y, bajo controles adicionales, soporte para sectores interiores.</p>
+            <div class="definition-grid">
+              <div class="definition">
+                <strong>Nivel observado</strong>
+                <p>Serie de elevación del espejo de agua. Permite trabajar con una referencia absoluta y establecer el punto desde el cual comienzan las trayectorias futuras.</p>
+              </div>
+              <div class="definition">
+                <strong>Precipitación</strong>
+                <p>Entrada atmosférica de agua. En el modelo se trabaja como anomalía respecto de la climatología mensual, no únicamente como valor bruto diario.</p>
+              </div>
+              <div class="definition">
+                <strong>Evaporación</strong>
+                <p>Pérdida de agua hacia la atmósfera. Su contribución al balance tiene signo opuesto a la precipitación y al aporte positivo de caudal.</p>
+              </div>
+              <div class="definition">
+                <strong>Caudal</strong>
+                <p>Aporte fluvial agregado. Para el futuro se utiliza una arquitectura compatible con las variables disponibles en CMIP6 y se conserva una auditoría de valores fuera del dominio histórico.</p>
+              </div>
+              <div class="definition">
+                <strong>Sentinel-2</strong>
+                <p>Misión satelital utilizada para obtener evidencia moderna de presencia de agua y construir información de la franja costera observada.</p>
+              </div>
+              <div class="definition">
+                <strong>Batimetría AMSCLAE</strong>
+                <p>Información sobre la geometría sumergida del lago. Es especialmente valiosa para la morfología de la cubeta, pero su relación con la costa moderna exige controles de referencia vertical.</p>
+              </div>
+              <div class="definition">
+                <strong>CMIP6</strong>
+                <p>Marco internacional que reúne experimentos de modelos climáticos globales. El proyecto utiliza un ensamble de quince GCM para construir forzamientos futuros.</p>
+              </div>
+              <div class="definition">
+                <strong>Climatología 1981–2014</strong>
+                <p>Referencia mensual utilizada para expresar anomalías climáticas. Una anomalía indica cuánto se aparta una variable de su comportamiento medio para el mes correspondiente.</p>
+              </div>
+            </div>
+            <h3>¿Por qué trabajar con anomalías?</h3>
+            <p>Una anomalía es la diferencia entre un valor y una referencia climática. Si la precipitación de un día es superior a la precipitación típica del mes correspondiente, la anomalía es positiva. Si es inferior, es negativa. El mismo principio se aplica a evaporación y caudal. Esta formulación permite que el modelo represente desviaciones respecto de condiciones mensuales de referencia y reduzca la confusión entre la estacionalidad normal y los cambios que realmente alteran el balance.</p>
+            <p>La referencia climática utilizada es 1981–2014. En la aplicación futura, cada modelo climático se procesa de forma compatible con esta lógica, de manera que la señal futura se interprete como desviación de una climatología comparable y no como una serie introducida sin conexión con la estructura histórica del modelo.</p>
+          </section>
+
+          <section class="article-section" id="futuro">
+            <p class="section-kicker">06 · Escenarios climáticos</p>
+            <h2 class="section-title">Cómo se construyen las trayectorias futuras</h2>
+            <p>La proyección futura utiliza quince modelos climáticos globales, conocidos como GCM por sus siglas en inglés, bajo dos escenarios: SSP2-4.5 y SSP5-8.5. Al combinar quince modelos con dos escenarios se obtienen treinta trayectorias modelo–escenario. El sistema hidrológico se aplica a cada trayectoria por separado antes de resumir el conjunto.</p>
+            <p>Un GCM es una representación matemática del sistema climático global. Diferentes modelos utilizan formulaciones, parametrizaciones y estructuras que no son idénticas, por lo que no producen exactamente la misma evolución futura. Esa diferencia no se elimina: se conserva como una fuente de información sobre la dispersión del ensamble.</p>
+            <h3>¿Qué es un SSP?</h3>
+            <p>SSP significa Shared Socioeconomic Pathway. En el contexto de este proyecto, los escenarios se utilizan como condiciones de forzamiento climático para explorar cómo respondería el sistema bajo trayectorias diferentes. No representan una afirmación de que uno de los escenarios vaya a ocurrir con una probabilidad determinada. Tampoco son una predicción social. Son marcos comparables para evaluar respuestas condicionadas.</p>
+            <h3>¿Qué significan p05, p50 y p95?</h3>
+            <p>Después de calcular una trayectoria para cada GCM, el proyecto resume la distribución entre modelos. El p50 corresponde a la mediana del ensamble: aproximadamente la mitad de los modelos se sitúa por debajo y la otra mitad por encima. El p05 representa un valor cercano al extremo inferior del conjunto y el p95 un valor cercano al extremo superior. La distancia entre p05 y p95 ofrece una medida de la amplitud del ensamble.</p>
+            <p>Estos cuantiles no deben interpretarse como probabilidades frecuentistas de que el nivel real se encuentre dentro de un intervalo. Los GCM no constituyen una muestra aleatoria independiente y equiprobable. Por ello, p05–p95 describe dispersión entre los modelos utilizados, no una garantía probabilística sobre el futuro.</p>
+            <div class="callout green">
+              <strong>Escenario no significa pronóstico exacto</strong>
+              <p>Una trayectoria futura expresa la respuesta del modelo cuando se le aplican determinados forzamientos. El resultado debe leerse de forma condicional: bajo ese escenario, esos modelos y la estructura hidrológica calibrada, se obtiene una distribución de posibles respuestas. La comparación entre escenarios es más informativa que tratar una cifra aislada como una predicción exacta.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="espacial">
+            <p class="section-kicker">07 · Componente geoespacial</p>
+            <h2 class="section-title">Del nivel del agua a la representación territorial</h2>
+            <p>La componente espacial es una etapa distinta del modelo temporal. El hecho de conocer una elevación del lago no implica que pueda trazarse automáticamente una costa futura exacta. Para hacerlo sería necesario disponer de una superficie topobatimétrica litoral continua, actualizada y vinculada a la misma referencia vertical de la serie de nivel.</p>
+            <p>Sentinel-2 proporciona observaciones modernas de la presencia de agua y permite identificar una franja costera donde existen umbrales observacionales. La batimetría de AMSCLAE aporta información de la morfología sumergida. Sin embargo, ambas fuentes no se fusionan mediante un desplazamiento global simplemente para hacer coincidir sus áreas. La relación vertical debe estar demostrada antes de utilizar una fuente como sustituto de otra.</p>
+            <p>Durante el desarrollo se detectó que una curva hipsométrica agregada podía ser matemáticamente consistente y, al mismo tiempo, producir cambios de área incompatibles con la exposición costera demostrada mediante observación. En lugar de conservar una cifra puntual que generaba una contradicción, el proyecto adoptó límites inferior y superior para el área futura y mantuvo explícita la incertidumbre espacial.</p>
+            <h3>La clase incierta</h3>
+            <p>Una de las decisiones más importantes es conservar una clase espacial para los sectores donde no existe evidencia suficiente. En los mapas esta clase puede aparecer en gris. No significa automáticamente “tierra”, “zona estable” ni “área disponible”. Significa que, con la información utilizada, la posición futura del agua no puede establecerse de manera suficientemente respaldada.</p>
+            <p>Este criterio es especialmente importante cuando los niveles simulados descienden por debajo del rango cubierto por las observaciones modernas de costa. La ausencia de nuevos píxeles clasificados como exposición no implica necesariamente que la costa haya dejado de cambiar. Puede indicar que se agotó el dominio donde existe evidencia vertical directa.</p>
+            <h3>Resolución espacial</h3>
+            <p>La grilla maestra utiliza píxeles de 20 metros por 20 metros. Cada celda representa 400 m², equivalentes a 0.0004 km². Esta resolución es apropiada para comparación de escenarios, análisis general y priorización territorial. No significa que la posición de una transición agua–tierra sea conocida con precisión submétrica dentro de cada píxel.</p>
+          </section>
+
+          <section class="article-section" id="incertidumbre">
+            <p class="section-kicker">08 · Incertidumbre</p>
+            <h2 class="section-title">La incertidumbre forma parte del resultado</h2>
+            <p>El proyecto no trata la incertidumbre como un problema que deba ocultarse. Se distingue, en particular, entre incertidumbre temporal o climática e incertidumbre espacial. Ambas tienen causas diferentes y deben interpretarse por separado.</p>
+            <h3>Incertidumbre del ensamble climático</h3>
+            <p>Los modelos climáticos globales no producen la misma trayectoria. La amplitud entre p05 y p95 resume esa dispersión para cada periodo. A medida que aumenta el horizonte temporal, las diferencias entre modelos pueden crecer. Por eso, un valor p50 debe acompañarse de información sobre el rango del ensamble.</p>
+            <h3>Incertidumbre espacial</h3>
+            <p>Se refiere a la capacidad de ubicar sobre el territorio una respuesta asociada a un nivel determinado. Puede existir una trayectoria temporal bien definida dentro del modelo y, aun así, no existir suficiente evidencia topográfica o topobatimétrica para dibujar una costa futura precisa. Esta incertidumbre se conserva mediante clases específicas en lugar de asignar arbitrariamente agua o exposición.</p>
+            <h3>Robustez p05–p95</h3>
+            <p>Los productos de robustez comparan la clasificación espacial obtenida a través del rango p05–p95. Cuando una zona mantiene la misma condición dentro de ese rango, existe mayor estabilidad frente a la dispersión del ensamble. Cuando cambia de clase, el sector es sensible a las diferencias entre modelos o al intervalo vertical considerado. Esta robustez no elimina la incertidumbre espacial derivada de la falta de evidencia costera.</p>
+            <div class="callout brown">
+              <strong>Dos preguntas diferentes</strong>
+              <p>La amplitud p05–p95 responde a cuánto difieren las trayectorias del ensamble. La clase espacial incierta responde a dónde la evidencia territorial es insuficiente. Un mapa responsable debe conservar ambas dimensiones y evitar mezclarlas en una sola categoría de “error”.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="productos">
+            <p class="section-kicker">09 · Productos del proyecto</p>
+            <h2 class="section-title">Qué información se genera</h2>
+            <p>La salida final no es un único mapa. El proyecto produce un conjunto de capas complementarias para que el usuario pueda separar la magnitud del cambio vertical, la clasificación espacial central, la dispersión del ensamble y el acuerdo entre escenarios. Los productos anuales principales cubren 2027–2050.</p>
+            <div class="definition-grid">
+              <div class="definition">
+                <strong>Estado p50</strong>
+                <p>Clasificación espacial asociada al valor central del ensamble. Permite distinguir agua cierta, exposición cierta, soporte interior y sectores inciertos según las reglas del producto.</p>
+              </div>
+              <div class="definition">
+                <strong>Robustez p05–p95</strong>
+                <p>Indica dónde la clasificación se mantiene a través del rango del ensamble y dónde existe sensibilidad a la dispersión climática o al intervalo vertical.</p>
+              </div>
+              <div class="definition">
+                <strong>Nivel p50</strong>
+                <p>Elevación media anual correspondiente al p50 del ensamble. En el raster su función es transportar la magnitud vertical del año y escenario seleccionado.</p>
+              </div>
+              <div class="definition">
+                <strong>Delta de nivel</strong>
+                <p>Cambio vertical respecto de la referencia de 2026. Expresa metros de diferencia de nivel y no debe interpretarse como un desplazamiento horizontal uniforme de la costa.</p>
+              </div>
+              <div class="definition">
+                <strong>Ancho de incertidumbre</strong>
+                <p>Diferencia p95–p05. Permite comparar cómo cambia la dispersión del ensamble entre años y escenarios. No representa error instrumental de medición.</p>
+              </div>
+              <div class="definition">
+                <strong>Consenso entre SSP</strong>
+                <p>Compara las clasificaciones de SSP2-4.5 y SSP5-8.5 para identificar sectores donde ambos escenarios coinciden y sectores donde producen respuestas diferentes.</p>
+              </div>
+            </div>
+            <p>Los GeoTIFF individuales son adecuados para composición cartográfica y consulta por año. También existen estructuras multibanda con una banda por año que facilitan análisis temporal y animaciones. La página de resultados presenta los valores principales, mientras que el geoportal está destinado a facilitar la exploración visual de las capas.</p>
+          </section>
+
+          <section class="article-section" id="calidad">
+            <p class="section-kicker">10 · Control de calidad</p>
+            <h2 class="section-title">Cómo se verifica la consistencia del sistema</h2>
+            <p>El control de calidad no se limita a revisar si un mapa “se ve bien”. El proyecto utiliza condiciones numéricas y espaciales que deben cumplirse antes de aceptar una rama de procesamiento. Esto permite detectar contradicciones que podrían pasar inadvertidas en una revisión puramente visual.</p>
+            <p>Entre los controles se incluyen la verificación de dimensiones y sistema de referencia de coordenadas de los raster, la preservación de la condición inicial, la coherencia de las unidades, el conteo de modelos por escenario, la suma de particiones espaciales y la reproducción de resultados previamente congelados para los horizontes principales.</p>
+            <p>También se verificó la consistencia interna entre área y volumen en la información morfométrica. Sin embargo, una de las lecciones del proyecto es que la consistencia matemática interna no garantiza por sí sola la validez espacial externa. Una superficie puede satisfacer relaciones geométricas y aun así presentar problemas de referencia vertical cerca de la costa moderna. Por ello se aplicaron auditorías cruzadas entre fuentes.</p>
+            <p>La versión anual final corrigió un problema de orden estadístico detectado en una versión preliminar. La solución consiste en calcular primero la media anual dentro de cada GCM y posteriormente obtener p05, p50 y p95 entre modelos. Con este procedimiento, los horizontes 2030 y 2050 reproducen los resultados congelados utilizados como referencia.</p>
+            <h3>Reproducibilidad</h3>
+            <p>La reproducibilidad significa que los resultados puedan reconstruirse siguiendo la misma secuencia de datos, parámetros y transformaciones. Por ello, la cadena conserva archivos de parámetros, productos intermedios, manifiestos y controles que documentan la procedencia de los resultados. Si una actualización futura cambia una cifra previamente publicada, la diferencia debe poder explicarse mediante una auditoría de cambios.</p>
+          </section>
+
+          <section class="article-section" id="uso">
+            <p class="section-kicker">11 · Uso e interpretación</p>
+            <h2 class="section-title">Para qué sirven los productos</h2>
+            <p>Los resultados están orientados a apoyar la comprensión del comportamiento del lago, la comparación de escenarios y la planificación territorial. Permiten identificar sectores donde existe evidencia de exposición, observar la evolución anual del nivel modelado, comparar la respuesta entre SSP2-4.5 y SSP5-8.5 y reconocer áreas donde la incertidumbre requiere información adicional.</p>
+            <p>En una consulta cartográfica no es necesario activar todas las capas al mismo tiempo. Una lectura técnica clara puede comenzar con un año y un escenario, revisar el estado p50, consultar después la robustez p05–p95 y finalmente observar el ancho de incertidumbre. El producto de consenso permite evaluar dónde ambos escenarios conducen a la misma clasificación.</p>
+            <p>La información puede servir como base para priorizar sectores que requieran estudios de campo, orientar discusiones institucionales, comparar horizontes temporales y comunicar de forma transparente la diferencia entre una señal hidrológica y su soporte espacial. También permite identificar dónde una mejora de información topográfica o topobatimétrica tendría mayor valor.</p>
+            <p>Los mapas no deben utilizarse como única fuente para decidir la ubicación exacta de una obra, un límite predial o una intervención ecológica de precisión. Para ese tipo de decisión se requiere un levantamiento local con control vertical compatible y una resolución adecuada al propósito específico.</p>
+          </section>
+
+          <section class="article-section" id="limitaciones">
+            <p class="section-kicker">12 · Limitaciones</p>
+            <h2 class="section-title">Qué debe considerarse al interpretar el proyecto</h2>
+            <p>Todo modelo simplifica la realidad. La utilidad técnica depende de conocer esas simplificaciones y no utilizar el resultado fuera del alcance para el que fue construido. Las principales limitaciones se relacionan con la estabilidad de los parámetros, la extrapolación de submodelos, la representación de la evaporación, las referencias verticales, la estructura del ensamble climático y la resolución espacial.</p>
+            <h3>Estacionariedad de los parámetros</h3>
+            <p>Los coeficientes calibrados con información histórica se mantienen al aplicar el modelo al futuro. Esto supone que las relaciones principales representadas por el balance conservan su significado. Cambios estructurales importantes en infiltración, cobertura del suelo, conectividad hidrológica o intercambios subterráneos podrían modificar esas relaciones.</p>
+            <h3>Extrapolación del caudal</h3>
+            <p>El submodelo de caudal utiliza modelos basados en árboles. Estos modelos son flexibles para representar relaciones no lineales dentro del dominio observado, pero no extrapolan fuera de ese dominio como lo haría una función física continua. En condiciones futuras muy alejadas del entrenamiento pueden aparecer comportamientos de saturación. Esta limitación es especialmente importante en horizontes lejanos.</p>
+            <h3>Evaporación simplificada</h3>
+            <p>La formulación utilizada representa componentes climáticos relevantes, pero no resuelve de manera explícita todos los procesos aerodinámicos posibles, como la estabilidad atmosférica, el viento o la temperatura real de la superficie del agua. Por ello, la evaporación debe entenderse como parte de una representación calibrada del balance y no como un modelo completo de intercambio energético del lago.</p>
+            <h3>Referencia vertical y franja litoral</h3>
+            <p>La batimetría y las observaciones modernas de costa no necesariamente comparten una referencia vertical demostrada en todos los sectores. La ausencia de una superficie topobatimétrica litoral moderna y continua limita la posibilidad de transformar cada nivel simulado en una costa exacta.</p>
+            <h3>Estructura del ensamble</h3>
+            <p>Los quince GCM no son observaciones independientes extraídas al azar de una distribución conocida. Los cuantiles son descriptores del conjunto utilizado. Por esa razón, el intervalo p05–p95 no debe comunicarse como una probabilidad exacta de ocurrencia.</p>
+            <h3>Escala cartográfica</h3>
+            <p>Una celda de 20 × 20 m es adecuada para análisis general y planificación, pero no sustituye un levantamiento topográfico local. Los decimales utilizados en las áreas permiten reproducir conteos de celdas; no implican que la geometría real de la costa se conozca con precisión equivalente a esos decimales.</p>
+          </section>
+
+          <section class="article-section" id="actualizacion">
+            <p class="section-kicker">13 · Continuidad del proyecto</p>
+            <h2 class="section-title">Cómo puede mejorar y actualizarse el sistema</h2>
+            <p>La arquitectura se diseñó para que nuevas fuentes de información puedan incorporarse sin reconstruir todo el proyecto desde cero. Una nueva observación de nivel puede actualizar la condición inicial o contribuir a una futura recalibración histórica. Nuevos modelos climáticos pueden ampliar el ensamble si se procesan con la misma receta compatible. Una mejor topobatimetría litoral puede reducir directamente la superficie clasificada como incierta.</p>
+            <p>La mejora espacial más importante sería disponer de un levantamiento topobatimétrico moderno de la franja litoral, vinculado a la misma referencia vertical utilizada por la serie de nivel. Técnicas como GNSS-RTK, fotogrametría con dron, LiDAR donde sea viable y levantamientos someros pueden ayudar a construir una conexión más precisa entre elevación y posición de costa.</p>
+            <p>Las actualizaciones climáticas deben mantener la separación entre calibración y aplicación. Incorporar nuevos GCM no significa reajustar los parámetros históricos para obtener un resultado futuro deseado. Significa reconstruir los forzamientos con una receta comparable y volver a calcular el ensamble, documentando las diferencias.</p>
+            <p>La utilidad de esta estructura está precisamente en que distingue lo observado, lo modelado y lo incierto. El proyecto puede evolucionar a medida que mejore la información disponible, pero cada actualización debe conservar trazabilidad, unidades, sistemas de referencia, valores nodata, versiones de insumos y pruebas de reproducción.</p>
+            <div class="callout">
+              <strong>Principio de trabajo</strong>
+              <p>El objetivo no es producir una costa continua a cualquier costo. El objetivo es representar de manera clara qué se conoce, qué se obtiene mediante modelación y qué permanece sin soporte suficiente. Esa separación permite que los resultados sean útiles sin atribuirles una precisión mayor que la proporcionada por los datos.</p>
+            </div>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <section class="scope-band">
+      <div class="shell">
+        <div class="scope-head">
+          <h2>Responsabilidad de cada componente</h2>
+          <p>La cadena se construyó bajo una jerarquía de evidencia. Cada fuente tiene una función específica y no se utiliza para sustituir automáticamente a otra. Esta separación es una parte central de la calidad científica del proyecto.</p>
+        </div>
+        <div class="scope-grid">
+          <div class="scope-card">
+            <h3>Nivel observado</h3>
+            <p>Gobierna la referencia vertical, la condición inicial y la evaluación temporal. Es la base para expresar el nivel del lago en metros de elevación.</p>
+          </div>
+          <div class="scope-card">
+            <h3>Clima e hidrología</h3>
+            <p>Proporcionan los forzamientos que explican el cambio del nivel mediante precipitación, evaporación, caudal y estacionalidad.</p>
+          </div>
+          <div class="scope-card">
+            <h3>CMIP6</h3>
+            <p>Permite construir trayectorias futuras condicionadas por escenarios y conservar la dispersión entre diferentes modelos climáticos globales.</p>
+          </div>
+          <div class="scope-card">
+            <h3>Sentinel-2</h3>
+            <p>Aporta evidencia horizontal moderna de presencia de agua y soporte observacional para la franja costera evaluada.</p>
+          </div>
+          <div class="scope-card">
+            <h3>Batimetría AMSCLAE</h3>
+            <p>Describe la morfología sumergida y aporta soporte interior bajo controles que evitan asumir una equivalencia vertical no demostrada.</p>
+          </div>
+          <div class="scope-card">
+            <h3>Productos espaciales</h3>
+            <p>Integran las etapas anteriores para comunicar estado, robustez, cambio vertical, dispersión y consenso sin ocultar las zonas inciertas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glossary">
+      <div class="shell">
+        <div class="glossary-head">
+          <p class="eyebrow">Glosario básico</p>
+          <h2>Términos utilizados en el proyecto</h2>
+          <p>Estas definiciones permiten leer el portal sin perder el significado técnico de los conceptos principales.</p>
+        </div>
+        <div class="glossary-grid">
+          <div class="term"><strong>H</strong><p>Elevación absoluta del nivel del lago. Es la variable de estado principal del modelo.</p></div>
+          <div class="term"><strong>ΔH</strong><p>Cambio del nivel durante un intervalo. En la formulación diaria se expresa en metros por día.</p></div>
+          <div class="term"><strong>Anomalía</strong><p>Diferencia entre una observación o proyección y la climatología correspondiente al mismo periodo del año.</p></div>
+          <div class="term"><strong>GCM</strong><p>Modelo climático global utilizado para simular el comportamiento del sistema climático bajo diferentes condiciones.</p></div>
+          <div class="term"><strong>CMIP6</strong><p>Sexta fase del proyecto internacional de intercomparación de modelos climáticos del que provienen los GCM utilizados.</p></div>
+          <div class="term"><strong>SSP</strong><p>Trayectoria socioeconómica compartida utilizada como marco de escenario para los forzamientos climáticos futuros.</p></div>
+          <div class="term"><strong>p05</strong><p>Cuantil inferior utilizado para describir la dispersión del ensamble de modelos.</p></div>
+          <div class="term"><strong>p50</strong><p>Mediana del ensamble. Se utiliza como valor central de referencia, no como pronóstico exacto.</p></div>
+          <div class="term"><strong>p95</strong><p>Cuantil superior utilizado junto con p05 para describir la amplitud del ensamble.</p></div>
+          <div class="term"><strong>Ensamble</strong><p>Conjunto de resultados obtenidos a partir de varios modelos climáticos en lugar de depender de una única simulación.</p></div>
+          <div class="term"><strong>Batimetría</strong><p>Representación de la profundidad y geometría del fondo de un cuerpo de agua.</p></div>
+          <div class="term"><strong>Topobatimetría</strong><p>Superficie continua que integra elevaciones terrestres y profundidades sumergidas dentro de una misma referencia vertical.</p></div>
+          <div class="term"><strong>Raster</strong><p>Modelo espacial formado por una cuadrícula de celdas. Cada celda almacena un valor o una clase.</p></div>
+          <div class="term"><strong>GeoTIFF</strong><p>Formato raster que conserva información geográfica como ubicación, tamaño de píxel y sistema de referencia.</p></div>
+          <div class="term"><strong>CRS</strong><p>Sistema de referencia de coordenadas utilizado para ubicar correctamente la información geográfica.</p></div>
+          <div class="term"><strong>OOD</strong><p>Out of distribution. Indica que una variable futura se encuentra fuera del rango observado durante el entrenamiento de un submodelo.</p></div>
+          <div class="term"><strong>Robustez</strong><p>Grado en que una clasificación espacial se mantiene al considerar la dispersión p05–p95 del ensamble.</p></div>
+          <div class="term"><strong>Incertidumbre espacial</strong><p>Falta de soporte suficiente para asignar con seguridad una condición territorial a una celda o sector.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="next">
+      <div class="shell next-grid">
+        <div>
+          <h2>Continuar con la información técnica</h2>
+          <p>La sección de metodología desarrolla las ecuaciones, parámetros, procesamiento de datos y controles. La sección de resultados presenta los principales valores obtenidos y el geoportal permite consultar los productos cartográficos.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn" href="./metodologia.html">Ver metodología</a>
+          <a class="btn btn-light" href="./resultados.html">Ver resultados</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-main">
+      <div>
+        <div class="footer-brand-row">
+          <img src="./aala_logo.png" alt="Amigos del Lago de Atitlán">
+          <img src="./logoamsclaePNG.png" alt="AMSCLAE">
+          <div class="footer-brand">Oscilación del nivel<br>del Lago de Atitlán</div>
+        </div>
+        <p class="footer-about">Portal de consulta de resultados hidrológicos y geoespaciales desarrollado por la Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE. Los productos están orientados a la planificación, comparación de escenarios y comprensión territorial de la oscilación del nivel del lago.</p>
+      </div>
+      <div>
+        <h3>Navegación</h3>
+        <div class="footer-links">
+          <a href="./index.html">Inicio</a>
+          <a href="./geoportal.html">Geoportal</a>
+          <a href="./resultados.html">Resultados</a>
+        </div>
+      </div>
+      <div>
+        <h3>Proyecto</h3>
+        <div class="footer-links">
+          <a href="./proyecto.html">Sobre el proyecto</a>
+          <a href="./metodologia.html">Metodología</a>
+        </div>
+      </div>
+      <div>
+        <h3>Instituciones</h3>
+        <div class="footer-links">
+          <a href="https://amigosdeatitlan.org/" target="_blank" rel="noopener noreferrer">Amigos del Lago de Atitlán</a>
+          <a href="https://www.amsclae.gob.gt/category/departamentos/dica/" target="_blank" rel="noopener noreferrer">AMSCLAE · DICA</a>
+        </div>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE</span>
+      <span>Lago de Atitlán · Sololá, Guatemala</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton=document.querySelector("[data-menu-toggle]");
+    const nav=document.querySelector("[data-nav]");
+    if(menuButton&&nav){
+      menuButton.addEventListener("click",()=>{
+        const open=menuButton.getAttribute("aria-expanded")==="true";
+        menuButton.setAttribute("aria-expanded",String(!open));
+        nav.classList.toggle("open",!open);
+        document.body.classList.toggle("menu-open",!open);
+      });
+      nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+        menuButton.setAttribute("aria-expanded","false");
+        nav.classList.remove("open");
+        document.body.classList.remove("menu-open");
+      }));
+    }
+  </script>
+</body>
+</html>
