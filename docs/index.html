@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#dceff4">
+  <title>Oscilación del nivel del Lago de Atitlán</title>
+  <meta name="description" content="Portal de consulta del proyecto de modelación matemática, hidrológica y geoespacial de la oscilación del nivel del Lago de Atitlán.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#fbfcfa;
+      --sky-1:#edf7f9;
+      --sky-2:#dceff4;
+      --sky-3:#c5e2ea;
+      --sky-4:#9fcbd8;
+      --lake:#5f9fb2;
+      --lake-deep:#477f91;
+      --green-1:#edf3ed;
+      --green-2:#cad9c8;
+      --green:#708b73;
+      --brown-1:#f3ede5;
+      --brown-2:#dfd0bf;
+      --brown:#947c65;
+      --ink:#29424c;
+      --ink-2:#5b7078;
+      --line:rgba(41,66,76,.14);
+      --white:#fff;
+      --max:1440px;
+      --display:"Source Serif 4",Georgia,"Times New Roman",serif;
+      --sans:"Manrope",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:104px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    button{font:inherit}
+    p{text-align:justify;text-justify:inter-word;text-wrap:pretty}
+    h1,h2,h3,p,a,span{overflow-wrap:break-word}
+    h1,h2,h3{text-wrap:balance}
+    .shell{width:min(var(--max),calc(100% - 64px));margin:0 auto}
+
+    .institutional-strip{background:#d7e9e8;border-bottom:1px solid var(--line)}
+    .institutional-inner{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .institutional-title{font-size:.65rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#47656c}
+    .institutional-links{display:flex;align-items:center;gap:22px}
+    .institutional-links a{font-size:.63rem;font-weight:700;color:#557077;text-decoration:none}
+    .institutional-links a:hover{text-decoration:underline;text-underline-offset:4px}
+
+    .header{position:sticky;top:0;z-index:1000;background:rgba(251,252,250,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .header-inner{min-height:94px;display:flex;align-items:center;gap:30px}
+    .brand{display:flex;align-items:center;gap:15px;text-decoration:none;min-width:340px}
+    .brand-logos{display:flex;align-items:center;gap:9px}
+    .brand-logos img{width:46px;height:46px;object-fit:contain}
+    .brand-copy{display:flex;flex-direction:column;gap:3px}
+    .brand-name{font-size:.84rem;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+    .brand-place{font-size:.62rem;color:var(--ink-2)}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+    .nav a{position:relative;padding:10px 0;color:var(--ink);font-size:.74rem;font-weight:600;text-decoration:none;white-space:nowrap}
+    .nav a::after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:var(--lake);transition:right .22s ease}
+    .nav a:hover::after,.nav a:focus-visible::after,.nav a[aria-current="page"]::after{right:0}
+    .nav .geoportal-link{padding:12px 17px;background:#79aebb;color:#fff}
+    .nav .geoportal-link::after{display:none}
+    .nav .geoportal-link:hover{background:var(--lake-deep)}
+    .menu-toggle{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--line);background:transparent;align-items:center;justify-content:center;cursor:pointer}
+    .menu-lines,.menu-lines::before,.menu-lines::after{display:block;width:20px;height:1.5px;background:var(--ink);content:"";transition:.2s ease}
+    .menu-lines{position:relative}
+    .menu-lines::before{position:absolute;top:-6px}
+    .menu-lines::after{position:absolute;top:6px}
+    .menu-toggle[aria-expanded="true"] .menu-lines{background:transparent}
+    .menu-toggle[aria-expanded="true"] .menu-lines::before{transform:translateY(6px) rotate(45deg)}
+    .menu-toggle[aria-expanded="true"] .menu-lines::after{transform:translateY(-6px) rotate(-45deg)}
+
+    .eyebrow{margin:0 0 21px;font-size:.66rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--lake-deep)}
+    .section-title{margin:0;font-family:var(--display);font-size:clamp(2rem,3vw,3.45rem);line-height:1.07;font-weight:600;letter-spacing:-.018em}
+    .section-copy{margin:22px 0 0;max-width:780px;color:var(--ink-2);font-size:.84rem;line-height:1.82}
+    .btn-row{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-top:34px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:0 22px;border:1px solid var(--lake-deep);background:var(--lake-deep);color:#fff;text-decoration:none;font-size:.74rem;font-weight:800;transition:transform .2s ease,background .2s ease,color .2s ease}
+    .btn:hover,.btn:focus-visible{transform:translateY(-2px);background:#6d9fad;border-color:#6d9fad;outline:none}
+    .btn-light{background:transparent;color:var(--lake-deep)}
+    .btn-light:hover,.btn-light:focus-visible{background:var(--lake-deep);color:#fff}
+    .text-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:.75rem;font-weight:800;border-bottom:1px solid currentColor;padding-bottom:3px}
+    .text-link::after{content:"→";transition:transform .2s ease}
+    .text-link:hover::after{transform:translateX(4px)}
+
+    .hero{min-height:calc(100vh - 142px);display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);background:linear-gradient(135deg,#e7f4f7 0%,#f7faf7 65%,#e7efe5 100%)}
+    .hero-copy{padding:clamp(72px,8vw,128px) clamp(54px,7vw,122px);display:flex;flex-direction:column;justify-content:center}
+    .hero-title{margin:0;max-width:900px;font-family:var(--display);font-weight:600;font-size:clamp(2.8rem,4.55vw,4.9rem);line-height:1;letter-spacing:-.022em;color:#34545e}
+    .hero-lead{margin:26px 0 0;max-width:760px;color:#526d75;font-size:clamp(.84rem,.94vw,.96rem);line-height:1.82}
+    .hero-media{position:relative;min-height:620px;overflow:hidden;background:linear-gradient(145deg,#b9dce4,#8bbbc8 58%,#b7cdb5)}
+    .hero-media::before{content:"";position:absolute;inset:24px;border:1px solid rgba(255,255,255,.55)}
+    .hero-media::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.28);left:50%;top:50%;transform:translate(-50%,-50%)}
+    .image-placeholder{position:absolute;inset:0;display:flex;align-items:flex-end;padding:42px;color:rgba(255,255,255,.92);font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+
+    .intro{padding:98px 0 94px;background:#fff}
+    .intro-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);gap:88px;align-items:start}
+    .intro-large{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(2rem,3.15vw,3.4rem);line-height:1.08;letter-spacing:-.018em;color:#3d5c65}
+    .intro-side p{margin:0 0 18px;color:var(--ink-2);font-size:.84rem;line-height:1.82}
+
+    .project-band{background:var(--sky-1);padding:104px 0}
+    .project-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:90px;align-items:start}
+    .project-text p{margin:0 0 21px;color:var(--ink-2);font-size:.84rem;line-height:1.84}
+
+    .concepts{padding:108px 0 116px;background:#f9fbfa}
+    .concepts-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.46fr);gap:66px;align-items:end;margin-bottom:54px}
+    .concepts-head .section-copy{margin:0}
+    .concept-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+    .concept{padding:38px 32px 40px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+    .concept:first-child{border-left:1px solid var(--line)}
+    .concept:nth-child(4){border-left:1px solid var(--line)}
+    .concept-number{font-family:var(--display);font-size:1rem;color:var(--brown)}
+    .concept h3{margin:34px 0 14px;font-family:var(--display);font-size:clamp(1.5rem,2vw,2.1rem);font-weight:600;line-height:1.08;color:#3e5c64}
+    .concept p{margin:0;color:var(--ink-2);font-size:.78rem;line-height:1.78}
+
+    .scenario-section{display:grid;grid-template-columns:1fr 1fr;min-height:700px}
+    .scenario-copy{padding:clamp(68px,7vw,116px) clamp(46px,7vw,112px);background:var(--green-1);display:flex;flex-direction:column;justify-content:center}
+    .scenario-copy .section-copy{max-width:720px}
+    .scenario-panel{padding:clamp(58px,6vw,96px);background:var(--brown-1);display:flex;flex-direction:column;justify-content:center}
+    .scenario-card{padding:28px 0;border-top:1px solid rgba(80,94,83,.18)}
+    .scenario-card:last-child{border-bottom:1px solid rgba(80,94,83,.18)}
+    .scenario-label{margin:0 0 8px;font-size:.64rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+    .scenario-card h3{margin:0;font-family:var(--display);font-size:1.75rem;font-weight:600;color:#526858}
+    .scenario-card p{margin:12px 0 0;color:#65746b;font-size:.78rem;line-height:1.75}
+
+    .results{padding:112px 0 120px;background:#fff}
+    .results-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.46fr);gap:68px;align-items:end;margin-bottom:56px}
+    .results-head .section-copy{margin:0}
+    .result-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+    .result{min-height:330px;padding:34px 28px 32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;background:#fbfcfb}
+    .result:first-child{border-left:1px solid var(--line)}
+    .result-year{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--lake-deep)}
+    .result-value{margin:42px 0 12px;font-family:var(--display);font-size:clamp(2rem,2.8vw,3rem);line-height:1;color:#3d626c}
+    .result p{margin:0;color:var(--ink-2);font-size:.75rem;line-height:1.72}
+    .result .text-link{margin-top:auto;padding-top:28px;align-self:flex-start}
+
+    .geoportal{display:grid;grid-template-columns:1fr 1fr;min-height:700px}
+    .geoportal-copy{padding:clamp(70px,7vw,118px) clamp(46px,7vw,112px);background:#d8edf2;display:flex;flex-direction:column;justify-content:center}
+    .geoportal-media{position:relative;min-height:700px;background:linear-gradient(145deg,#a9d2dc,#7eafbc 55%,#a8c4a8);overflow:hidden}
+    .geoportal-media::before{content:"";position:absolute;inset:26px;border:1px solid rgba(255,255,255,.52)}
+    .geoportal-media .image-placeholder{color:rgba(255,255,255,.95)}
+
+    .use-section{padding:108px 0;background:var(--green-1)}
+    .use-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:90px}
+    .use-copy p{margin:22px 0 0;color:#627168;font-size:.83rem;line-height:1.83}
+    .use-list{background:#fff;border:1px solid var(--line);padding:12px 34px}
+    .use-item{padding:24px 0;border-bottom:1px solid var(--line)}
+    .use-item:last-child{border-bottom:0}
+    .use-item strong{display:block;font-family:var(--display);font-size:1.35rem;color:#50695a}
+    .use-item p{margin:8px 0 0;color:var(--ink-2);font-size:.75rem;line-height:1.7}
+
+    .resources{padding:112px 0 120px;background:var(--sky-1)}
+    .resources-head{display:flex;justify-content:space-between;gap:64px;align-items:flex-end;margin-bottom:56px}
+    .resources-head .section-copy{max-width:490px;margin:0}
+    .resource-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+    .resource{min-height:300px;padding:34px 28px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;text-decoration:none;background:rgba(255,255,255,.5);transition:background .22s ease,transform .22s ease}
+    .resource:first-child{border-left:1px solid var(--line)}
+    .resource:hover,.resource:focus-visible{background:#fff;outline:none;transform:translateY(-4px)}
+    .resource-number{font-family:var(--display);font-size:1rem;color:var(--brown)}
+    .resource h3{margin:50px 0 12px;font-family:var(--display);font-size:clamp(1.5rem,2vw,2.1rem);font-weight:600;line-height:1.06;color:#3f5d65}
+    .resource p{margin:0;color:var(--ink-2);font-size:.77rem;line-height:1.72}
+    .resource .text-link{margin-top:auto;align-self:flex-start;padding-top:28px}
+
+
+    .gallery{padding:108px 0 116px;background:var(--brown-1)}
+    .gallery-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.48fr);gap:64px;align-items:end;margin-bottom:48px}
+    .gallery-head .section-copy{margin:0}
+    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:310px 310px;gap:18px}
+    .photo-slot{position:relative;overflow:hidden;background:linear-gradient(145deg,var(--sky-3),var(--sky-4))}
+    .photo-slot:nth-child(2){background:linear-gradient(145deg,var(--green-2),#aabfa9)}
+    .photo-slot:nth-child(3){background:linear-gradient(145deg,var(--brown-2),#c2aa91)}
+    .photo-slot:nth-child(4){background:linear-gradient(145deg,#cbe5eb,#9fcbd8)}
+    .photo-slot::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.55)}
+    .photo-slot span{position:absolute;left:30px;right:30px;bottom:28px;color:#fff;font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 8px rgba(41,66,76,.22)}
+
+    .institutions{padding:92px 0 98px;background:#fff}
+    .institutions-head{text-align:center;max-width:780px;margin:0 auto 50px}
+    .institutions-head .section-title{font-size:clamp(1.8rem,2.5vw,2.7rem)}
+    .institutions-head p{margin:18px auto 0;max-width:690px;text-align:center;color:var(--ink-2);font-size:.79rem;line-height:1.75}
+    .institution-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:980px;margin:0 auto}
+    .institution-card{min-height:220px;padding:34px;border:1px solid var(--line);background:#fbfcfa;display:grid;grid-template-columns:130px 1fr;gap:30px;align-items:center;text-decoration:none;transition:transform .2s ease,background .2s ease}
+    .institution-card:hover{transform:translateY(-3px);background:var(--sky-1)}
+    .institution-card img{width:125px;height:105px;object-fit:contain}
+    .institution-card h3{margin:0;font-family:var(--display);font-size:1.55rem;color:#3f5c64}
+    .institution-card p{margin:10px 0 0;color:var(--ink-2);font-size:.72rem;line-height:1.65}
+
+    .footer{background:#48646a;color:#f5faf9}
+    .footer-main{padding:72px 0 58px;display:grid;grid-template-columns:minmax(300px,1.35fr) repeat(3,minmax(150px,.55fr));gap:54px}
+    .footer-brand-row{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .footer-brand-row img{width:48px;height:48px;object-fit:contain;background:rgba(255,255,255,.9);padding:4px}
+    .footer-brand{font-family:var(--display);font-size:1.55rem;line-height:1.08}
+    .footer-about{margin:0;max-width:440px;color:rgba(245,250,249,.76);font-size:.77rem;line-height:1.78}
+    .footer h3{margin:3px 0 20px;font-size:.72rem;color:#fff}
+    .footer-links{display:flex;flex-direction:column;gap:13px}
+    .footer-links a{color:rgba(245,250,249,.82);font-size:.72rem;text-decoration:none}
+    .footer-links a:hover{text-decoration:underline;text-underline-offset:4px}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.16);padding:23px 0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:rgba(245,250,249,.65);font-size:.64rem}
+
+    @media(max-width:1120px){
+      .shell{width:min(var(--max),calc(100% - 40px))}
+      .brand{min-width:0}
+      .nav{gap:15px}
+      .nav a{font-size:.69rem}
+      .hero{grid-template-columns:1fr 43%}
+      .hero-copy{padding-left:48px;padding-right:48px}
+      .concept-grid{grid-template-columns:repeat(2,1fr)}
+      .concept:nth-child(3){border-left:1px solid var(--line)}
+      .result-grid{grid-template-columns:repeat(2,1fr)}
+      .result:nth-child(3){border-left:1px solid var(--line)}
+      .resource-grid{grid-template-columns:repeat(2,1fr)}
+      .resource:nth-child(3){border-left:1px solid var(--line)}
+      .footer-main{grid-template-columns:1.2fr repeat(2,.6fr)}
+      .footer-main>div:last-child{grid-column:2/4}
+    }
+    @media(max-width:1020px){
+      html{scroll-padding-top:78px}
+      .institutional-strip{display:none}
+      .header-inner{min-height:76px}
+      .brand-logos img{width:42px;height:42px}
+      .menu-toggle{display:flex;position:relative;z-index:7200;background:var(--paper)}
+      .nav{position:fixed;z-index:7100;top:76px;left:0;right:0;height:calc(100dvh - 76px);background:var(--paper);display:flex;margin:0;padding:28px 28px 44px;flex-direction:column;align-items:stretch;gap:0;overflow-y:auto;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px);transition:.18s ease}
+      .nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+      .nav a{width:100%;padding:18px 0;text-align:left;font-size:.92rem;border-bottom:1px solid var(--line)}
+      .nav a::after{display:none}
+      .nav .geoportal-link{margin-top:18px;text-align:center}
+      .hero{min-height:auto;grid-template-columns:1fr}
+      .hero-copy{padding:72px 28px 68px}
+      .hero-media{min-height:470px}
+      .intro-grid,.project-grid,.concepts-head,.results-head,.use-grid{grid-template-columns:1fr;gap:38px}
+      .scenario-section,.geoportal{grid-template-columns:1fr}
+      .scenario-copy,.scenario-panel,.geoportal-copy{padding:70px 28px}
+      .geoportal-media{min-height:480px}
+      .resources-head{display:block}
+      .resources-head .section-copy{margin-top:24px}
+      .gallery-head{grid-template-columns:1fr;gap:28px}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:280px 280px}
+      .institution-grid{grid-template-columns:1fr}
+      .footer-main{grid-template-columns:1fr 1fr}
+      .footer-main>div:first-child{grid-column:1/-1}
+      .footer-main>div:last-child{grid-column:auto}
+    }
+    @media(max-width:620px){
+      .shell{width:calc(100% - 28px)}
+      .header-inner{min-height:70px}
+      .nav{top:70px;height:calc(100dvh - 70px)}
+      .brand-logos img{width:34px;height:34px}
+      .brand-name{font-size:.71rem}
+      .brand-place{font-size:.56rem}
+      .hero-title{font-size:clamp(2.7rem,15vw,4.2rem)}
+      .hero-copy{padding:58px 20px}
+      .hero-media{min-height:390px}
+      .intro,.project-band,.concepts,.results,.use-section,.resources,.gallery,.institutions{padding:70px 0}
+      .section-title{font-size:clamp(2rem,11vw,3.1rem)}
+      .concept-grid,.result-grid,.resource-grid{grid-template-columns:1fr}
+      .concept,.concept:nth-child(3),.concept:nth-child(4),.result,.result:nth-child(3),.resource,.resource:nth-child(3){border-left:1px solid var(--line)}
+      .scenario-copy,.scenario-panel,.geoportal-copy{padding:58px 20px}
+      .geoportal-media{min-height:390px}
+      .gallery-grid{grid-template-columns:1fr;grid-template-rows:repeat(4,260px)}
+      .institution-card{grid-template-columns:1fr;text-align:center}
+      .institution-card img{margin:0 auto}
+      .institution-card p{text-align:center}
+      .footer-main{grid-template-columns:1fr;padding:56px 0 44px}
+      .footer-main>div:first-child,.footer-main>div:last-child{grid-column:auto}
+      .footer-bottom{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <div class="institutional-strip">
+    <div class="shell institutional-inner">
+      <span class="institutional-title">Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE</span>
+      <div class="institutional-links">
+        <a href="https://amigosdeatitlan.org/" target="_blank" rel="noopener noreferrer">Amigos del Lago</a>
+        <a href="https://www.amsclae.gob.gt/category/departamentos/dica/" target="_blank" rel="noopener noreferrer">AMSCLAE · DICA</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="./index.html" aria-label="Inicio del portal">
+        <span class="brand-logos">
+          <img src="./aala_logo.png" alt="Asociación Amigos del Lago de Atitlán">
+          <img src="./cropped-logopaginaweb.png" alt="AMSCLAE">
+          <img src="./logoamsclaePNG.png" alt="AMSCLAE">
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">Oscilación del nivel del Lago de Atitlán</span>
+          <span class="brand-place">Modelación hidrológica y geoespacial · 2027–2050</span>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle>
+        <span class="menu-lines"></span>
+      </button>
+      <nav class="nav" aria-label="Navegación principal" data-nav>
+        <a href="./index.html" aria-current="page">Inicio</a>
+        <a href="./resultados.html">Resultados</a>
+        <a href="./metodologia.html">Metodología</a>
+        <a href="./proyecto.html">Sobre el proyecto</a>
+        <a class="geoportal-link" href="./geoportal.html">Abrir geoportal</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">Lago de Atitlán · Sololá, Guatemala</p>
+        <h1 class="hero-title" id="heroTitle">Modelación de la oscilación del nivel del Lago de Atitlán</h1>
+        <p class="hero-lead">Este portal presenta los principales productos del proyecto de modelación matemática, hidrológica y geoespacial de la oscilación del nivel del Lago de Atitlán. El trabajo integra información observada, variables hidrológicas y climáticas, escenarios futuros CMIP6 y evidencia espacial para representar cómo distintas trayectorias del nivel pueden expresarse sobre el territorio.</p>
+        <p class="hero-lead">La página de inicio ofrece una lectura general del proyecto y de sus resultados. El detalle de los procedimientos, ecuaciones, controles y decisiones metodológicas se desarrolla en una sección específica, mientras que el geoportal permite explorar directamente los productos cartográficos anuales.</p>
+        <div class="btn-row">
+          <a class="btn" href="./geoportal.html">Explorar geoportal</a>
+          <a class="btn btn-light" href="./resultados.html">Ver resultados</a>
+          <a class="btn btn-light" href="./proyecto.html">Conocer el proyecto</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="image-placeholder">Espacio para fotografía principal del Lago de Atitlán</div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="shell intro-grid">
+        <p class="intro-large">Información del proyecto, escenarios climáticos y productos geoespaciales.</p>
+        <div class="intro-side">
+          <p>El nivel de un lago endorreico responde al balance integrado entre entradas, pérdidas, variabilidad estacional y procesos hidrológicos que actúan a diferentes escalas temporales. Por ello, el proyecto no parte de una única variable, sino de una representación que vincula precipitación, evaporación, caudal y estacionalidad con la evolución del nivel del Lago de Atitlán.</p>
+          <p>La dimensión espacial complementa esta lectura temporal. Los niveles simulados se relacionan con evidencia moderna de presencia de agua y con información batimétrica para identificar sectores donde puede establecerse una clasificación respaldada y sectores donde la información disponible no permite resolver la transición con suficiente soporte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-band">
+      <div class="shell project-grid">
+        <div>
+          <p class="eyebrow">Sobre el proyecto</p>
+          <h2 class="section-title">Descripción del proyecto</h2>
+        </div>
+        <div class="project-text">
+          <p>El proyecto fue desarrollado para estudiar la oscilación del nivel del Lago de Atitlán mediante una estructura reproducible que conecta la dinámica hidrológica con escenarios climáticos futuros y productos geoespaciales. La finalidad es disponer de una base técnica que permita observar tendencias, comparar escenarios y reconocer sectores del territorio donde los cambios del nivel pueden tener expresión espacial.</p>
+          <p>La serie observada de nivel proporciona la referencia temporal del sistema. Los forzamientos climáticos e hidrológicos permiten construir las trayectorias futuras, mientras que la observación satelital y la información batimétrica aportan el soporte espacial necesario para trasladar esas trayectorias a mapas. Esta separación entre componentes evita tratar como equivalente información que responde a escalas y fuentes distintas.</p>
+          <p>Los productos finales anuales cubren el período 2027–2050 y están preparados para consulta en sistemas de información geográfica. El portal organiza esos resultados para facilitar su lectura sin modificar los valores originales de los archivos raster.</p>
+          <div class="btn-row">
+            <a class="btn" href="./proyecto.html">Más sobre el proyecto</a>
+            <a class="btn btn-light" href="./metodologia.html">Consultar metodología</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="concepts">
+      <div class="shell">
+        <div class="concepts-head">
+          <div>
+            <p class="eyebrow">Cómo leer los resultados</p>
+            <h2 class="section-title">Conceptos para interpretar los resultados</h2>
+          </div>
+          <p class="section-copy">El portal utiliza términos estadísticos y climáticos que ayudan a expresar la variabilidad entre modelos. Estas definiciones permiten interpretar los resultados sin convertir una trayectoria condicionada en una predicción única del futuro.</p>
+        </div>
+        <div class="concept-grid">
+          <article class="concept">
+            <span class="concept-number">01</span>
+            <h3>p50 · Mediana del ensamble</h3>
+            <p>p50 es la mediana del ensamble de modelos para el indicador evaluado. En términos prácticos, representa el valor central de las trayectorias consideradas y se utiliza como referencia principal para visualizar el estado central del resultado. No significa que exista una probabilidad exacta del 50 % de que ese valor ocurra.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-number">02</span>
+            <h3>p05 y p95 · Dispersión del ensamble</h3>
+            <p>p05 y p95 son cuantiles del ensamble que permiten mostrar su dispersión. Junto con p50 forman un intervalo útil para observar cuánto difieren las trayectorias de los modelos climáticos y para evaluar si una clasificación espacial permanece estable dentro de ese rango.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-number">03</span>
+            <h3>Escenarios SSP</h3>
+            <p>Los SSP son trayectorias utilizadas en CMIP6 para explorar futuros climáticos bajo diferentes condiciones de desarrollo y forzamiento. En este proyecto se emplean SSP2-4.5 y SSP5-8.5. Los resultados describen lo que produce el modelo bajo cada escenario; no asignan cuál de ellos ocurrirá.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-number">04</span>
+            <h3>Estado p50</h3>
+            <p>Es la clasificación espacial construida utilizando el nivel central p50. Permite distinguir categorías como agua, exposición e incertidumbre espacial de acuerdo con el soporte disponible. Es el mapa central de consulta, pero debe complementarse con la robustez del ensamble.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-number">05</span>
+            <h3>Robustez p05–p95</h3>
+            <p>La robustez p05–p95 indica si la clasificación de un píxel se mantiene al considerar la dispersión del ensamble. Un sector puede aparecer expuesto en p50 y, al mismo tiempo, ser sensible a la variación entre modelos. Esta capa ayuda a separar estado central y estabilidad del resultado.</p>
+          </article>
+          <article class="concept">
+            <span class="concept-number">06</span>
+            <h3>Incertidumbre espacial</h3>
+            <p>Representa lugares donde las fuentes espaciales aceptadas no ofrecen soporte suficiente para decidir entre agua y exposición con el criterio utilizado. No representa automáticamente tierra futura, agua futura ni un error del sistema. Su conservación evita inventar una línea de costa donde la evidencia no alcanza.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scenario-section">
+      <div class="scenario-copy">
+        <p class="eyebrow">Escenarios climáticos</p>
+        <h2 class="section-title">Escenarios climáticos analizados</h2>
+        <p class="section-copy">El proyecto utiliza un ensamble de 15 modelos climáticos globales de CMIP6 bajo dos escenarios. La comparación permite observar cómo cambia la trayectoria del nivel cuando las condiciones futuras de forzamiento son diferentes. Los escenarios no deben leerse como pronósticos meteorológicos ni como fechas exactas en las que una costa específica necesariamente ocupará una posición determinada.</p>
+        <p class="section-copy">Para la comunicación principal se priorizan 2030 y 2050. Los productos anuales permiten, además, recorrer de forma continua el período 2027–2050 en el geoportal.</p>
+        <div class="btn-row">
+          <a class="btn" href="./resultados.html">Comparar resultados</a>
+        </div>
+      </div>
+      <div class="scenario-panel">
+        <article class="scenario-card">
+          <p class="scenario-label">Escenario 01</p>
+          <h3>SSP2-4.5</h3>
+          <p>Escenario intermedio utilizado para construir una de las dos familias de trayectorias futuras del proyecto. Sus resultados se presentan de manera independiente y se comparan con SSP5-8.5 en los horizontes principales y en los productos anuales.</p>
+        </article>
+        <article class="scenario-card">
+          <p class="scenario-label">Escenario 02</p>
+          <h3>SSP5-8.5</h3>
+          <p>Escenario de mayor forzamiento utilizado como contraste para evaluar una trayectoria futura diferente. Su inclusión permite observar cómo aumenta la separación entre escenarios conforme avanza el horizonte temporal.</p>
+        </article>
+        <article class="scenario-card">
+          <p class="scenario-label">Ensamble</p>
+          <h3>15 modelos CMIP6</h3>
+          <p>La utilización de múltiples modelos permite conservar la dispersión entre trayectorias. Los resultados se resumen mediante cuantiles p05, p50 y p95 en lugar de depender de un único modelo climático.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="results">
+      <div class="shell">
+        <div class="results-head">
+          <div>
+            <p class="eyebrow">Resultados principales</p>
+            <h2 class="section-title">Resultados principales: 2030 y 2050</h2>
+          </div>
+          <p class="section-copy">Estos valores resumen el nivel p50 del ensamble. La sección de resultados presenta su contexto completo y el geoportal permite observar su expresión espacial. Los niveles deben leerse junto con p05–p95 y con las capas de estado y robustez.</p>
+        </div>
+        <div class="result-grid">
+          <article class="result">
+            <span class="result-year">SSP2-4.5 · 2030</span>
+            <span class="result-value">1552.349 m</span>
+            <p>Nivel p50 anual. Cambio aproximado de −0.421 m respecto al nivel ancla de 2026.</p>
+            <a class="text-link" href="./resultados.html#ssp245-2030">Ver contexto</a>
+          </article>
+          <article class="result">
+            <span class="result-year">SSP5-8.5 · 2030</span>
+            <span class="result-value">1552.293 m</span>
+            <p>Nivel p50 anual. Cambio aproximado de −0.477 m respecto al nivel ancla de 2026.</p>
+            <a class="text-link" href="./resultados.html#ssp585-2030">Ver contexto</a>
+          </article>
+          <article class="result">
+            <span class="result-year">SSP2-4.5 · 2050</span>
+            <span class="result-value">1550.337 m</span>
+            <p>Nivel p50 anual. Cambio aproximado de −2.433 m respecto al nivel ancla de 2026.</p>
+            <a class="text-link" href="./resultados.html#ssp245-2050">Ver contexto</a>
+          </article>
+          <article class="result">
+            <span class="result-year">SSP5-8.5 · 2050</span>
+            <span class="result-value">1548.145 m</span>
+            <p>Nivel p50 anual. Cambio aproximado de −4.625 m respecto al nivel ancla de 2026.</p>
+            <a class="text-link" href="./resultados.html#ssp585-2050">Ver contexto</a>
+          </article>
+        </div>
+        <div class="btn-row">
+          <a class="btn" href="./resultados.html">Explorar resultados completos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="geoportal">
+      <div class="geoportal-copy">
+        <p class="eyebrow">Consulta espacial</p>
+        <h2 class="section-title">Geoportal de resultados</h2>
+        <p class="section-copy">El geoportal está planteado como la principal herramienta interactiva del sitio. Permitirá seleccionar año, escenario y tipo de producto, activar o desactivar capas y consultar una leyenda que traduzca los valores originales de los GeoTIFF a sus categorías reales de interpretación.</p>
+        <p class="section-copy">La consulta utilizará los productos anuales 18D ya existentes en el repositorio, evitando duplicar los raster únicamente para cambiar su apariencia. La simbología de la interfaz se aplicará durante la visualización, mientras los archivos originales conservarán sus valores científicos.</p>
+        <div class="btn-row">
+          <a class="btn" href="./geoportal.html">Abrir geoportal</a>
+        </div>
+      </div>
+      <div class="geoportal-media">
+        <div class="image-placeholder">Espacio para imagen o captura del geoportal</div>
+      </div>
+    </section>
+
+    <section class="use-section">
+      <div class="shell use-grid">
+        <div class="use-copy">
+          <p class="eyebrow">Alcance de los productos</p>
+          <h2 class="section-title">Alcance y uso de los productos</h2>
+          <p>La grilla espacial de los productos finales utiliza píxeles de 20 m por 20 m, equivalentes a 400 m² por celda. Esta resolución permite localizar sectores y comparar patrones espaciales, pero no debe confundirse con precisión topográfica submétrica.</p>
+          <p>Los mapas son apropiados para análisis de planificación, comparación de escenarios y priorización de sectores que requieran estudios posteriores. La ubicación exacta de una intervención, una obra, una delimitación predial o una acción ecológica de precisión requiere levantamientos locales con referencia vertical compatible.</p>
+        </div>
+        <div class="use-list">
+          <div class="use-item">
+            <strong>Planificación territorial</strong>
+            <p>Reconocer sectores donde los escenarios muestran cambios espaciales y orientar análisis posteriores.</p>
+          </div>
+          <div class="use-item">
+            <strong>Comparación de escenarios</strong>
+            <p>Examinar semejanzas y diferencias entre SSP2-4.5 y SSP5-8.5 a través de los años disponibles.</p>
+          </div>
+          <div class="use-item">
+            <strong>Lectura de incertidumbre</strong>
+            <p>Distinguir entre estado central, sensibilidad del ensamble y ausencia de soporte espacial suficiente.</p>
+          </div>
+          <div class="use-item">
+            <strong>Priorización de estudios</strong>
+            <p>Identificar zonas donde información topográfica, topobatimétrica o de costa adicional podría mejorar la resolución futura.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources">
+      <div class="shell">
+        <div class="resources-head">
+          <div>
+            <p class="eyebrow">Explorar el portal</p>
+            <h2 class="section-title">Secciones del portal</h2>
+          </div>
+          <p class="section-copy">La información se distribuye en páginas especializadas para mantener una navegación clara. La página de inicio resume el proyecto; cada módulo amplía únicamente el contenido que le corresponde.</p>
+        </div>
+        <div class="resource-grid">
+          <a class="resource" href="./geoportal.html">
+            <span class="resource-number">01</span>
+            <h3>Geoportal</h3>
+            <p>Consulta interactiva de los productos raster por año, escenario y tipo de capa.</p>
+            <span class="text-link">Abrir mapa</span>
+          </a>
+          <a class="resource" href="./resultados.html">
+            <span class="resource-number">02</span>
+            <h3>Resultados</h3>
+            <p>Niveles, cambios, horizontes principales, exposición, robustez y comparación de escenarios.</p>
+            <span class="text-link">Ver resultados</span>
+          </a>
+          <a class="resource" href="./metodologia.html">
+            <span class="resource-number">03</span>
+            <h3>Metodología</h3>
+            <p>Modelo hidrológico, fuentes, CMIP6, tratamiento espacial, validaciones y criterios técnicos.</p>
+            <span class="text-link">Leer metodología</span>
+          </a>
+          <a class="resource" href="./proyecto.html">
+            <span class="resource-number">04</span>
+            <h3>Sobre el proyecto</h3>
+            <p>Propósito, alcance, instituciones participantes y contexto general del trabajo desarrollado.</p>
+            <span class="text-link">Conocer el proyecto</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="gallery">
+      <div class="shell">
+        <div class="gallery-head">
+          <div>
+            <p class="eyebrow">Galería</p>
+            <h2 class="section-title">Lago de Atitlán y área de estudio</h2>
+          </div>
+          <p class="section-copy">Espacios reservados para incorporar fotografías del lago, la zona costera, actividades de campo y otros elementos visuales relacionados con el proyecto.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="photo-slot"><span>Fotografía 01 · Lago de Atitlán</span></div>
+          <div class="photo-slot"><span>Fotografía 02 · Zona costera</span></div>
+          <div class="photo-slot"><span>Fotografía 03 · Trabajo de campo</span></div>
+          <div class="photo-slot"><span>Fotografía 04 · Área de estudio</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="institutions">
+      <div class="shell">
+        <div class="institutions-head">
+          <p class="eyebrow">Instituciones</p>
+          <h2 class="section-title">Instituciones participantes</h2>
+          <p>Proyecto desarrollado por la Asociación Amigos del Lago de Atitlán en colaboración con la Autoridad para el Manejo Sustentable de la Cuenca del Lago de Atitlán y su Entorno, AMSCLAE.</p>
+        </div>
+        <div class="institution-grid">
+          <a class="institution-card" href="https://amigosdeatitlan.org/" target="_blank" rel="noopener noreferrer">
+            <img src="./aala_logo.png" alt="Logo de Asociación Amigos del Lago de Atitlán">
+            <div>
+              <h3>Amigos del Lago de Atitlán</h3>
+              <p>Asociación dedicada a la conservación de la cuenca del Lago de Atitlán mediante educación, investigación, saneamiento, gestión ambiental y trabajo colaborativo.</p>
+            </div>
+          </a>
+          <a class="institution-card" href="https://www.amsclae.gob.gt/category/departamentos/dica/" target="_blank" rel="noopener noreferrer">
+            <img src="./logoamsclaePNG.png" alt="Logo de AMSCLAE">
+            <div>
+              <h3>AMSCLAE</h3>
+              <p>Autoridad responsable de la gestión integral de la cuenca del Lago de Atitlán. El enlace dirige al área institucional de Investigación y Calidad Ambiental.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-main">
+      <div>
+        <div class="footer-brand-row">
+          <img src="./aala_logo.png" alt="Amigos del Lago de Atitlán">
+          <img src="./cropped-logopaginaweb.png" alt="AMSCLAE">
+          <img src="./logoamsclaePNG.png" alt="AMSCLAE">
+          <div class="footer-brand">Oscilación del nivel<br>del Lago de Atitlán</div>
+        </div>
+        <p class="footer-about">Portal de consulta de resultados hidrológicos y geoespaciales desarrollado por la Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE. Los productos están orientados a la planificación, comparación de escenarios y comprensión territorial de la oscilación del nivel del lago.</p>
+      </div>
+      <div>
+        <h3>Navegación</h3>
+        <div class="footer-links">
+          <a href="./index.html">Inicio</a>
+          <a href="./geoportal.html">Geoportal</a>
+          <a href="./resultados.html">Resultados</a>
+        </div>
+      </div>
+      <div>
+        <h3>Proyecto</h3>
+        <div class="footer-links">
+          <a href="./proyecto.html">Sobre el proyecto</a>
+          <a href="./metodologia.html">Metodología</a>
+        </div>
+      </div>
+      <div>
+        <h3>Instituciones</h3>
+        <div class="footer-links">
+          <a href="https://amigosdeatitlan.org/" target="_blank" rel="noopener noreferrer">Amigos del Lago de Atitlán</a>
+          <a href="https://www.amsclae.gob.gt/category/departamentos/dica/" target="_blank" rel="noopener noreferrer">AMSCLAE · DICA</a>
+        </div>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE</span>
+      <span>Lago de Atitlán · Sololá, Guatemala</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton=document.querySelector("[data-menu-toggle]");
+    const nav=document.querySelector("[data-nav]");
+    if(menuButton&&nav){
+      menuButton.addEventListener("click",()=>{
+        const open=menuButton.getAttribute("aria-expanded")==="true";
+        menuButton.setAttribute("aria-expanded",String(!open));
+        nav.classList.toggle("open",!open);
+        document.body.classList.toggle("menu-open",!open);
+      });
+      nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+        menuButton.setAttribute("aria-expanded","false");
+        nav.classList.remove("open");
+        document.body.classList.remove("menu-open");
+      }));
+    }
+  </script>
+</body>
+</html>
