@@ -162,12 +162,11 @@
     .gallery-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.48fr);gap:64px;align-items:end;margin-bottom:42px}
     .gallery-head .section-copy{margin:0}
     .gallery-grid{width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-    .photo-slot{position:relative;min-height:270px;overflow:hidden;background:linear-gradient(145deg,var(--sky-3),var(--sky-4))}
-    .photo-slot:nth-child(2){background:linear-gradient(145deg,var(--green-2),#aabfa9)}
-    .photo-slot:nth-child(3){background:linear-gradient(145deg,var(--brown-2),#c2aa91)}
-    .photo-slot:nth-child(4){background:linear-gradient(145deg,#cbe5eb,#9fcbd8)}
-    .photo-slot::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.55)}
-    .photo-slot span{position:absolute;left:30px;right:30px;bottom:28px;color:#fff;font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 8px rgba(41,66,76,.22)}
+    .photo-slot{position:relative;min-height:270px;overflow:hidden;background:#dceff4}
+    .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .45s ease}
+    .photo-slot::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(24,47,55,.48) 0%,rgba(24,47,55,.08) 42%,rgba(24,47,55,0) 70%);pointer-events:none}
+    .photo-slot:hover img{transform:scale(1.025)}
+    .photo-slot span{position:absolute;z-index:2;left:30px;right:30px;bottom:28px;color:#fff;font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 8px rgba(20,42,50,.45)}
 
     .institutions{padding:92px 0 98px;background:#fff}
     .institutions-head{text-align:center;max-width:780px;margin:0 auto 50px}
@@ -265,7 +264,7 @@
       .geoportal-media{min-height:390px}
       .gallery-head{margin-bottom:30px}
       .gallery-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain}
-      .photo-slot{flex:0 0 84vw;min-height:230px;scroll-snap-align:start}
+      .photo-slot{flex:0 0 84vw;min-height:245px;scroll-snap-align:center;margin:0}
       .photo-slot span{left:22px;right:22px;bottom:22px;font-size:.58rem}
       .institution-card{grid-template-columns:1fr;text-align:center}
       .institution-card img{margin:0 auto}
@@ -555,14 +554,14 @@
             <p class="eyebrow">Galería</p>
             <h2 class="section-title">Lago de Atitlán y área de estudio</h2>
           </div>
-          <p class="section-copy">Espacios reservados para fotografías del lago, la zona costera, actividades de campo y el área de estudio.</p>
+          <p class="section-copy">Vistas del Lago de Atitlán y su entorno, incorporadas como contexto visual del área de estudio.</p>
         </div>
       </div>
       <div class="gallery-grid">
-        <div class="photo-slot"><span>Fotografía 01 · Lago de Atitlán</span></div>
-        <div class="photo-slot"><span>Fotografía 02 · Zona costera</span></div>
-        <div class="photo-slot"><span>Fotografía 03 · Trabajo de campo</span></div>
-        <div class="photo-slot"><span>Fotografía 04 · Área de estudio</span></div>
+        <figure class="photo-slot"><img src="./Lago502.jpg" alt="Vista del Lago de Atitlán" loading="lazy" decoding="async"><span>Lago de Atitlán</span></figure>
+        <figure class="photo-slot"><img src="./atardecer.jpg" alt="Atardecer en el Lago de Atitlán" loading="lazy" decoding="async"><span>Atardecer en el lago</span></figure>
+        <figure class="photo-slot"><img src="./amanecer.jpg" alt="Amanecer en el Lago de Atitlán" loading="lazy" decoding="async"><span>Amanecer en el lago</span></figure>
+        <figure class="photo-slot"><img src="./guardianes.jpg" alt="Paisaje del Lago de Atitlán y su entorno" loading="lazy" decoding="async"><span>Paisaje del área de estudio</span></figure>
       </div>
     </section>
 
