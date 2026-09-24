@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#dceff4">
+  <title>Resultados | Oscilación del nivel del Lago de Atitlán</title>
+  <meta name="description" content="Resultados temporales y espaciales del proyecto de modelación de la oscilación del nivel del Lago de Atitlán.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#fbfcfa;--sky1:#edf7f9;--sky2:#dceff4;--sky3:#c5e2ea;--lake:#5f9fb2;--lake2:#477f91;--green1:#edf3ed;--green2:#cad9c8;--green:#708b73;--brown1:#f3ede5;--brown2:#dfd0bf;--brown:#947c65;--ink:#29424c;--muted:#5b7078;--line:rgba(41,66,76,.14);--white:#fff;--max:1440px;--display:"Source Serif 4",Georgia,serif;--sans:"Manrope",system-ui,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}body.menu-open{overflow:hidden}img{max-width:100%;display:block}a{color:inherit}button{font:inherit}p{text-align:justify;text-justify:inter-word;text-wrap:pretty}h1,h2,h3,h4,p,a,span{overflow-wrap:break-word}h1,h2,h3,h4{text-wrap:balance}.shell{width:min(var(--max),calc(100% - 64px));margin:auto}
+    .header{position:sticky;top:0;z-index:1000;background:rgba(251,252,250,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.header-inner{min-height:94px;display:flex;align-items:center;gap:30px}.brand{display:flex;align-items:center;gap:15px;text-decoration:none;min-width:340px}.brand-logos{display:flex;align-items:center;gap:9px}.brand-logos img{width:46px;height:46px;object-fit:contain}.brand-copy{display:flex;flex-direction:column;gap:3px}.brand-name{font-size:.84rem;font-weight:800;letter-spacing:-.02em}.brand-place{font-size:.62rem;color:var(--muted)}.nav{margin-left:auto;display:flex;align-items:center;gap:22px}.nav a{position:relative;padding:10px 0;font-size:.74rem;font-weight:600;text-decoration:none;white-space:nowrap}.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:var(--lake);transition:right .22s}.nav a:hover::after,.nav a[aria-current="page"]::after{right:0}.nav .geo{padding:12px 17px;background:#79aebb;color:#fff}.nav .geo::after{display:none}.nav .geo:hover{background:var(--lake2)}.menu-toggle{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--line);background:transparent;align-items:center;justify-content:center}.menu-lines,.menu-lines::before,.menu-lines::after{display:block;width:20px;height:1.5px;background:var(--ink);content:"";transition:.2s}.menu-lines{position:relative}.menu-lines::before{position:absolute;top:-6px}.menu-lines::after{position:absolute;top:6px}.menu-toggle[aria-expanded=true] .menu-lines{background:transparent}.menu-toggle[aria-expanded=true] .menu-lines::before{transform:translateY(6px) rotate(45deg)}.menu-toggle[aria-expanded=true] .menu-lines::after{transform:translateY(-6px) rotate(-45deg)}
+    .hero{background:linear-gradient(135deg,var(--sky1),var(--sky2));border-bottom:1px solid var(--line)}.hero-inner{padding:108px 0 96px;display:grid;grid-template-columns:1.15fr .65fr;gap:88px;align-items:end}.eyebrow{margin:0 0 18px;font-size:.65rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--lake2)}.hero h1{margin:0;font-family:var(--display);font-size:clamp(3.4rem,6vw,6.8rem);line-height:.95;font-weight:600;letter-spacing:-.035em}.hero-lead{margin:32px 0 0;max-width:900px;color:var(--muted);font-size:.9rem;line-height:1.9}.anchor-box{border-left:1px solid rgba(41,66,76,.22);padding-left:34px}.anchor-box strong{display:block;font-family:var(--display);font-size:2.45rem;font-weight:600}.anchor-box span{display:block;margin-top:7px;color:var(--muted);font-size:.7rem;line-height:1.7}.anchor-box p{margin:22px 0 0;color:var(--muted);font-size:.72rem;line-height:1.75}
+    .summary{padding:72px 0;background:#fff}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}.metric{padding:32px;background:var(--paper)}.metric small{display:block;margin-bottom:13px;font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--lake2)}.metric strong{display:block;font-family:var(--display);font-size:2rem;font-weight:600;line-height:1.05}.metric span{display:block;margin-top:10px;color:var(--muted);font-size:.67rem;line-height:1.6}
+    .content{padding:96px 0;background:#fff}.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:84px}.side{position:sticky;top:126px;align-self:start;border-top:1px solid var(--line)}.side a{display:block;padding:14px 3px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--muted);font-size:.67rem;font-weight:700}.side a:hover{color:var(--lake2)}.article{max-width:980px}.section{padding-bottom:76px;margin-bottom:76px;border-bottom:1px solid var(--line)}.section:last-child{border:0;margin:0;padding:0}.kicker{margin:0 0 13px;color:var(--lake2);font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.section h2{margin:0 0 28px;font-family:var(--display);font-size:clamp(2.15rem,3.2vw,3.65rem);line-height:1.06;font-weight:600;letter-spacing:-.02em}.section h3{margin:40px 0 15px;font-family:var(--display);font-size:1.6rem;font-weight:600}.section p{margin:0 0 19px;color:var(--muted);font-size:.82rem;line-height:1.9}.lead{font-family:var(--display);font-size:1.32rem!important;line-height:1.55!important;color:var(--ink)!important}
+    .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:30px 0}.result-card{padding:30px;background:var(--sky1);border:1px solid rgba(71,127,145,.1)}.result-card:nth-child(even){background:var(--green1)}.result-card .year{font-size:.6rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--lake2)}.result-card h3{margin:12px 0 20px;font-family:var(--display);font-size:1.65rem}.scenario-row{display:grid;grid-template-columns:1fr auto;gap:18px;padding:13px 0;border-top:1px solid var(--line);align-items:center}.scenario-row span{font-size:.69rem;color:var(--muted)}.scenario-row strong{font-family:var(--display);font-size:1.25rem;font-weight:600}.scenario-row small{display:block;font-size:.58rem;color:var(--muted);margin-top:4px}
+    .table-wrap{overflow-x:auto;margin:28px 0;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:720px;background:#fff}th,td{padding:15px 17px;border-bottom:1px solid var(--line);text-align:right;font-size:.69rem;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:var(--sky1);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase}tbody tr:last-child td{border-bottom:0}
+    .callout{margin:34px 0;padding:32px 36px;background:var(--sky2);border-left:4px solid var(--lake)}.callout.green{background:var(--green1);border-color:var(--green)}.callout.brown{background:var(--brown1);border-color:var(--brown)}.callout strong{display:block;margin-bottom:9px;font-family:var(--display);font-size:1.38rem;font-weight:600}.callout p{margin:0;color:var(--ink);font-size:.79rem;line-height:1.8}
+    .domain{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin:30px 0}.domain-card{padding:29px;background:var(--paper)}.domain-card strong{display:block;font-family:var(--display);font-size:1.7rem;font-weight:600}.domain-card span{display:block;margin-top:9px;color:var(--muted);font-size:.67rem;line-height:1.65}.domain-card.blue{background:var(--sky1)}.domain-card.green{background:var(--green1)}.domain-card.brown{background:var(--brown1)}
+    .definitions{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:30px 0}.definition{padding:28px;background:var(--sky1)}.definition:nth-child(2n){background:var(--green1)}.definition strong{display:block;margin-bottom:10px;font-family:var(--display);font-size:1.24rem;font-weight:600}.definition p{margin:0;font-size:.75rem;line-height:1.75}
+    .interpret{padding:96px 0;background:var(--green1)}.interpret-head{display:grid;grid-template-columns:.7fr 1fr;gap:76px;margin-bottom:48px}.interpret h2{margin:0;font-family:var(--display);font-size:clamp(2.3rem,4vw,4.3rem);line-height:1.03;font-weight:600}.interpret-head p{margin:0;color:var(--muted);font-size:.83rem;line-height:1.9}.interpret-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}.interpret-card{padding:32px;background:var(--paper)}.interpret-card strong{display:block;margin-bottom:13px;font-family:var(--display);font-size:1.4rem;font-weight:600}.interpret-card p{margin:0;color:var(--muted);font-size:.74rem;line-height:1.78}
+    .next{padding:90px 0;background:var(--sky2)}.next-grid{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}.next h2{margin:0;font-family:var(--display);font-size:clamp(2.2rem,4vw,4rem);font-weight:600;line-height:1.04}.next p{margin:18px 0 0;max-width:780px;color:var(--muted);font-size:.81rem;line-height:1.8}.buttons{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:47px;padding:0 22px;border:1px solid var(--lake2);background:var(--lake2);color:#fff;text-decoration:none;font-size:.72rem;font-weight:800}.btn.alt{background:transparent;color:var(--lake2)}
+    .chart-block{margin:34px 0 42px;padding:22px;background:#fff;border:1px solid var(--line)}.chart-block img{width:100%;height:auto}.chart-caption{margin:14px 5px 2px!important;font-size:.7rem!important;line-height:1.7!important;color:var(--muted)!important}.meaning-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:30px 0}.meaning-card{padding:30px;background:var(--sky1);border:1px solid rgba(71,127,145,.1)}.meaning-card:nth-child(even){background:var(--brown1)}.meaning-card strong{display:block;font-family:var(--display);font-size:1.45rem;font-weight:600;margin-bottom:12px}.meaning-card p{margin:0;font-size:.76rem;line-height:1.78}.big-number{display:block;margin:13px 0 6px;font-family:var(--display);font-size:2rem;font-weight:600;color:var(--ink)}
+    .footer{background:var(--ink);color:var(--sky1)}.footer-main{display:grid;grid-template-columns:1.5fr repeat(3,.5fr);gap:52px;padding:66px 0 50px}.footer-brand-row{display:flex;align-items:center;gap:12px}.footer-brand-row img{width:52px;height:52px;object-fit:contain}.footer-brand{margin-left:5px;font-family:var(--display);font-size:1.55rem;line-height:1.05}.footer-about{max-width:550px;margin:23px 0 0;color:#c8d9de;font-size:.69rem;line-height:1.8}.footer h3{margin:3px 0 17px;font-size:.63rem;text-transform:uppercase;letter-spacing:.14em}.footer-links{display:grid;gap:11px}.footer-links a{color:#c8d9de;text-decoration:none;font-size:.68rem}.footer-bottom{min-height:64px;border-top:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:space-between;gap:20px;color:#a9c2c9;font-size:.6rem}
+    @media(max-width:1100px){.header-inner{min-height:78px}.brand{min-width:0}.menu-toggle{display:flex}.nav{position:fixed;left:0;right:0;top:78px;height:calc(100dvh - 78px);padding:30px 32px;background:rgba(251,252,250,.99);flex-direction:column;align-items:stretch;gap:0;transform:translateX(100%);transition:.25s;overflow:auto}.nav.open{transform:none}.nav a{padding:18px 0;border-bottom:1px solid var(--line);font-size:.86rem}.nav a::after{display:none}.nav .geo{margin-top:22px;text-align:center}.hero-inner{grid-template-columns:1fr;gap:44px}.anchor-box{border-left:0;border-top:1px solid var(--line);padding:28px 0 0}.summary-grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.side{position:static;display:grid;grid-template-columns:repeat(3,1fr)}.side a{padding:12px}.article{max-width:none}.interpret-grid{grid-template-columns:repeat(2,1fr)}.footer-main{grid-template-columns:1.5fr 1fr 1fr}}
+    @media(max-width:760px){.shell{width:calc(100% - 28px)}.header-inner{min-height:68px;gap:12px}.nav{top:68px;height:calc(100dvh - 68px);padding:20px}.brand{gap:10px;flex:1}.brand-logos{gap:5px}.brand-logos img{width:32px;height:32px}.brand-name{font-size:.66rem;line-height:1.15}.brand-place{display:none}.menu-toggle{width:46px;height:46px;flex:0 0 46px}p{text-align:left}.hero-inner{padding:58px 0 54px}.hero h1{font-size:clamp(2.8rem,14vw,4.3rem)}.hero-lead{font-size:.81rem;line-height:1.75}.summary{padding:42px 0}.summary-grid{grid-template-columns:1fr}.metric{padding:25px}.content{padding:62px 0}.layout{gap:0}.side{display:none}.section{padding-bottom:52px;margin-bottom:52px}.section h2{font-size:clamp(2rem,10vw,2.8rem)}.section p{font-size:.78rem;line-height:1.78}.lead{font-size:1.16rem!important}.result-grid,.definitions,.domain,.meaning-grid{grid-template-columns:1fr}.result-card,.definition,.domain-card{padding:24px}.callout{padding:25px 23px}.interpret{padding:62px 0}.interpret-head{grid-template-columns:1fr;gap:22px}.interpret-grid{grid-template-columns:1fr}.next{padding:62px 0}.next-grid{grid-template-columns:1fr;gap:30px}.buttons{display:grid;grid-template-columns:1fr}.btn{width:100%;min-height:50px}.footer-main{grid-template-columns:1fr;padding:48px 0 36px;gap:32px}.footer-brand-row{flex-wrap:wrap}.footer-brand-row img{width:44px;height:44px}.footer-brand{width:100%;margin:6px 0 0}.footer-bottom{flex-direction:column;align-items:flex-start;padding:22px 0;min-height:0}}
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="shell header-inner">
+    <a class="brand" href="./index.html">
+      <span class="brand-logos"><img src="./aala_logo.png" alt="Asociación Amigos del Lago de Atitlán"><img src="./logoamsclaePNG.png" alt="AMSCLAE"></span>
+      <span class="brand-copy"><span class="brand-name">Oscilación del nivel del Lago de Atitlán</span><span class="brand-place">Modelación hidrológica y geoespacial · 2027–2050</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle><span class="menu-lines"></span></button>
+    <nav class="nav" data-nav>
+      <a href="./index.html">Inicio</a>
+      <a href="./resultados.html" aria-current="page">Resultados</a>
+      <a href="./metodologia.html">Metodología</a>
+      <a href="./proyecto.html">Sobre el proyecto</a>
+      <a class="geo" href="./geoportal.html">Abrir geoportal</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="shell hero-inner">
+    <div>
+      <p class="eyebrow">Resultados del proyecto</p>
+      <h1>Resultados temporales y espaciales</h1>
+      <p class="hero-lead">Esta sección reúne los principales resultados de la modelación del nivel del Lago de Atitlán. Las cifras deben leerse como trayectorias condicionadas por los escenarios SSP2-4.5 y SSP5-8.5 y por el ensamble de quince modelos climáticos globales. Los resultados espaciales conservan de forma explícita las zonas donde la evidencia disponible no permite ubicar una costa futura con suficiente soporte.</p>
+    </div>
+    <div class="anchor-box">
+      <strong>1552.770 m</strong>
+      <span>Nivel ancla observado · 29 de agosto de 2026</span>
+      <p>Todos los cambios de nivel presentados en esta página se interpretan respecto de esta referencia vertical. Un descenso p50 expresa la diferencia entre la media anual central del ensamble y el nivel ancla, no una caída exacta que deba ocurrir en una fecha específica.</p>
+    </div>
+  </div>
+</section>
+
+<section class="summary">
+  <div class="shell summary-grid">
+    <div class="metric"><small>SSP2-4.5 · 2030</small><strong>1552.349 m</strong><span>p50 anual · −0.421 m respecto del ancla.</span></div>
+    <div class="metric"><small>SSP5-8.5 · 2030</small><strong>1552.293 m</strong><span>p50 anual · −0.477 m respecto del ancla.</span></div>
+    <div class="metric"><small>SSP2-4.5 · 2050</small><strong>1550.337 m</strong><span>p50 anual · −2.433 m respecto del ancla.</span></div>
+    <div class="metric"><small>SSP5-8.5 · 2050</small><strong>1548.145 m</strong><span>p50 anual · −4.625 m respecto del ancla.</span></div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="shell layout">
+    <aside class="side">
+      <a href="#lectura">Cómo leer los resultados</a>
+      <a href="#trayectoria">Trayectoria 2027–2050</a>
+      <a href="#horizontes">Horizontes principales</a>
+      <a href="#dispersion">Dispersión p05–p95</a>
+      <a href="#espaciales">Resultados espaciales</a>
+      <a href="#dominio">Dominio de evidencia</a>
+      <a href="#exposicion">Exposición p50</a>
+      <a href="#robustez">Robustez</a>
+      <a href="#consenso">Consenso SSP</a>
+      <a href="#estres">Horizonte 2090</a>
+      <a href="#conclusion">Lectura integrada</a>
+    </aside>
+
+    <article class="article">
+      <section class="section" id="lectura">
+        <p class="kicker">01 · Lectura correcta</p>
+        <h2>Qué representan estas cifras</h2>
+        <p class="lead">Los resultados no constituyen una predicción determinista del nivel exacto que tendrá el lago. Representan la respuesta del sistema modelado ante forzamientos climáticos definidos y deben interpretarse junto con la dispersión del ensamble y la incertidumbre espacial.</p>
+        <p>Para cada escenario se procesaron quince modelos climáticos globales. Cada modelo mantiene su propia trayectoria. Primero se calcula la media anual dentro de cada GCM y después se obtienen los cuantiles p05, p50 y p95 entre los quince modelos. El p50 es la mediana del conjunto y funciona como referencia central para la lectura de los resultados.</p>
+        <p>El descenso indicado en metros se calcula respecto del nivel ancla de 1552.770 m observado el 29 de agosto de 2026. Por ejemplo, un descenso p50 de 2.433 m significa que la media anual p50 se encuentra 2.433 m por debajo de esa referencia. No significa que el lago deba perder exactamente 2.433 m entre dos fechas concretas ni que todos los modelos produzcan el mismo valor.</p>
+        <div class="callout"><strong>p50 no significa “nivel seguro”</strong><p>El p50 es una medida central del ensamble. Para comprender el resultado completo debe observarse junto con p05 y p95. Además, una elevación modelada no determina por sí sola una línea de costa exacta: la traducción territorial depende de la evidencia espacial disponible.</p></div>
+      </section>
+
+      <section class="section" id="trayectoria">
+        <p class="kicker">02 · Serie anual</p>
+        <h2>Trayectoria central entre 2027 y 2050</h2>
+        <p>Los productos anuales muestran una tendencia central descendente de largo plazo, pero la trayectoria no es estrictamente descendente todos los años. Existen recuperaciones parciales porque el balance responde a las anomalías de precipitación, evaporación y caudal de cada periodo. Una tendencia descendente no significa que cada año consecutivo tenga que presentar un nivel inferior al anterior.</p>
+        <p>Bajo SSP2-4.5, el p50 pasa de 1552.697 m en 2027 a 1550.337 m en 2050. El descenso central respecto del ancla aumenta de 0.073 m a 2.433 m. Entre esos extremos existen años con incrementos parciales y años con descensos, de modo que la señal debe leerse como una tendencia condicionada con variabilidad interanual superpuesta.</p>
+        <p>Bajo SSP5-8.5, el p50 pasa de 1552.539 m en 2027 a 1548.145 m en 2050. El descenso central respecto del ancla aumenta de 0.231 m a 4.625 m. La separación entre escenarios se hace más visible hacia mitad de siglo, al mismo tiempo que aumenta la dispersión entre GCM.</p>
+        <div class="callout green"><strong>La trayectoria no es una línea recta</strong><p>Las oscilaciones interanuales forman parte de la respuesta hidrológica. Un año con recuperación parcial no invalida una tendencia multianual descendente, del mismo modo que un año de descenso pronunciado no define por sí solo la evolución de largo plazo.</p></div>
+        <div class="chart-block">
+          <img src="./grafica_nivel_p50_2027_2050.png" alt="Gráfica del nivel medio anual p50 del Lago de Atitlán entre 2027 y 2050 para SSP2-4.5 y SSP5-8.5">
+          <p class="chart-caption">La gráfica muestra la elevación anual p50 del espejo de agua. Las variaciones de un año a otro son parte de la oscilación modelada; la señal de largo plazo se interpreta a partir de la trayectoria completa y no de un solo año.</p>
+        </div>
+        <div class="chart-block">
+          <img src="./grafica_descenso_columna_agua.png" alt="Gráfica del descenso de la columna de agua respecto del nivel ancla de 2026">
+          <p class="chart-caption">Aquí el mismo resultado se expresa como metros de descenso respecto de 1552.770 m. Cuanto mayor es el valor vertical, más abajo se ubica el p50 anual respecto del nivel ancla.</p>
+        </div>
+        <div class="meaning-grid">
+          <div class="meaning-card"><strong>2030 · columna de agua</strong><span class="big-number">0.421–0.477 m</span><p>El p50 se sitúa aproximadamente entre 42.1 y 47.7 centímetros por debajo del nivel ancla, según el escenario. Es una diferencia vertical del espejo de agua.</p></div>
+          <div class="meaning-card"><strong>2050 · columna de agua</strong><span class="big-number">2.433–4.625 m</span><p>El p50 se sitúa aproximadamente entre 2.43 y 4.63 metros por debajo del ancla. La diferencia entre escenarios es mucho más marcada hacia mitad de siglo.</p></div>
+        </div>
+
+      </section>
+
+      <section class="section" id="horizontes">
+        <p class="kicker">03 · 2030 y 2050</p>
+        <h2>Horizontes principales</h2>
+        <div class="result-grid">
+          <div class="result-card">
+            <span class="year">Horizonte 2030</span>
+            <h3>Respuesta cercana</h3>
+            <div class="scenario-row"><span>SSP2-4.5<small>Descenso p50: 0.421 m</small></span><strong>1552.349 m</strong></div>
+            <div class="scenario-row"><span>SSP5-8.5<small>Descenso p50: 0.477 m</small></span><strong>1552.293 m</strong></div>
+          </div>
+          <div class="result-card">
+            <span class="year">Horizonte 2050</span>
+            <h3>Mitad de siglo</h3>
+            <div class="scenario-row"><span>SSP2-4.5<small>Descenso p50: 2.433 m</small></span><strong>1550.337 m</strong></div>
+            <div class="scenario-row"><span>SSP5-8.5<small>Descenso p50: 4.625 m</small></span><strong>1548.145 m</strong></div>
+          </div>
+        </div>
+        <p>En 2030 los valores centrales de ambos escenarios son relativamente cercanos: existe una diferencia de aproximadamente 0.056 m entre sus p50. En 2050 la separación central aumenta de manera considerable y alcanza aproximadamente 2.192 m. Esta divergencia debe interpretarse junto con el rango p05–p95, porque la dispersión entre modelos también crece con el horizonte.</p>
+        <p>Los primeros años son especialmente importantes para comprender la respuesta espacial. En 2027 los descensos centrales son pequeños en comparación con 2050, pero pueden activar una superficie apreciable de exposición dentro del corredor observado porque numerosos umbrales costeros se concentran cerca del nivel moderno. La respuesta horizontal de la costa no es proporcional de manera simple al cambio vertical.</p>
+      </section>
+
+      <section class="section" id="dispersion">
+        <p class="kicker">04 · Ensamble climático</p>
+        <h2>p05, p50 y p95</h2>
+        <p>La tabla siguiente resume los horizontes principales y el horizonte de estrés. El rango p05–p95 describe la dispersión entre los quince GCM utilizados en cada escenario. No debe interpretarse como un intervalo de confianza frecuentista ni como una probabilidad exacta de que el nivel observado quede dentro de esos límites.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Escenario</th><th>Año</th><th>p05 (m)</th><th>p50 (m)</th><th>p95 (m)</th><th>Δ p50 vs. 2026 (m)</th></tr></thead>
+            <tbody>
+              <tr><td>SSP2-4.5</td><td>2030</td><td>1551.226</td><td>1552.349</td><td>1554.024</td><td>−0.421</td></tr>
+              <tr><td>SSP2-4.5</td><td>2050</td><td>1544.475</td><td>1550.337</td><td>1551.839</td><td>−2.433</td></tr>
+              <tr><td>SSP5-8.5</td><td>2030</td><td>1550.765</td><td>1552.293</td><td>1553.503</td><td>−0.477</td></tr>
+              <tr><td>SSP5-8.5</td><td>2050</td><td>1540.105</td><td>1548.145</td><td>1552.810</td><td>−4.625</td></tr>
+              <tr><td>SSP2-4.5</td><td>2090</td><td>1525.547</td><td>1542.639</td><td>1552.523</td><td>−10.131</td></tr>
+              <tr><td>SSP5-8.5</td><td>2090</td><td>1511.927</td><td>1530.124</td><td>1554.506</td><td>−22.646</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>La amplitud del ensamble aumenta hacia los horizontes lejanos. Este ensanchamiento es una señal importante: mientras la trayectoria central muestra cambios mayores, también crece la diferencia entre modelos. Por ello, la comunicación de los resultados debe evitar presentar únicamente el p50 sin mencionar la dispersión.</p>
+      </section>
+
+      <section class="section" id="espaciales">
+        <p class="kicker">05 · Traducción territorial</p>
+        <h2>Resultados espaciales</h2>
+        <p>Los resultados espaciales responden a una pregunta distinta de los resultados temporales. El nivel modelado se expresa en metros de elevación; el mapa intenta establecer qué condición puede asignarse a cada celda dentro del dominio evaluado. Para hacerlo se utiliza evidencia Sentinel-2, soporte batimétrico AMSCLAE y reglas que conservan como inciertos los sectores donde la información no permite una clasificación defendible.</p>
+        <p>El producto principal es el estado p50. Esta capa representa la clasificación asociada al nivel central del ensamble para un año y escenario. Se complementa con robustez p05–p95, que indica la estabilidad de la clasificación frente a la dispersión entre modelos, y con el consenso entre SSP2-4.5 y SSP5-8.5.</p>
+        <div class="definitions">
+          <div class="definition"><strong>Agua cierta</strong><p>Celda respaldada como agua bajo las reglas de evidencia utilizadas por el producto.</p></div>
+          <div class="definition"><strong>Exposición cierta</strong><p>Celda donde el cambio de estado está respaldado por evidencia costera o por el soporte aceptado dentro de la metodología.</p></div>
+          <div class="definition"><strong>Incierto</strong><p>Sector donde la información disponible no permite asignar con suficiente respaldo una condición futura de agua o exposición.</p></div>
+          <div class="definition"><strong>Fuera</strong><p>Celda que no pertenece al dominio espacial que corresponde evaluar con esa clasificación.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="dominio">
+        <p class="kicker">06 · Capacidad de inferencia</p>
+        <h2>Dominio costero evaluado</h2>
+        <p>El dominio costero evaluado ocupa 9.3960 km². Dentro de esa superficie, 2.4724 km² corresponden a evidencia directa, 0.1244 km² a soporte AMSCLAE local y 6.7992 km² permanecen como dominio desconocido. La proporción conocida equivale al 27.64 % del dominio costero evaluado.</p>
+        <div class="domain">
+          <div class="domain-card blue"><strong>2.4724 km²</strong><span>Evidencia directa dentro del dominio costero evaluado.</span></div>
+          <div class="domain-card green"><strong>0.1244 km²</strong><span>Soporte local AMSCLAE aceptado dentro de la clasificación.</span></div>
+          <div class="domain-card brown"><strong>6.7992 km²</strong><span>Superficie que permanece espacialmente desconocida.</span></div>
+        </div>
+        <p>Es importante no confundir el 27.64 % con un porcentaje del área total del Lago de Atitlán. La cifra se refiere únicamente al dominio costero que fue definido para evaluar la capacidad de inferencia espacial. El resto del lago cumple otras funciones dentro de la representación y no forma parte de ese denominador.</p>
+        <p>La existencia de una superficie desconocida relativamente amplia es una consecuencia del criterio conservador del proyecto. Allí donde la costa futura quedaría fuera del rango vertical observado directamente y no existe otra fuente con soporte suficiente, la metodología conserva la incertidumbre en lugar de prolongar artificialmente una línea de costa.</p>
+      </section>
+
+      <section class="section" id="exposicion">
+        <p class="kicker">07 · Exposición respaldada</p>
+        <h2>Nueva exposición p50 en 2030 y 2050</h2>
+        <p>Dentro del dominio respaldado, la nueva exposición p50 para 2030 es aproximadamente 1.9312 km² bajo SSP2-4.5 y 1.9320 km² bajo SSP5-8.5. Para 2050 los valores aumentan aproximadamente a 1.9440 km² y 1.9572 km², respectivamente.</p>
+        <div class="result-grid">
+          <div class="result-card">
+            <span class="year">2030</span>
+            <h3>Exposición p50</h3>
+            <div class="scenario-row"><span>SSP2-4.5</span><strong>≈ 1.9312 km²</strong></div>
+            <div class="scenario-row"><span>SSP5-8.5</span><strong>≈ 1.9320 km²</strong></div>
+          </div>
+          <div class="result-card">
+            <span class="year">2050</span>
+            <h3>Exposición p50</h3>
+            <div class="scenario-row"><span>SSP2-4.5</span><strong>≈ 1.9440 km²</strong></div>
+            <div class="scenario-row"><span>SSP5-8.5</span><strong>≈ 1.9572 km²</strong></div>
+          </div>
+        </div>
+        <p>La diferencia de superficie expuesta entre 2030 y 2050 es pequeña en comparación con el aumento del descenso vertical. Esto no significa que la costa deje de responder al descenso del lago. La explicación metodológica es que una gran parte de los umbrales directamente observados se cruza relativamente temprano, mientras que los sectores restantes carecen de soporte suficiente para continuar ubicando la transición con el mismo nivel de evidencia.</p>
+
+        <div class="chart-block">
+          <img src="./grafica_superficie_costera_expuesta.png" alt="Gráfica de superficie costera con nueva exposición p50 en 2030 y 2050">
+          <p class="chart-caption">La superficie expuesta se expresa en metros cuadrados. Los valores aproximados equivalen a 1 931 200 m² y 1 932 000 m² en 2030, y a 1 944 000 m² y 1 957 200 m² en 2050, para SSP2-4.5 y SSP5-8.5 respectivamente.</p>
+        </div>
+        <div class="callout green"><strong>“Costa descubierta” se expresa aquí como superficie, no como una distancia lineal única</strong><p>Los productos respaldan cuántos metros cuadrados de superficie costera pasan a condición de exposición dentro del dominio evaluado. No existe un único valor científicamente válido de “metros lineales que retrocede la costa” para todo el lago, porque el desplazamiento horizontal depende de la pendiente y de la geometría local. Un descenso vertical de 1 m puede producir pocos metros de retiro en una ribera inclinada y una distancia mucho mayor en una ribera de pendiente suave. Para obtener metros lineales de retiro por sitio sería necesario calcular transectos locales sobre una superficie topobatimétrica con soporte suficiente.</p></div>
+        <div class="callout brown"><strong>Más descenso no implica automáticamente más píxeles clasificados</strong><p>Cuando se agota el dominio observado, el modelo espacial no transforma la falta de información en nueva exposición. Por eso, una superficie roja que crece poco puede coexistir con un descenso vertical mucho mayor. La zona gris conserva precisamente esa limitación.</p></div>
+      </section>
+
+      <section class="section" id="robustez">
+        <p class="kicker">08 · Estabilidad frente al ensamble</p>
+        <h2>Robustez p05–p95</h2>
+        <p>La capa de robustez evalúa si la clasificación espacial se mantiene al considerar el rango p05–p95. Esto permite distinguir una exposición que permanece clasificada a través de la dispersión del ensamble de otra que depende del nivel específico utilizado dentro de ese rango.</p>
+        <p>Para SSP2-4.5 en 2050, aproximadamente 1.9348 km² de la nueva exposición se clasifica como robusta dentro del intervalo p05–p95. En otros horizontes la exposición p50 puede mostrar mayor sensibilidad al ensamble. Por esa razón, la capa de estado p50 no debe utilizarse de manera aislada cuando se requiere una lectura técnica de confianza espacial.</p>
+        <p>La robustez climática tampoco debe confundirse con la incertidumbre espacial. Una celda puede ser estable frente a los niveles producidos por el ensamble y, sin embargo, encontrarse fuera del dominio donde la geometría litoral está suficientemente respaldada. Son controles diferentes y ambos deben conservarse.</p>
+      </section>
+
+      <section class="section" id="consenso">
+        <p class="kicker">09 · Comparación de escenarios</p>
+        <h2>Consenso entre SSP2-4.5 y SSP5-8.5</h2>
+        <p>El producto de consenso compara directamente la clasificación espacial de los dos escenarios para un mismo año. Su objetivo no es asignar una probabilidad a cada SSP, sino mostrar dónde ambos escenarios producen la misma condición y dónde comienzan a diferir.</p>
+        <p>Una celda puede clasificarse como agua cierta en ambos escenarios, exposición cierta en ambos, diferencia entre escenarios o incertidumbre en uno o ambos. Esta lectura es especialmente útil porque permite identificar sectores cuya interpretación es menos dependiente del escenario seleccionado y sectores donde la elección del forzamiento climático modifica el resultado.</p>
+        <p>El consenso debe consultarse por año. A diferencia del estado p50 y la robustez, que dependen de seleccionar un escenario, el consenso ya contiene la comparación SSP2-4.5 versus SSP5-8.5 y por ello no requiere un selector adicional de escenario.</p>
+      </section>
+
+      <section class="section" id="estres">
+        <p class="kicker">10 · Largo plazo</p>
+        <h2>2090 como horizonte de estrés</h2>
+        <p>El proyecto conserva 2090 para examinar el comportamiento del sistema bajo un horizonte lejano, pero no le asigna el mismo peso interpretativo que a 2030 y 2050. Para SSP2-4.5 el p50 de 2090 es 1542.639 m, equivalente a un cambio de −10.131 m respecto del ancla. Para SSP5-8.5 el p50 es 1530.124 m, equivalente a −22.646 m.</p>
+        <p>En ese horizonte la amplitud del ensamble es considerablemente mayor y los supuestos del modelo son más exigentes. Los coeficientes hidrológicos permanecen constantes durante la aplicación futura y algunos submodelos, particularmente los basados en árboles para caudal, pueden encontrarse fuera del dominio de entrenamiento. Por estas razones, 2090 se utiliza como prueba de estrés y no como un resultado operacional equivalente a los horizontes de planificación 2030–2050.</p>
+        <div class="callout"><strong>Prioridad interpretativa</strong><p>Los productos anuales 2027–2050 constituyen la base principal para análisis y cartografía. El horizonte 2090 ayuda a explorar sensibilidad de largo plazo, pero su mayor dispersión y las limitaciones de extrapolación exigen una cautela adicional.</p></div>
+      </section>
+
+      <section class="section" id="conclusion">
+        <p class="kicker">11 · Lectura integrada</p>
+        <h2>Qué muestran los resultados en conjunto</h2>
+        <p>El resultado temporal central es una tendencia condicionada de descenso del p50 hacia mitad de siglo, con oscilaciones interanuales y una separación creciente entre SSP2-4.5 y SSP5-8.5. Al mismo tiempo, el rango p05–p95 se amplía, de modo que la señal central y la incertidumbre entre modelos aumentan simultáneamente.</p>
+        <p>El resultado espacial muestra que descensos verticales relativamente pequeños pueden producir una respuesta litoral apreciable cuando los umbrales observados se concentran cerca del nivel moderno. Sin embargo, a medida que la trayectoria desciende más allá del rango respaldado por observaciones, la capacidad de ubicar nuevas transiciones se reduce. El crecimiento limitado de la exposición clasificada no debe confundirse con ausencia de cambio físico.</p>
+        <p>La lectura técnicamente más completa combina cuatro elementos: el nivel p50, la dispersión p05–p95, la clasificación espacial de estado y la robustez. El consenso entre escenarios agrega una quinta dimensión útil para reconocer dónde SSP2-4.5 y SSP5-8.5 conducen a la misma interpretación territorial.</p>
+        <p>En consecuencia, los mapas no representan una delimitación catastral de la costa futura. Son productos de planificación y comparación de escenarios construidos para conservar la diferencia entre evidencia, modelación e incertidumbre. La zona desconocida es parte del resultado científico y señala dónde nueva información topográfica o topobatimétrica podría mejorar de manera directa la capacidad de inferencia.</p>
+      </section>
+    </article>
+  </div>
+</section>
+
+<section class="interpret">
+  <div class="shell">
+    <div class="interpret-head">
+      <h2>Reglas para interpretar los resultados</h2>
+      <p>Estas reglas resumen la forma recomendada de leer las cifras y los mapas sin atribuirles una precisión que no corresponde a su escala o a la evidencia disponible.</p>
+    </div>
+    <div class="interpret-grid">
+      <div class="interpret-card"><strong>Leer p50 con p05–p95</strong><p>El valor central no debe separarse de la dispersión entre los modelos del ensamble.</p></div>
+      <div class="interpret-card"><strong>Separar nivel y costa</strong><p>Un cambio vertical en metros no equivale a un desplazamiento horizontal uniforme del borde del lago.</p></div>
+      <div class="interpret-card"><strong>Conservar el gris</strong><p>La incertidumbre espacial no significa tierra disponible ni estabilidad demostrada.</p></div>
+      <div class="interpret-card"><strong>Comparar escenarios</strong><p>SSP2-4.5 y SSP5-8.5 son condiciones de forzamiento, no futuros con probabilidades asignadas.</p></div>
+      <div class="interpret-card"><strong>Respetar la resolución</strong><p>Los píxeles de 20 × 20 m apoyan planificación general, no replanteos de precisión.</p></div>
+      <div class="interpret-card"><strong>Usar capas complementarias</strong><p>Estado p50, robustez, ancho de incertidumbre y consenso responden preguntas diferentes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <div class="shell next-grid">
+    <div><h2>Explorar los resultados en el mapa</h2><p>El geoportal permitirá seleccionar año, escenario y tipo de producto para consultar espacialmente la información. Para conocer cómo se construyeron estas capas, la metodología desarrolla la cadena de modelación y los controles aplicados.</p></div>
+    <div class="buttons"><a class="btn" href="./geoportal.html">Abrir geoportal</a><a class="btn alt" href="./metodologia.html">Ver metodología</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-main">
+    <div>
+      <div class="footer-brand-row"><img src="./aala_logo.png" alt="Amigos del Lago de Atitlán"><img src="./logoamsclaePNG.png" alt="AMSCLAE"><div class="footer-brand">Oscilación del nivel<br>del Lago de Atitlán</div></div>
+      <p class="footer-about">Portal de consulta de resultados hidrológicos y geoespaciales desarrollado por la Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE.</p>
+    </div>
+    <div><h3>Navegación</h3><div class="footer-links"><a href="./index.html">Inicio</a><a href="./geoportal.html">Geoportal</a><a href="./resultados.html">Resultados</a></div></div>
+    <div><h3>Proyecto</h3><div class="footer-links"><a href="./proyecto.html">Sobre el proyecto</a><a href="./metodologia.html">Metodología</a></div></div>
+    <div><h3>Instituciones</h3><div class="footer-links"><a href="https://amigosdeatitlan.org/" target="_blank" rel="noopener noreferrer">Amigos del Lago de Atitlán</a><a href="https://www.amsclae.gob.gt/category/departamentos/dica/" target="_blank" rel="noopener noreferrer">AMSCLAE · DICA</a></div></div>
+  </div>
+  <div class="shell footer-bottom"><span>Asociación Amigos del Lago de Atitlán en colaboración con AMSCLAE</span><span>Lago de Atitlán · Sololá, Guatemala</span></div>
+</footer>
+
+<script>
+const b=document.querySelector("[data-menu-toggle]"),n=document.querySelector("[data-nav]");
+if(b&&n){b.addEventListener("click",()=>{const o=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",String(!o));n.classList.toggle("open",!o);document.body.classList.toggle("menu-open",!o)});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{b.setAttribute("aria-expanded","false");n.classList.remove("open");document.body.classList.remove("menu-open")}))}
+</script>
+</body>
+</html>
