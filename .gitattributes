@@ -9,3 +9,4 @@
 *.png filter=lfs diff=lfs merge=lfs -text
 *.json binary
 docs/*.png -filter -diff -merge
+docs/geoportal_data/*.png -filter -diff -merge
