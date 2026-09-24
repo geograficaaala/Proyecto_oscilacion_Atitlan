@@ -84,10 +84,9 @@
     .hero-copy{padding:clamp(72px,8vw,128px) clamp(54px,7vw,122px);display:flex;flex-direction:column;justify-content:center}
     .hero-title{margin:0;max-width:900px;font-family:var(--display);font-weight:600;font-size:clamp(2.8rem,4.55vw,4.9rem);line-height:1;letter-spacing:-.022em;color:#34545e}
     .hero-lead{margin:26px 0 0;max-width:760px;color:#526d75;font-size:clamp(.84rem,.94vw,.96rem);line-height:1.82}
-    .hero-media{position:relative;min-height:620px;overflow:hidden;background:linear-gradient(145deg,#b9dce4,#8bbbc8 58%,#b7cdb5)}
-    .hero-media::before{content:"";position:absolute;inset:24px;border:1px solid rgba(255,255,255,.55)}
-    .hero-media::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.28);left:50%;top:50%;transform:translate(-50%,-50%)}
-    .image-placeholder{position:absolute;inset:0;display:flex;align-items:flex-end;padding:42px;color:rgba(255,255,255,.92);font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+    .hero-media{position:relative;min-height:620px;overflow:hidden;background:#dceff4}
+    .hero-media img,.geoportal-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .hero-media::after,.geoportal-media::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(32,62,71,.08),rgba(32,62,71,0) 55%);pointer-events:none}
 
     .intro{padding:98px 0 94px;background:#fff}
     .intro-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);gap:88px;align-items:start}
@@ -132,9 +131,7 @@
 
     .geoportal{display:grid;grid-template-columns:1fr 1fr;min-height:700px}
     .geoportal-copy{padding:clamp(70px,7vw,118px) clamp(46px,7vw,112px);background:#d8edf2;display:flex;flex-direction:column;justify-content:center}
-    .geoportal-media{position:relative;min-height:700px;background:linear-gradient(145deg,#a9d2dc,#7eafbc 55%,#a8c4a8);overflow:hidden}
-    .geoportal-media::before{content:"";position:absolute;inset:26px;border:1px solid rgba(255,255,255,.52)}
-    .geoportal-media .image-placeholder{color:rgba(255,255,255,.95)}
+    .geoportal-media{position:relative;min-height:700px;background:#dceff4;overflow:hidden}
 
     .use-section{padding:108px 0;background:var(--green-1)}
     .use-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:90px}
@@ -164,9 +161,7 @@
     .gallery-grid{width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
     .photo-slot{position:relative;min-height:270px;overflow:hidden;background:#dceff4}
     .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .45s ease}
-    .photo-slot::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(24,47,55,.48) 0%,rgba(24,47,55,.08) 42%,rgba(24,47,55,0) 70%);pointer-events:none}
     .photo-slot:hover img{transform:scale(1.025)}
-    .photo-slot span{position:absolute;z-index:2;left:30px;right:30px;bottom:28px;color:#fff;font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 8px rgba(20,42,50,.45)}
 
     .institutions{padding:92px 0 98px;background:#fff}
     .institutions-head{text-align:center;max-width:780px;margin:0 auto 50px}
@@ -251,7 +246,6 @@
       .hero-lead{font-size:.82rem;line-height:1.72}
       .hero-copy{padding:50px 20px 52px}
       .hero-media{min-height:310px}
-      .image-placeholder{padding:24px}
       .intro,.project-band,.concepts,.results,.use-section,.resources,.institutions{padding:62px 0}
       .gallery{padding:62px 0 0}
       .section-title{font-size:clamp(1.95rem,9.5vw,2.75rem)}
@@ -265,7 +259,6 @@
       .gallery-head{margin-bottom:30px}
       .gallery-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain}
       .photo-slot{flex:0 0 84vw;min-height:245px;scroll-snap-align:center;margin:0}
-      .photo-slot span{left:22px;right:22px;bottom:22px;font-size:.58rem}
       .institution-card{grid-template-columns:1fr;text-align:center}
       .institution-card img{margin:0 auto}
       .institution-card p{text-align:center}
@@ -318,7 +311,7 @@
         </div>
       </div>
       <div class="hero-media">
-        <div class="image-placeholder">Espacio para fotografía principal del Lago de Atitlán</div>
+        <img src="./Lago502.jpg" alt="Vista del Lago de Atitlán" fetchpriority="high" decoding="async">
       </div>
     </section>
 
@@ -475,7 +468,7 @@
         </div>
       </div>
       <div class="geoportal-media">
-        <div class="image-placeholder">Espacio para imagen o captura del geoportal</div>
+        <img src="./guardianes.jpg" alt="Paisaje del Lago de Atitlán y su entorno" loading="lazy" decoding="async">
       </div>
     </section>
 
@@ -558,10 +551,10 @@
         </div>
       </div>
       <div class="gallery-grid">
-        <figure class="photo-slot"><img src="./Lago502.jpg" alt="Vista del Lago de Atitlán" loading="lazy" decoding="async"><span>Lago de Atitlán</span></figure>
-        <figure class="photo-slot"><img src="./atardecer.jpg" alt="Atardecer en el Lago de Atitlán" loading="lazy" decoding="async"><span>Atardecer en el lago</span></figure>
-        <figure class="photo-slot"><img src="./amanecer.jpg" alt="Amanecer en el Lago de Atitlán" loading="lazy" decoding="async"><span>Amanecer en el lago</span></figure>
-        <figure class="photo-slot"><img src="./guardianes.jpg" alt="Paisaje del Lago de Atitlán y su entorno" loading="lazy" decoding="async"><span>Paisaje del área de estudio</span></figure>
+        <figure class="photo-slot"><img src="./Lago502.jpg" alt="Vista del Lago de Atitlán" loading="lazy" decoding="async"></figure>
+        <figure class="photo-slot"><img src="./atardecer.jpg" alt="Atardecer en el Lago de Atitlán" loading="lazy" decoding="async"></figure>
+        <figure class="photo-slot"><img src="./amanecer.jpg" alt="Amanecer en el Lago de Atitlán" loading="lazy" decoding="async"></figure>
+        <figure class="photo-slot"><img src="./guardianes.jpg" alt="Paisaje del Lago de Atitlán y su entorno" loading="lazy" decoding="async"></figure>
       </div>
     </section>
 
