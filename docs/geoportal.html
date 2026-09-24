@@ -11,8 +11,8 @@
 <style>
 :root{--ink:#243b43;--muted:#667b82;--line:#cbdcdf;--paper:#f7faf9;--white:#fff;--blue:#477f91;--blue2:#dceff4;--green:#708b73}
 *{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Manrope,Arial,sans-serif;color:var(--ink);background:#e7efef}
-body{overflow:hidden}a{color:inherit}.topbar{height:70px;background:#f9fbfa;border-bottom:1px solid var(--line);display:grid;grid-template-columns:300px 1fr auto;align-items:center;padding:0 22px;position:relative;z-index:1200}
-.identity{display:flex;align-items:center;gap:18px}.identity img{height:43px;width:auto;object-fit:contain}.titleblock{border-left:1px solid var(--line);padding-left:18px}.titleblock strong{display:block;font:700 18px "Source Serif 4",serif}.titleblock span{display:block;margin-top:2px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+body{overflow:hidden}a{color:inherit}.topbar{height:70px;background:#f9fbfa;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto minmax(280px,1fr) auto;align-items:center;padding:0 22px;position:relative;z-index:1200}
+.identity{display:flex;align-items:center;gap:18px;padding-right:22px}.identity img{height:43px;width:auto;object-fit:contain}.titleblock{border-left:1px solid var(--line);padding-left:24px;min-width:0}.titleblock strong{display:block;font:700 24px "Source Serif 4",serif;line-height:1}.titleblock span{display:block;margin-top:4px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .topnav{display:flex;justify-content:flex-end;gap:24px;font-size:11px;font-weight:700}.topnav a{text-decoration:none;padding:27px 0 24px;border-bottom:3px solid transparent}.topnav a.active{border-bottom-color:var(--blue)}
 .workspace{height:calc(100vh - 70px);display:grid;grid-template-columns:310px 1fr}.panel{background:#f9fbfa;border-right:1px solid var(--line);overflow:auto;z-index:900}.panel-head{padding:22px 20px 17px;border-bottom:1px solid var(--line)}.kicker{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}.panel h1{font:700 25px/1.05 "Source Serif 4",serif;margin:0 0 9px}.panel-head p,.note{font:500 11px/1.55 "Source Serif 4",serif;text-align:justify;color:#52686f;margin:0}
 .section{padding:17px 20px;border-bottom:1px solid var(--line)}.section-title{font:700 15px "Source Serif 4",serif;margin:0 0 12px}.field{margin-bottom:12px}.field:last-child{margin-bottom:0}.field label{display:block;font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
@@ -33,9 +33,8 @@ select{width:100%;height:36px;border:1px solid #b9cfd4;border-radius:3px;backgro
 <div class="identity">
 <a href="https://amigosdeatitlan.org/" target="_blank" rel="noopener"><img src="./aala_logo.png" alt="Asociación Amigos del Lago de Atitlán"></a>
 <a href="https://www.amsclae.gob.gt/category/departamentos/dica/" target="_blank" rel="noopener"><img src="./logoamsclaePNG.png" alt="AMSCLAE"></a>
-<div class="titleblock"><strong>Geoportal de resultados</strong><span>Lago de Atitlán</span></div>
 </div>
-<div></div>
+<div class="titleblock"><strong>Geoportal de resultados</strong><span>Modelación de la oscilación del nivel del Lago de Atitlán</span></div>
 <button class="mobile" id="mobile">Menú</button>
 <nav class="topnav" id="nav"><a href="./index.html">Inicio</a><a href="./resultados.html">Resultados</a><a href="./metodologia.html">Metodología</a><a href="./proyecto.html">Sobre el proyecto</a><a class="active" href="./geoportal.html">Geoportal</a></nav>
 </header>
